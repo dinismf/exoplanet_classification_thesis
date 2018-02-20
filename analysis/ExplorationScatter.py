@@ -20,18 +20,18 @@ df['LABEL'] = df['LABEL'].replace([2], [1])
 labels = df.LABEL
 df = df.drop('LABEL',axis=1)
 
-x = np.array(range(3196))
+x = np.array(range(4608))
 
 # Plot the light curves of all 37 exoplanet stars
 exoplanet_fig = plt.figure(figsize=(12,40))
 
-# for i in range (37):
-#     ax = exoplanet_fig.add_subplot(13, 3, i + 1)
-#     ax.scatter(x, df[labels == 1].iloc[i, :], s=1)
+for i in range (37):
+     ax = exoplanet_fig.add_subplot(13, 3, i + 1)
+     ax.scatter(x, df[labels == 1].iloc[i, :], s=1)
 
 # Plot the light curves for 37 non-exoplanet stars
 for i in range(37):
     ax = exoplanet_fig.add_subplot(13, 3, i + 1)
-    ax.scatter(x, df[labels == 0].iloc[i, :], s=1)
+    ax.scatter(x, df.iloc[i, :], s=1)
 
 plt.show()

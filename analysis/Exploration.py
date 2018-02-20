@@ -15,7 +15,8 @@ def plot_timeseries(series, title):
     plt.show()
 
 # Read training data
-df = pd.read_csv('/Users/DYN/Google Drive/Intelligent_Systems_MSc/MSc_Project/data/datasets/kaggle_exoplanet_timeseries/exoTrain.csv')
+#df = pd.read_csv('/Users/DYN/Google Drive/Intelligent_Systems_MSc/MSc_Project/data/datasets/kaggle_exoplanet_timeseries/exoTrain.csv')
+df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//output.csv')
 
 print(df.head())
 print(df.info())
