@@ -6,36 +6,14 @@ def main():
     # Initialise the Kplr API
     client = kplr.API()
 
-    df_confirmedplanets = loadConfirmedPlanets()
-
     # Obtain Kepler planet using its given Kepler name (Confirmed)
     kepler_name = "227b"
-    kepoi_name = 00757.01
     kepID = 5897826
 
-    # Iterate and retrieve each confirmed planets lightcurves
-    final_df = pd.DataFrame()
-    for index in df_confirmedplanets.iteritems():
-        id = index[1]
-        temp_df = pd.DataFrame(retrieveLightCurve(client, id, isStar=True)).transpose()
-        final_df = final_df.append(temp_df)
+    final_df = pd.DataFrame(retrieveLightCurve(client, kepID, isStar=True)).transpose()
 
     # Output the final dataframe to .csv
-    final_df.to_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//output.csv', na_rep='nan', index=False)
-
-def loadConfirmedPlanets():
-
-    data = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//kepler_planets//confirmed//ConfirmedPlanets.csv', header=0)
-    #print (data.head())
-
-    #data = data['kepoi_name']
-    data = data['kepid']
-
-    # Remove duplicates from the dataframe (Develop option for splitting dataframes into 3 classes (Confirmed, More than one planet confirmed and No Planet))
-    data = data.drop_duplicates()
-    #print (data.head())
-
-    return data;
+    final_df.to_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//single.csv', na_rep='nan', index=False)
 
 
 def retrieveLightCurve(client, id, isStar = False,  candence_flag = False):
@@ -55,8 +33,8 @@ def retrieveLightCurve(client, id, isStar = False,  candence_flag = False):
     lightcurves = star.get_light_curves(short_cadence=candence_flag)
 
     # Display all the lightcurve (.fits) filenames.
-    #for lc in lightcurves:
-    #print(lc.filename)
+    for lc in lightcurves:
+        print(lc.filename)
 
     # Declare lists for the various attributes to retrieve from the lightcurve time series data
     time, flux, ferr, quality = [], [], [], []
@@ -75,8 +53,8 @@ def retrieveLightCurve(client, id, isStar = False,  candence_flag = False):
     df_error = pd.DataFrame(ferr).transpose()
     df_quality = pd.DataFrame(quality).transpose()
 
-    # print(df_quality.info())
-    # print(df_quality.describe())
+    print(df_quality.info())
+    print(df_quality.describe())
 
     # Select columns with more than n samples
     n = 4000
