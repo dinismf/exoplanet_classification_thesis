@@ -8,28 +8,36 @@ def main():
 
     df_confirmedplanets = loadConfirmedPlanets()
 
-    # Obtain Kepler planet using its given Kepler name (Confirmed)
-    kepler_name = "227b"
-    kepoi_name = 00757.01
-    kepID = 5897826
+    planet_count = df_confirmedplanets.count()
+    processed_count = 0
+    failed_count = 0
 
     # Iterate and retrieve each confirmed planets lightcurves
     final_df = pd.DataFrame()
     for index in df_confirmedplanets.iteritems():
         id = index[1]
-        temp_df = pd.DataFrame(retrieveLightCurve(client, id, isStar=True)).transpose()
-        final_df = final_df.append(temp_df)
+
+        try:
+            temp_df = pd.DataFrame(retrieveLightCurve(client, id, isStar=True)).transpose()
+            final_df = final_df.append(temp_df)
+            processed_count += 1
+        except:
+            failed_count += 1
+
+        print ("Processed: ", ((processed_count+failed_count)/planet_count) *100,"%")
 
     # Output the final dataframe to .csv
-    final_df.to_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//output.csv', na_rep='nan', index=False)
+    final_df.to_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//noplanets_1000.csv', na_rep='nan', index=False)
 
 def loadConfirmedPlanets():
 
-    data = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//kepler_planets//confirmed//ConfirmedPlanets.csv', header=0)
+    #data = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//kepler_planets//confirmed//AllConfirmedPlanets.csv', header=0)
+    data = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//kepler_planets//not//not_confirmed_1000.csv', header=0)
     #print (data.head())
 
-    #data = data['kepoi_name']
-    data = data['kepid']
+    data = data['kepoi_name']
+    #data = data['pl_name']
+
 
     # Remove duplicates from the dataframe (Develop option for splitting dataframes into 3 classes (Confirmed, More than one planet confirmed and No Planet))
     data = data.drop_duplicates()
@@ -38,7 +46,7 @@ def loadConfirmedPlanets():
     return data;
 
 
-def retrieveLightCurve(client, id, isStar = False,  candence_flag = False):
+def retrieveLightCurve(client, id, isStar, candence_flag = False):
 
 
     if (isStar):
@@ -46,7 +54,7 @@ def retrieveLightCurve(client, id, isStar = False,  candence_flag = False):
     else:
         # Retrieve the planet using the provided Kepler name
         planet = client.planet(id)
-        planet = client.koi(id)
+        #planet = client.koi(id)
 
         # Retrive the star of the planet
         star = planet.star

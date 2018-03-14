@@ -7,17 +7,19 @@ import seaborn as sns
 
 #%matplotlib inline
 
-df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//raw_exoplanets.csv')
+df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//planets_labelled.csv')
 
 print(df.head())
 print(df.info())
+
+
 
 labels = df.LABEL
 df = df.drop('LABEL',axis=1)
 
 
 n_rows = len(df[:])
-n_sample_rows = 20;
+n_sample_rows = 40;
 
 x = np.array(range(len(df.columns)))
 
@@ -41,7 +43,10 @@ for i in range(plot_rows):
 #plt.scatter(x=x, y=y, s=1)
 #plt.plot(x, y)
 
+# Output to figure png
+#plt.savefig('line_scatter_plots.png', bbox_inches='tight')
 
+# Display
 plt.show()
 
 

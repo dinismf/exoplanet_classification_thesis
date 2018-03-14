@@ -7,9 +7,8 @@ def main():
     client = kplr.API()
 
     # Obtain Kepler planet using its given Kepler name (Confirmed)
-    kepler_name = "227b"
-    kepID = 5897826
-
+    kepler_name = "CoRoT-1 b"
+    kepID = 757076
     final_df = pd.DataFrame(retrieveLightCurve(client, kepID, isStar=True)).transpose()
 
     # Output the final dataframe to .csv
@@ -24,13 +23,13 @@ def retrieveLightCurve(client, id, isStar = False,  candence_flag = False):
     else:
         # Retrieve the planet using the provided Kepler name
         planet = client.planet(id)
-        planet = client.koi(id)
+        #planet = client.koi(id)
 
         # Retrive the star of the planet
         star = planet.star
 
     # Retrieve the light curves from the star
-    lightcurves = star.get_light_curves(short_cadence=candence_flag)
+    lightcurves = star.get_light_curves(short_candence=False)
 
     # Display all the lightcurve (.fits) filenames.
     for lc in lightcurves:
@@ -44,7 +43,7 @@ def retrieveLightCurve(client, id, isStar = False,  candence_flag = False):
             hdu_data = f[1].data
             time.append(hdu_data["time"])
             flux.append(hdu_data["pdcsap_flux"])
-            ferr.append(hdu_data["sap_flux_err"])
+            ferr.append(hdu_data["pdcsap_flux_err"])
             quality.append(hdu_data["sap_quality"])
 
     # Initialise pandas dataframes from retrieved data for easy manipulation
@@ -59,11 +58,19 @@ def retrieveLightCurve(client, id, isStar = False,  candence_flag = False):
     # Select columns with more than n samples
     n = 4000
     df_quality = df_quality.loc[:, df_quality.count() > n]
+    #df_error = df_error.loc[:, df_error.count() > n]
+
 
     # Select the column with the lowest mean quality (Research into better approach to determine the best time series data)
-    df_mean = df_quality.mean()
-    lowest_mean = df_mean.min()
-    df_quality = df_quality.loc[:, df_quality.mean() == lowest_mean]
+    df_mean_quality = df_quality.mean()
+    #df_mean_error = df_error.mean()
+
+    lowest_quality_mean = df_mean_quality.min()
+    #lowest_error_mean = df_mean_error.min()
+
+
+    df_quality = df_quality.loc[:, df_quality.mean() == lowest_quality_mean]
+    #df_error = df_error.loc[:, df_error.mean() == lowest_error_mean]
 
     target_column = int(df_quality.columns.values)
 
