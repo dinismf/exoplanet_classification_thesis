@@ -36,6 +36,13 @@ x_test = test_data.as_matrix().astype(np.float)
 # x_train = train_scaler.transform(x_train)
 # x_test = test_scaler.transform(x_test)
 
+# Reshape data to 3D input
+x_train = x_train.reshape(x_train.shape[0],x_train.shape[1], 1)
+#y_train = y_train.reshape(y_train.shape[0],y_train.shape[1])
+x_test = x_test.reshape(x_test.shape[0],x_test.shape[1], 1)
+
+x_train.shape
+
 '''
 Model parameters
 '''
@@ -59,7 +66,7 @@ model = Sequential()
 
 # Masking layer
 #model.add(Masking(mask_value=-1.))
-model.add(Conv1D(filters=128, kernel_size=8, activation='relu', input_shape=(,x_train.shape[0])))
+model.add(Conv1D(filters=128, kernel_size=8, activation='relu', input_shape=(x_train.shape[1], 1)))
 model.add(BatchNormalization())
 model.add(Conv1D(filters=256, kernel_size=5, activation='relu'))
 model.add(BatchNormalization())
