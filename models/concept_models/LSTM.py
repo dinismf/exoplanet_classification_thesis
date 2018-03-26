@@ -2,7 +2,7 @@ import time
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
-from sklearn.metrics import roc_auc_score, precision_score, recall_score
+from sklearn.metrics import roc_auc_score, precision_score, recall_score, classification_report
 
 from keras.preprocessing.sequence import pad_sequences
 from keras.models import Sequential, Model
@@ -56,7 +56,7 @@ nb_hidden = [16,16]
 '''
 Training parameters 
 '''
-batch_size = 10
+batch_size = 32
 nb_epochs = 10
 
 print('Creating model...')
@@ -66,17 +66,17 @@ model = Sequential()
 
 # Masking layer
 #model.add(Masking(mask_value=-1.))
-model.add(LSTM(16, input_shape=(max_seq_length, 1)))
+model.add(LSTM(10, input_shape=(max_seq_length, 1), return_sequences=True))
 model.add(Dropout(0.5))
-#model.add(LSTM(100))
-#model.add(Dropout(0.2))
+model.add(LSTM(10))
+model.add(Dropout(0.5))
 model.add(Dense(1))
 model.add(Activation('sigmoid'))
 
 start = time.time()
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
-print("Compilation Time: ", time.time() - start)
 
+print("Compilation Time: ", time.time() - start)
 print(model.summary())
 
 
@@ -91,13 +91,21 @@ score, acc = model.evaluate(x_test, y_test, batch_size=batch_size)
 print('Test score:', score)
 print('Test accuracy:', acc)
 
+Y_score = model.predict(x_test)
+Y_predict = np.argmax(Y_score,axis=1)
+
+print(Y_score)
+print(Y_predict)
+Y_true = np.argmax(y_test,axis=1)
+
+
+#auc = roc_auc_score(y_test, Y_score, average='macro')
+
+print(classification_report(y_test, Y_predict))
+
+# prec = precision_score(y_test, Y_predict, average=None)
+# rec = recall_score(y_test, Y_predict, average=None)
 #
-# Y_score = model.predict(x_test)
-#
-#
-# Y_predict = np.argmax(Y_score,axis=1)
-# Y_true = np.argmax(y_test,axis=1)
-# # auc = roc_auc_score(y_test, Y_score, average='macro')
-# # prec = precision_score(Y_true, Y_predict, average=None)
-# # rec = recall_score(Y_true, Y_predict, average=None)
+# print('Precision: ', prec)
+# print('Recall: ', rec)
 
