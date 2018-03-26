@@ -1,8 +1,11 @@
 import time
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 from sklearn.preprocessing import MinMaxScaler
-from sklearn.metrics import roc_auc_score, precision_score, recall_score, classification_report
+from sklearn.metrics import roc_auc_score, precision_score, recall_score, classification_report, confusion_matrix
 
 from keras.preprocessing.sequence import pad_sequences
 from keras.models import Sequential, Model
@@ -57,7 +60,7 @@ nb_hidden = [16,16]
 Training parameters 
 '''
 batch_size = 32
-nb_epochs = 10
+nb_epochs = 1
 
 print('Creating model...')
 model = Sequential()
@@ -101,7 +104,31 @@ Y_true = np.argmax(y_test,axis=1)
 
 #auc = roc_auc_score(y_test, Y_score, average='macro')
 
+print('Classification Report: \n')
 print(classification_report(y_test, Y_predict))
+
+print('Confusion Matrix: \n')
+conf_matrix = confusion_matrix(y_test, Y_predict)
+print(conf_matrix)
+
+conf_matrix_info = {
+                1: {
+                    'matrix': conf_matrix,
+                    'title': 'Exoplanet Binary Classifier',
+                   },
+}
+
+fix, ax = plt.subplots(figsize=(16, 12))
+plt.suptitle('Confusion Matrix of Various Classifiers')
+for ii, values in conf_matrix.items():
+    matrix = values['matrix']
+    title = values['title']
+    plt.subplot(3, 3, ii) # starts from 1
+    plt.title(title);
+    sns.heatmap(matrix, annot=True,  fmt='');
+
+sns.plt.show()
+
 
 # prec = precision_score(y_test, Y_predict, average=None)
 # rec = recall_score(y_test, Y_predict, average=None)

@@ -94,7 +94,7 @@ model.fit(x_train, y_train, batch_size, nb_epochs)
 score, acc = model.evaluate(x_test, y_test, batch_size=batch_size)
 Y_score = model.predict(x_test)
 
-Y_predict = np.(Y_score,axis=1)
+Y_predict = np.argmax(Y_score,axis=1)
 Y_true = np.argmax(y_test,axis=1)
 
 auc = roc_auc_score(y_test, Y_score, average='macro')
