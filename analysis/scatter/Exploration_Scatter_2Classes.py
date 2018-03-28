@@ -7,7 +7,7 @@ import seaborn as sns
 
 #%matplotlib inline
 
-df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//merged//planets_labelled_final.csv')
+df = pd.read_csv('/Users/DYN/Google Drive/Intelligent_Systems_MSc/MSc_Project/data/main/original_lc/planets_labelled_final_original.csv')
 print(df.head())
 print(df.info())
 
@@ -35,7 +35,7 @@ random_sample_df_nonplanets = df_nonplanets.sample(n=n_sample_rows)
 plot_cols = 2;
 plot_rows = int(n_sample_rows)
 
-fig, axes = plt.subplots(figsize=(20,100), nrows=plot_rows, ncols=plot_cols)
+fig, axes = plt.subplots(figsize=(20,40), nrows=plot_rows, ncols=plot_cols)
 #fig, axes = plt.subplots(nrows=int(n_sample_rows), sharex=True)
 
 for i in range(plot_rows):
@@ -51,7 +51,7 @@ for i in range(plot_rows):
 #plt.plot(x, y)
 
 # Output to figure png
-#plt.savefig('line_scatter_plots.png', bbox_inches='tight')
+plt.savefig('line_scatter_plots2.png', bbox_inches='tight')
 
 # Display
 plt.show()

@@ -49,15 +49,17 @@ class MissingValuesHandler():
 
 def main():
 
-    data = readDataframe('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//original_lc//planets_labelled_final_original.csv')
+    data = readDataframe('/Users/DYN/Google Drive/Intelligent_Systems_MSc/MSc_Project/data/main/original_lc/planets_labelled_final_original.csv')
     print(data.head())
 
-    labels = data.LABEL
-    data = data.drop('LABEL', axis=1)
+    removed_nan_data = MissingValuesHandler(data).removeNaN()
+    removed_nan_data.to_csv(
+        '/Users/DYN/Google Drive/Intelligent_Systems_MSc/MSc_Project/data/main/removed_nan_lc/planets_labelled_final_no_nan.csv',
+        na_rep='nan', index=False)
 
-    normalized_data = Normalizer().normalize(data)
-    for i in range(5):
-        print(normalized_data[i])
+    # normalized_data = Normalizer().normalize(data)
+    # for i in range(5):
+    #     print(normalized_data[i])
 
 
 

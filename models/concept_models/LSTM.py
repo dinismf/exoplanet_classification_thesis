@@ -13,7 +13,6 @@ from keras.layers import Input, Masking, Dense, Activation, Dropout, LSTM
 from keras.optimizers import Adam, SGD
 from keras.callbacks import EarlyStopping
 
-
 # Load dataset
 
 # https://machinelearningmastery.com/handle-long-sequences-long-short-term-memory-recurrent-neural-networks/
