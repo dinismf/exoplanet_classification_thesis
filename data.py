@@ -5,7 +5,6 @@ import numpy as np
 from sklearn.model_selection import cross_val_predict, cross_val_score, train_test_split, StratifiedKFold
 from preprocessing import Normalizer, Standardizer
 
-
 def LoadData():
 
     if (platform.system() == 'Windows'):
@@ -51,19 +50,12 @@ def KFoldData(data):
 
     n_splits = skf.get_n_splits()
 
-
-
-def PreProcess(X, y):
-    return
-
-
-if __name__ == "__main__":
-
-    data = LoadData()
-    X_train, y_train, X_test, y_test = SplitData(data)
-
-    print('Done')
-
-
+ #
+ # if __name__ == "__main__":
+ #
+ #     data = LoadData()
+ #     X_train, y_train, X_test, y_test = SplitData(data)
+ #
+ #
 
 

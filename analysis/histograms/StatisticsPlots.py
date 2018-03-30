@@ -110,9 +110,11 @@ def plot_comparison_statistics(df):
 
 
 
-df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//merged//planets_labelled_final_original.csv')
+df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//original_lc//planets_labelled_final_original.csv')
 print(df.head())
 print(df.info())
+print(df.describe())
+
 
 df_planets = df.loc[df['LABEL'] == 1]
 df_nonplanets = df.loc[df['LABEL'] == 0]

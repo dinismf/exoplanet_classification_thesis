@@ -7,7 +7,11 @@ import seaborn as sns
 
 #%matplotlib inline
 
-df = pd.read_csv('/Users/DYN/Google Drive/Intelligent_Systems_MSc/MSc_Project/data/main/original_lc/planets_labelled_final_original.csv')
+#df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//original_lc//planets_labelled_final_original.csv')
+df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//lc_kalman_nan//kalman_nan_data.csv')
+#df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//lc_movingaverage_nan//movingaverage_nan_data.csv')
+#df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//lc_interpolated_nan//planets_labelled_final_interpolated_nan.csv')
+
 print(df.head())
 print(df.info())
 
@@ -21,7 +25,7 @@ df_nonplanets = df_nonplanets.drop('LABEL',axis=1)
 
 
 # Number of rows to sample
-n_sample_rows = 40;
+n_sample_rows = 10;
 
 # Timeseries max length
 x_planets = np.array(range(len(df_planets.columns)))
@@ -51,7 +55,7 @@ for i in range(plot_rows):
 #plt.plot(x, y)
 
 # Output to figure png
-plt.savefig('line_scatter_plots2.png', bbox_inches='tight')
+#plt.savefig('line_scatter_plots2.png', bbox_inches='tight')
 
 # Display
 plt.show()

@@ -1,6 +1,7 @@
 import configparser
 import time
 import json
+import train
 import os.path
 
 if __name__ == '__main__':
@@ -29,7 +30,11 @@ if __name__ == '__main__':
     save_model = config.getboolean('Options', 'save_model')
 
     start_time = time.time()
+
     # Train network
+
+    tr
+    ain
 
     print('Training time (seconds): ', (time.time() - start_time))
 

@@ -27,12 +27,12 @@ def main():
         print ("Processed: ", ((processed_count+failed_count)/planet_count) *100,"%")
 
     # Output the final dataframe to .csv
-    final_df.to_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//noplanets_2000.csv', na_rep='nan', index=False)
+    final_df.to_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//noplanets_2000_3500.csv', na_rep='nan', index=False)
 
 def loadConfirmedPlanets():
 
     #data = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//kepler_planets//confirmed//AllConfirmedPlanets.csv', header=0)
-    data = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//kepler_planets//not//not_confirmed_2000.csv', header=0)
+    data = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//kepler_planets//not//not_confirmed_2000_3500.csv', header=0)
     #print (data.head())
 
     data = data['kepoi_name']
