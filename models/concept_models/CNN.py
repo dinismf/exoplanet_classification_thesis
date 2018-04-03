@@ -6,7 +6,7 @@ from sklearn.metrics import roc_auc_score, precision_score, recall_score
 
 from keras.preprocessing.sequence import pad_sequences
 from keras.models import Sequential, Model
-from keras.layers import Dense, Activation, Dropout, Conv1D, Flatten, GlobalAveragePooling1D, BatchNormalization
+from keras.layers import Dense, Activation, Dropout, Conv1D, Flatten, GlobalAveragePooling1D, BatchNormalization, GlobalMaxPool1D
 from keras.optimizers import Adam, SGD
 from keras.callbacks import EarlyStopping
 

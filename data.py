@@ -8,38 +8,45 @@ from preprocessing import Normalizer, Standardizer
 def LoadData():
 
     if (platform.system() == 'Windows'):
-        data = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//original_lc//planets_labelled_final_original.csv')
+        #data = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//original_lc//planets_labelled_final_original.csv')
+        data = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//original_lc//planets_labelled_final_original_equal.csv')
 
     elif(platform.system() == 'Darwin'):
         data = pd.read_csv('/Users/DYN/Google Drive/Intelligent_Systems_MSc/MSc_Project/data/main/original_lc/planets_labelled_final_original.csv')
 
-    return data
-
-def SplitData(data, test_size=0.20, preprocess='standardize'):
-
     y = data.LABEL
-
     X = data.drop('LABEL',axis=1)
 
+    return (X, y)
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = test_size, random_state = 42)
+def SplitData(X, y, test_size=0.20, preprocess='standardize', val_set = False):
 
-    if (preprocess == 'standardize'):
-        scaler = Standardizer()
-        X_train = scaler.standardize(X_train)
-        X_test = scaler.standardize(X_test)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = test_size, random_state = 42, stratify=y)
 
-    elif (preprocess == 'normalize'):
-        scaler = Normalizer()
-        X_train = scaler.normalize(X_train)
-        X_test = scaler.normalize(X_test)
+    if val_set:
+        X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=test_size, random_state= 42, stratify=y_train)
 
-    # Reshape data to 3D input
-    X_train = X_train.reshape(X_train.shape[0], X_train.shape[1], 1)
-    X_test = X_test.reshape(X_test.shape[0], X_test.shape[1], 1)
+    # if (preprocess == 'standardize'):
+    #     scaler = Standardizer()
+    #     X_train = scaler.standardize(X_train)
+    #     X_test = scaler.standardize(X_test)
+    #
+    # elif (preprocess == 'normalize'):
+    #     scaler = Normalizer()
+    #     X_train = scaler.normalize(X_train)
+    #     X_test = scaler.normalize(X_test)
 
+    X_train =  X_train.as_matrix().astype(np.float)
 
-    return (X_train, y_train, X_test, y_test)
+    if val_set:
+        X_val = X_val.as_matrix().astype(np.float)
+
+    X_test =  X_test.as_matrix().astype(np.float)
+
+    if val_set:
+        return (X_train, y_train, X_val, y_val, X_test, y_test)
+    else:
+        return (X_train, y_train, X_test, y_test)
 
 def KFoldData(data):
 
