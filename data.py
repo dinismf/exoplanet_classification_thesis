@@ -3,13 +3,17 @@ import platform
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import cross_val_predict, cross_val_score, train_test_split, StratifiedKFold
-from preprocessing import Normalizer, Standardizer
 
 def LoadData():
+    """
+
+    Returns: Dataframe X of all timeseries samples, and Series of labels y (1 = Exoplanet, 0 = No Exoplanet)
+
+    """
 
     if (platform.system() == 'Windows'):
-        #data = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//original_lc//planets_labelled_final_original.csv')
-        data = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//original_lc//planets_labelled_final_original_equal.csv')
+        data = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//original_lc//planets_labelled_final_original.csv')
+        #data = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//original_lc//planets_labelled_final_original_equal.csv')
 
     elif(platform.system() == 'Darwin'):
         data = pd.read_csv('/Users/DYN/Google Drive/Intelligent_Systems_MSc/MSc_Project/data/main/original_lc/planets_labelled_final_original.csv')
@@ -19,22 +23,24 @@ def LoadData():
 
     return (X, y)
 
-def SplitData(X, y, test_size=0.20, preprocess='standardize', val_set = False):
+def SplitData(X, y, test_size=0.20, val_set = False):
+    """
+
+    Args:
+        X:
+        y:
+        test_size:
+        val_set:
+
+    Returns:
+
+    """
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = test_size, random_state = 42, stratify=y)
 
     if val_set:
         X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=test_size, random_state= 42, stratify=y_train)
 
-    # if (preprocess == 'standardize'):
-    #     scaler = Standardizer()
-    #     X_train = scaler.standardize(X_train)
-    #     X_test = scaler.standardize(X_test)
-    #
-    # elif (preprocess == 'normalize'):
-    #     scaler = Normalizer()
-    #     X_train = scaler.normalize(X_train)
-    #     X_test = scaler.normalize(X_test)
 
     X_train =  X_train.as_matrix().astype(np.float)
 
@@ -49,6 +55,11 @@ def SplitData(X, y, test_size=0.20, preprocess='standardize', val_set = False):
         return (X_train, y_train, X_test, y_test)
 
 def KFoldData(data):
+    """
+
+    Args:
+        data:
+    """
 
     X = data.VALUES
     y = data.LABEL

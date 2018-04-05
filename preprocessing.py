@@ -5,6 +5,8 @@ from sklearn.preprocessing import MinMaxScaler, StandardScaler, Imputer
 from keras.preprocessing.sequence import pad_sequences
 from impyute import arima
 
+from imblearn.over_sampling import RandomOverSampler, SMOTE, ADASYN
+
 class Normalizer:
 
 	scaler = None
@@ -71,45 +73,66 @@ class MissingValuesHandler():
 
         return pd.DataFrame(imputer.fit_transform(self.data))
 
+class Smoother():
+     def __init__(self, df):
+         self.data = df
+
+     def MovingAverage(self):
+         data_averaged = self.data.rolling(window=4000, center=True)
+         data_rollingmean = data_averaged.mean()
+         return data_rollingmean
+
+
+class Oversampler():
+
+    def __init__(self):
+        pass
+
+    def OversampleNaiveRandom(self, X, y):
+        ros = RandomOverSampler(random_state=0)
+
+        X_resampled, y_resampled = ros.fit_sample(X, y)
+
+        return X_resampled, y_resampled
+
+
+    def OversampleSMOTE(self, X, y, kind=None):
+        if (kind is not None):
+            X_resampled, y_resampled = SMOTE(kind=kind).fit_sample(X, y)
+        else:
+            X_resampled, y_resampled =  SMOTE().fit_sample(X, y)
+
+        return X_resampled, y_resampled
+
+    def OversampleADASYN(self, X, y):
+
+        X_resampled, y_resampled = ADASYN().fit_sample(X, y)
+        return X_resampled, y_resampled
+
+
+
+
 def main():
 
     data = readDataframe('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//original_lc//planets_labelled_final_original.csv')
     print(data.head())
     data = data.drop('LABEL',axis=1)
 
-    # removed_nan_data = MissingValuesHandler(data).removeNaN()
-    # removed_nan_data.to_csv(
-    #     'C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//removed_nan_lc//planets_labelled_final_no_nan.csv',
-    #     na_rep='nan', index=False)
-    #
-    # masked_nan_data = MissingValuesHandler(data).fillNaN(fillValue=np.nan)
-    # masked_nan_data.to_csv(
-    #      'C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//lc_masked_nan//planets_labelled_final_masked_nan.csv',
-    #      na_rep='nan', index=False)
 
-    # arima_nan_data = MissingValuesHandler(data).arimaNaN(5,1,0)
-    # arima_nan_data.to_csv(
-    #     'C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//lc_interpolated_nan//planets_labelled_final_interpolated_nan.csv',
-    #     na_rep='nan', index=False)
-
-    # imputed_nan_data = MissingValuesHandler(data).inputeNaN()
-    # imputed_nan_data.to_csv(
-    #     'C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//lc_imputed_nan//planets_labelled_final_imputed_nan.csv',
-    #      na_rep='nan', index=False)
+    ma_smoother = Smoother(data)
+    data_smoothed = ma_smoother.MovingAverage()
 
     if (data.isna):
-        normalized_data_og = Normalizer().normalize(data, na_values=True)
-        standardized_data_og = Standardizer().standardize(data, na_values=True)
-
-
-    #removed_nan_data = removed_nan_data.iloc[1, :]
-    #removed_nan_data = removed_nan_data.drop('LABEL', axis=0)
-    #removed_nan_data = removed_nan_data.as_matrix().astype(np.float)
+        #normalized_data_og = Normalizer().normalize(data, na_values=True)
+        #standardized_data_og = Standardizer().standardize(data, na_values=True)
+        standardized_data_smoothed = Standardizer().standardize(data_smoothed, na_values=True)
 
 
 
-    normalized_data_og.to_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//original_lc/planets_labelled_final_original_normed.csv', na_rep='nan', index=False)
-    standardized_data_og.to_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//original_lc/planets_labelled_final_original_std.csv', na_rep='nan', index=False)
+
+    #normalized_data_og.to_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//original_lc/planets_labelled_final_original_normed.csv', na_rep='nan', index=False)
+    #standardized_data_og.to_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//original_lc/planets_labelled_final_original_std.csv', na_rep='nan', index=False)
+    standardized_data_smoothed.to_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//original_lc/planets_labelled_final_smoothed_std.csv', na_rep='nan', index=False)
 
 
     # for i in range(5):
