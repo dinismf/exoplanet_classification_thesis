@@ -1,5 +1,4 @@
 from data import LoadData, SplitData
-from preprocessing import *
 from model import LSTM_Model, CNN_Model
 from evaluate import ModelEvaluator
 from keras.optimizers import SGD, Adam, RMSprop
@@ -7,39 +6,12 @@ from keras.callbacks import ReduceLROnPlateau, EarlyStopping
 
 
 
-def train_lstm(
-               preprocessing_na = 'NA_MASKED', preprocessing_scale = 'STANDARDIZATION',
+def train_lstm(X, y,
                batch_size = 32, nb_layers = 1, nb_hidden = 15, dropout = 0.5, nb_epochs = 5, masking_val = 0.0,
                optimizer = 'adam', metrics='accuracy',activation='sigmoid',
                save_model=False, plot_loss=False, plot_data=[], filename=''):
 
 
-    # Load original data
-    X, y = LoadData()
-
-    # Or load pre-processed version of original
-    if (preprocessing_na == 'NONE'):
-        X = Standardizer().standardize(X, na_values=True)
-
-    elif (preprocessing_na == 'NA_MASKED'):
-
-        if (preprocessing_scale == 'NONE'):
-            X = MissingValuesHandler(X).fillNaN(fillValue=masking_val)
-
-        elif (preprocessing_scale == 'STANDARDIZATION'):
-            X = Standardizer().standardize(X, na_values=True)
-            X = MissingValuesHandler(X).fillNaN(fillValue=masking_val)
-
-    elif (preprocessing_na == 'NA_REMOVED'):
-        X = MissingValuesHandler(X).removeNaN()
-        X = Standardizer().standardize(X, na_values=True)
-
-    elif (preprocessing_na == 'NA_ARIMA'):
-        pass
-
-    X, y = Oversampler().OversampleSMOTE(X, y)
-    X = pd.DataFrame(X)
-    y = pd.Series(y)
 
     # Split data
     X_train, y_train, X_test, y_test = SplitData(X,y, test_size=0.2)
@@ -70,36 +42,11 @@ def train_lstm(
 
 
 
-def train_cnn(preprocessing_na = 'NA_MASKED', preprocessing_scale = 'STANDARDIZATION',
+def train_cnn(X, y,
                batch_size = 16, nb_epochs = 40,
                optimizer = 'adam', metrics='accuracy', masking_val=0.0,
                save_model=False, plot_loss=False, plot_data=[], filename=''):
-    # Load original data
-    X, y = LoadData()
 
-    # Or load pre-processed version of original
-    if (preprocessing_na == 'NONE'):
-        X = Standardizer().standardize(X, na_values=True)
-
-    elif (preprocessing_na == 'NA_MASKED'):
-
-        if (preprocessing_scale == 'NONE'):
-            X = MissingValuesHandler(X).fillNaN(fillValue=masking_val)
-
-        elif (preprocessing_scale == 'STANDARDIZATION'):
-            X = Standardizer().standardize(X, na_values=True)
-            X = MissingValuesHandler(X).fillNaN(fillValue=masking_val)
-
-    elif (preprocessing_na == 'NA_REMOVED'):
-        X = MissingValuesHandler(X).removeNaN()
-        X = Standardizer().standardize(X, na_values=True)
-
-    elif (preprocessing_na == 'NA_ARIMA'):
-        pass
-
-    X, y = Oversampler().OversampleSMOTE(X, y)
-    X = pd.DataFrame(X)
-    y = pd.Series(y)
 
 
     # Split data

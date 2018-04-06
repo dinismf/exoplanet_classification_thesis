@@ -67,7 +67,7 @@ class MissingValuesHandler():
     def arimaNaN(self, p, d, q):
         return arima(self.data, p, d, q)
 
-    def inputeNaN(self):
+    def imputeNaN(self):
 
         imputer = Imputer(strategy='mean',axis=1)
 
@@ -102,12 +102,12 @@ class Oversampler():
         else:
             X_resampled, y_resampled =  SMOTE().fit_sample(X, y)
 
-        return X_resampled, y_resampled
+        return pd.DataFrame(X_resampled), pd.Series(y_resampled)
 
     def OversampleADASYN(self, X, y):
 
         X_resampled, y_resampled = ADASYN().fit_sample(X, y)
-        return X_resampled, y_resampled
+        return pd.DataFrame(X_resampled), pd.Series(y_resampled)
 
 
 

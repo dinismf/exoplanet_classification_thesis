@@ -31,6 +31,9 @@ class Keras_Model:
 
         return (Y_score, Y_predict, Y_true)
 
+    def GetModel(self):
+        return self.model
+
 
 class RNN_Model:
     pass
@@ -38,7 +41,7 @@ class RNN_Model:
 class LSTM_Model(Keras_Model):
 
     def __init__(self, nb_layers, nb_units, output_dim, sequence_length, dropout, activation, maskingvalue):
-        Keras_Model.__init__(self)
+        super().__init__(self)
 
         self.nb_layers = nb_layers
         self.nb_units = nb_units
@@ -108,7 +111,7 @@ class CNN_Model(Keras_Model):
                  dropout=0.5):
 
         print('Initialising CNN Model...')
-        Keras_Model.__init__(self)
+        super().__init__(self)
 
         self.output_dim = output_dim
         self.sequence_length = sequence_length
