@@ -1,0 +1,1 @@
+{"pool_size_1": 0, "pool_size": 4, "batch_size": 1, "nb_blocks": 1, "pooling": 0, "filters": 2, "activation": 1, "optimizer": 2, "kernel_size": 2, "dropout": 0.09751613533060369}

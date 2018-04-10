@@ -1,17 +1,14 @@
-from data import LoadData, SplitData
+from data import *
 from model import LSTM_Model, CNN_Model
 from evaluate import ModelEvaluator
 from keras.optimizers import SGD, Adam, RMSprop
 from keras.callbacks import ReduceLROnPlateau, EarlyStopping
 
 
-
-def train_lstm(X, y,
-               batch_size = 32, nb_layers = 1, nb_hidden = 15, dropout = 0.5, nb_epochs = 5, masking_val = 0.0,
+def train_lstm( batch_size = 32, nb_layers = 2, nb_hidden = 15, dropout = 0.5, nb_epochs = 5, masking_val = 0.0,
                optimizer = 'adam', metrics='accuracy',activation='sigmoid',
                save_model=False, plot_loss=False, plot_data=[], filename=''):
-
-
+    X, y = LoadDataset('lc_std_nanmasked_SMOTE.csv')
 
     # Split data
     X_train, y_train, X_test, y_test = SplitData(X,y, test_size=0.2)
@@ -35,7 +32,7 @@ def train_lstm(X, y,
     history = model.FitData(X_train, y_train, batch_size=batch_size, nb_epochs=nb_epochs)
 
 
-    evaluator = ModelEvaluator(model, X_test=X_test, y_test=y_test, batch_size=batch_size)
+    evaluator = ModelEvaluator(model.GetModel(), X_test=X_test, y_test=y_test, batch_size=batch_size)
 
     evaluator.PlotTrainingPerformance(history)
 
@@ -80,6 +77,7 @@ def train_cnn(X, y,
 
     evaluator.PlotTrainingPerformance(history)
 
+# if __name__ == "__main__":
 
 
 

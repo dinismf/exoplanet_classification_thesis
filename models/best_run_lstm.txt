@@ -1,0 +1,1 @@
+{"nb_lstm_layers": 1, "nb_units": 1, "batch_size": 2, "dropout": 0.5350807190884803, "optimizer": 0, "activation": 1}

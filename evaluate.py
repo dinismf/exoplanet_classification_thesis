@@ -1,4 +1,5 @@
 import numpy as np
+from keras.models import Sequential
 from sklearn.metrics import roc_auc_score, precision_score, recall_score, classification_report, confusion_matrix, r2_score, roc_curve, auc
 import scikitplot as skplt
 import matplotlib.pyplot as plt
@@ -8,7 +9,7 @@ plt.style.use('fivethirtyeight')
 
 class ModelEvaluator():
 
-    def __init__(self, model, X_test, y_test, batch_size, binary_classification=True):
+    def __init__(self, model, X_test, y_test, batch_size, generate_plots=True, binary_classification=True):
         self.model = model
         self.y_test = y_test
         self.binary_classification = binary_classification
@@ -18,16 +19,18 @@ class ModelEvaluator():
         self.score, self.acc = self.model.Evaluate(X_test, y_test, batch_size)
         self.Y_score, self.Y_predict, self.Y_true = self.model.Predict(X_test, y_test)
 
+
         # Generate Metrics
 
         self.GeneratePerformanceSummary()
 
-        self.GenerateConfusionMatrix()
-        self.GenerateROCPlot()
-        self.GeneratePrecisionRecallPlot()
-        self.GenerateReliabilityPlot()
-        self.GenerateCumulativeGainPlot()
-        self.GenerateLiftPlot()
+        if (generate_plots):
+            self.GenerateConfusionMatrix()
+            self.GenerateROCPlot()
+            self.GeneratePrecisionRecallPlot()
+            self.GenerateReliabilityPlot()
+            self.GenerateCumulativeGainPlot()
+            self.GenerateLiftPlot()
 
 
 

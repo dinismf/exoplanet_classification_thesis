@@ -1,0 +1,137 @@
+pydev debugger: process 10568 is connecting
+
+C:\Users\DYN\AppData\Roaming\Python\Python35\site-packages\h5py\__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+2018-04-10 11:23:02.383422: I C:\tf_jenkins\workspace\rel-win\M\windows-gpu\PY\35\tensorflow\core\platform\cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX AVX2
+2018-04-10 11:23:02.606548: I C:\tf_jenkins\workspace\rel-win\M\windows-gpu\PY\35\tensorflow\core\common_runtime\gpu\gpu_device.cc:1105] Found device 0 with properties: 
+name: GeForce GTX 970 major: 5 minor: 2 memoryClockRate(GHz): 1.279
+pciBusID: 0000:01:00.0
+totalMemory: 4.00GiB freeMemory: 3.31GiB
+2018-04-10 11:23:02.606904: I C:\tf_jenkins\workspace\rel-win\M\windows-gpu\PY\35\tensorflow\core\common_runtime\gpu\gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 970, pci bus id: 0000:01:00.0, compute capability: 5.2)
+['/job:localhost/replica:0/task:0/device:GPU:0']
+Backend TkAgg is interactive backend. Turning interactive mode on.
+>>> Imports:
+#coding=utf-8
+
+try:
+    from data import *
+except:
+    pass
+
+try:
+    from model import *
+except:
+    pass
+
+try:
+    from hyperopt import Trials, STATUS_OK, tpe
+except:
+    pass
+
+try:
+    from hyperas import optim
+except:
+    pass
+
+try:
+    from hyperas.distributions import choice, uniform, conditional
+except:
+    pass
+
+try:
+    from keras.optimizers import Adam, SGD, RMSprop
+except:
+    pass
+
+try:
+    from keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLROnPlateau
+except:
+    pass
+
+try:
+    from evaluate import ModelEvaluator
+except:
+    pass
+
+try:
+    import json
+except:
+    pass
+
+>>> Hyperas search space:
+
+def get_space():
+    return {
+        'nb_blocks': hp.choice('nb_blocks', [1,2,3]),
+        'filters': hp.choice('filters', [8, 16, 32, 64]),
+        'kernel_size': hp.choice('kernel_size', [5, 8, 11]),
+        'activation': hp.choice('activation', ['prelu']),
+        'pooling': hp.choice('pooling', ['max', 'average']),
+        'pool_size': hp.choice('pool_size', [1,2,3,4,5]),
+        'pool_size_1': hp.choice('pool_size_1', [1,2,3,4,5]),
+        'dropout': hp.uniform('dropout', 0,1),
+        'lr': hp.choice('lr', [0.1,0.01,0.001]),
+        'momentum': hp.choice('momentum', [0., 0.25]),
+        'batch_size': hp.choice('batch_size', [16,32]),
+    }
+
+>>> Data
+  1: 
+  2: 
+  3: #X, y = LoadOriginalData()
+  4: X, y = LoadDataset('lc_std_nanimputed.csv')
+  5: #X, y = LoadDataset('lc_std_nanmasked_SMOTE.csv')
+  6: #X, y = LoadDataset('lc_std.csv')
+  7: 
+  8: # Split data
+  9: #X_train, y_train, X_test, y_test = SplitData(X,y, test_size=0.2)
+ 10: X_train, y_train, X_val, y_val, X_test, y_test = SplitData(X, y, test_size=0.2, val_set=True)
+ 11: 
+ 12: # Reshape data to 3D input
+ 13: X_train = X_train.reshape(X_train.shape[0], X_train.shape[1], 1)
+ 14: X_val = X_val.reshape(X_val.shape[0], X_val.shape[1], 1)
+ 15: X_test = X_test.reshape(X_test.shape[0], X_test.shape[1], 1)
+ 16: 
+ 17: # y_train = y_train.reshape(y_train.shape[0], 1)
+ 18: # y_test = y_test.reshape(y_test.shape[0], 1)
+ 19: 
+ 20: #return X_train, y_train, X_test, y_test
+ 21: 
+ 22: 
+ 23: 
+>>> Resulting replaced keras model:
+
+   1: def keras_fmin_fnct(space):
+   2: 
+   3: #def create_cnn_model(X_train, y_train, X_test, y_test):
+   4: 
+   5:     cnn = CNN_Model(output_dim=1, sequence_length=X_train.shape[1],
+   6:                     nb_blocks=space['nb_blocks'], filters=space['filters'], kernel_size=space['kernel_size'],
+   7:                     activation=space['activation'], pooling=space['pooling'], pool_size=space['pool_size'], pool_strides=space['pool_size_1'],
+   8:                     dropout=space['dropout'])
+   9: 
+  10:     cnn.Build()
+  11: 
+  12:     opt = SGD(lr=0.1, momentum=0.25, decay=0.0001, nesterov=True)
+  13: 
+  14:     cnn.Compile(loss='binary_crossentropy', optimizer=SGD(lr=space['lr'], momentum=space['momentum'], decay=0.0001, nesterov=True), metrics=['accuracy'])
+  15: 
+  16:     reduceLR = ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=5, min_lr=0.0001, verbose=1)
+  17:     earlyStopping = EarlyStopping(monitor='val_loss', min_delta=0, patience=10, mode='auto')
+  18: 
+  19:     # hist = model.FitData(X_train, y_train, batch_size=batch_size, nb_epochs=nb_epochs, cb1=reduceLR)
+  20:     batch_size = space['batch_size']
+  21: 
+  22:     #cnn.FitData(X_train=X_train, y_train=y_train,
+  23:     #                         batch_size=batch_size, nb_epochs=50, verbose=2, cb1=reduceLR, cb2=earlyStopping)
+  24:     cnn.FitDataWithValidationCallbacks(X_train=X_train, y_train=y_train, X_val=X_val, y_val=y_val,
+  25:                                            batch_size=batch_size, nb_epochs=1, verbose=2, cb1=reduceLR, cb2=earlyStopping)
+  26: 
+  27:     score, acc = cnn.Evaluate(X_test, y_test, batch_size, verbose=2)
+  28: 
+  29:     print('Test Accuracy: ', acc)
+  30: 
+  31:     return {'loss': -acc, 'status': STATUS_OK, 'model': cnn.GetModel(), 'X_test': X_test, 'y_test': y_test}
+  32: 
+Dataset: lc_std_nanimputed.csv found. Loading...

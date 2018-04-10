@@ -5,22 +5,22 @@ import numpy as np
 from sklearn.model_selection import cross_val_predict, cross_val_score, train_test_split, StratifiedKFold
 from preprocessing import *
 
-def LoadOriginalData():
-    """
 
-    Returns: Dataframe X of all timeseries samples, and Series of labels y (1 = Exoplanet, 0 = No Exoplanet)
+def LoadDataset(dataset_name):
 
-    """
+    path = 'data/' + dataset_name
 
-    if (platform.system() == 'Windows'):
-        data = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//original_lc//planets_labelled_final_original.csv')
-        #data = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//original_lc//planets_labelled_final_original_equal.csv')
+    X = None
+    y = None
 
-    elif(platform.system() == 'Darwin'):
-        data = pd.read_csv('/Users/DYN/Google Drive/Intelligent_Systems_MSc/MSc_Project/data/main/original_lc/planets_labelled_final_original.csv')
-
-    y = data.LABEL
-    X = data.drop('LABEL',axis=1)
+    try:
+        if (os.path.isfile(str(path))):
+            print('Dataset: ' + dataset_name + ' found. Loading...')
+            data = pd.read_csv(str(path))
+            y = data.LABEL
+            X = data.drop('LABEL', axis=1)
+    except:
+        print('Dataset: ' + dataset_name + ' not found. ')
 
     return X, y
 
@@ -40,7 +40,7 @@ def SplitData(X, y, test_size=0.20, val_set = False):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = test_size, random_state = 42, stratify=y)
 
     if val_set:
-        X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=test_size, random_state= 42, stratify=y_train)
+        X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.15, random_state= 42, stratify=y_train)
 
 
     X_train =  X_train.as_matrix().astype(np.float)
@@ -107,7 +107,7 @@ def GenerateDataset(og_X, og_y, filename, filename_words):
         handler = MissingValuesHandler(X_processed)
 
         if (nan_handling == 'nanmasked'):
-            X_processed = handler.fillNaN(fillValue=0)
+            X_processed = handler.fillNaN(fillValue=0.0)
         elif (nan_handling == 'nanremoved'):
             X_processed = handler.removeNaN()
 
@@ -140,7 +140,7 @@ def GenerateDataset(og_X, og_y, filename, filename_words):
 
 if __name__ == "__main__":
 
-    X, y = LoadOriginalData()
+    X, y = LoadDataset('lc_original.csv')
 
         # Read filename and store lines in list
     filenames = list(open('data/datasets.txt'))
