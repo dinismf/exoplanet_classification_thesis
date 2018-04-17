@@ -39,43 +39,27 @@ def train_lstm( batch_size = 32, nb_layers = 2, nb_hidden = 15, dropout = 0.5, n
 
 
 
-def train_cnn(X, y,
-               batch_size = 16, nb_epochs = 40,
-               optimizer = 'adam', metrics='accuracy', masking_val=0.0,
-               save_model=False, plot_loss=False, plot_data=[], filename=''):
+def train_cnn(model, X_train, y_train, X_val, y_val, X_test, y_test, batch_size = 16, nb_epochs = 40, save=False):
 
 
-
-    # Split data
-    #X_train, y_train, X_test, y_test = SplitData(X,y, test_size=0.2)
-    X_train, y_train, X_val, y_val, X_test, y_test = SplitData(X,y, test_size=0.2, val_set=True)
-
-    # Reshape data to 3D input
-    X_train = X_train.reshape(X_train.shape[0], X_train.shape[1], 1)
-    X_val = X_val.reshape(X_val.shape[0], X_val.shape[1], 1)
-    X_test = X_test.reshape(X_test.shape[0], X_test.shape[1], 1)
-    #y_train = y_train.reshape(y_train.shape[0], 1)
-    #y_test = y_test.reshape(y_test.shape[0], 1)
-
-
-    model = CNN_Model(sequence_length=X_train.shape[1], output_dim=1, dropout=0.25, nb_blocks=2)
-    model.Build()
-
-    opt = SGD(lr=0.1, momentum=0.25, decay=0.0001, nesterov=True)
-    #opt = Adam()
-    #opt = RMSprop()
-    model.Compile(loss='binary_crossentropy', optimizer=opt, metrics=metrics)
-
-
-    reduceLR = ReduceLROnPlateau(monitor='loss', factor=0.5, patience=5, min_lr=0.0001, verbose=1)
+    #reduceLR = ReduceLROnPlateau(monitor='loss', factor=0.5, patience=5, min_lr=0.0001, verbose=1)
     #earlyStopping = EarlyStopping(monitor='val_loss', min_delta=0, patience=10, mode='auto')
 
-    #hist = model.FitData(X_train, y_train, batch_size=batch_size, nb_epochs=nb_epochs, cb1=reduceLR)
-    history = model.FitDataWithValidation(X_train=X_train, y_train=y_train, X_val=X_val, y_val=y_val, batch_size=batch_size, nb_epochs=nb_epochs)
+    #history = model.FitData(X_train, y_train, batch_size=batch_size, nb_epochs=nb_epochs)
 
-    evaluator = ModelEvaluator(model, X_test=X_test, y_test=y_test, batch_size=batch_size)
+    history = model.FitDataWithValidation(X_train=X_train, y_train=y_train, X_val=X_val, y_val=y_val, batch_size=batch_size, nb_epochs=nb_epochs, verbose=1)
+
+    if (save):
+        model.SaveModel('new_cnn', weights=True)
+
+    if (X_train.shape[1] != X_test.shape[1]):
+        evaluator = ModelEvaluator(model, X_test=X_test, y_test=y_test, batch_size=batch_size, segmentEval=True)
+    else:
+        evaluator = ModelEvaluator(model, X_test=X_test, y_test=y_test, batch_size=batch_size, segmentEval=False)
 
     evaluator.PlotTrainingPerformance(history)
+
+
 
 # if __name__ == "__main__":
 

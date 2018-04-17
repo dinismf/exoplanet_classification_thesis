@@ -1,6 +1,6 @@
 import numpy as np
 from keras.models import Sequential
-from sklearn.metrics import roc_auc_score, precision_score, recall_score, classification_report, confusion_matrix, r2_score, roc_curve, auc
+from sklearn.metrics import roc_auc_score, precision_score, recall_score, classification_report, confusion_matrix, r2_score, auc, f1_score
 import scikitplot as skplt
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -9,15 +9,14 @@ plt.style.use('fivethirtyeight')
 
 class ModelEvaluator():
 
-    def __init__(self, model, X_test, y_test, batch_size, generate_plots=True, binary_classification=True):
+    def __init__(self, model, X_test, y_test, batch_size, generate_plots=True, segmentEval=False):
         self.model = model
         self.y_test = y_test
-        self.binary_classification = binary_classification
 
 
         # Evaluate and Predict
-        self.score, self.acc = self.model.Evaluate(X_test, y_test, batch_size)
-        self.Y_score, self.Y_predict, self.Y_true = self.model.Predict(X_test, y_test)
+        #self.score, self.acc = self.model.Evaluate(X_test, y_test, batch_size)
+        self.Y_score, self.Y_predict, self.Y_true = self.model.Predict(X_test, y_test, segmentEval)
 
 
         # Generate Metrics
@@ -44,9 +43,11 @@ class ModelEvaluator():
 
         print('R2: ', r2_score(self.y_test, self.Y_predict))
 
-        if self.binary_classification:
-            print('ROC/AUC Score: ', roc_auc_score(self.y_test, self.Y_score))
 
+
+        if self.binary_classification:
+            self.rocauc = roc_auc_score(self.y_test, self.Y_score)
+            print('ROC/AUC Score: ', self.rocauc)
 
     def GenerateROCPlot(self):
 
@@ -130,5 +131,8 @@ class ModelEvaluator():
         plt.xlabel('epoch')
         plt.legend(['train', 'test'], loc='upper left')
         plt.show()
+
+    def GetAUC(self):
+        return self.rocauc
 
 

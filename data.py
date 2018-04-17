@@ -2,13 +2,15 @@ import os
 import platform
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import cross_val_predict, cross_val_score, train_test_split, StratifiedKFold
+import pickle
+import klepto
 from preprocessing import *
+from sklearn.model_selection import train_test_split
+from pyke import kepconvert
 
+def LoadDataset(dataset_name='lc_original.csv', directory='data/'):
 
-def LoadDataset(dataset_name):
-
-    path = 'data/' + dataset_name
+    path = directory + dataset_name
 
     X = None
     y = None
@@ -23,6 +25,37 @@ def LoadDataset(dataset_name):
         print('Dataset: ' + dataset_name + ' not found. ')
 
     return X, y
+
+def LoadPickledData(dataset_name='output.pkl',directory='C:\\Users\\DYN\\Desktop\\exoplanet_classification_repo\\data\\pickled_data\\'):
+
+    d = klepto.archives.dir_archive(directory + 'transit_data_train', cached=True, serialized=True)
+
+    #pvals_data = pickle.load(open(directory + 'K_keys/' + dataset_name, 'rb'))
+    #transits_data = pickle.load(open(directory + 'K_results/' + dataset_name, 'rb'))
+    #null_data = pickle.load(open(directory + 'K_time/' + dataset_name, 'rb'))
+
+    d.load('keys')
+    d.load('results')
+    d.load('time')
+    keys = d['keys']
+    time = d['time']
+
+    data = d['results']
+
+    # convert to numpy array fo float type from object type
+    pvals = np.array( list((data[:, 0])), dtype=np.float)
+    transits = np.array( list((data[:, 1])), dtype=np.float)
+    null = np.array( list((data[:, 2])), dtype=np.float)
+
+    X = np.vstack([transits, null])
+    y = np.hstack([np.ones(transits.shape[0]), np.zeros(null.shape[0])])
+
+
+    #if categorical: y = np_utils.to_categorical(y, np.unique(y).shape[0])
+    #if whiten: X = preprocessing.scale(X, axis=1)
+
+    return X, y, pvals, keys, time
+
 
 def SplitData(X, y, test_size=0.20, val_set = False):
     """
@@ -42,32 +75,21 @@ def SplitData(X, y, test_size=0.20, val_set = False):
     if val_set:
         X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.15, random_state= 42, stratify=y_train)
 
-
-    X_train =  X_train.as_matrix().astype(np.float)
+    #X_train =  X_train.as_matrix().astype(np.float)
 
     if val_set:
         X_val = X_val.as_matrix().astype(np.float)
 
-    X_test =  X_test.as_matrix().astype(np.float)
+    #X_test =  X_test.as_matrix().astype(np.float)
 
     if val_set:
         return (X_train, y_train, X_val, y_val, X_test, y_test)
     else:
         return (X_train, y_train, X_test, y_test)
 
-def KFoldData(data):
-    """
+def ReadFITS():
 
-    Args:
-        data:
-    """
-
-    X = data.VALUES
-    y = data.LABEL
-
-    skf = StratifiedKFold(n_splits=4, random_state=None, shuffle=False)
-
-    n_splits = skf.get_n_splits()
+    file = kepconvert('data\\kplr000757076-2011271113734_INJECTED-inj1_llc.fits.gz', columns='TIME,SAP_FLUX,PDCSAP_FLUX,SAP_FLUX_ERR,SAP_QUALITY', outfile='data\\kplr000757076-2011271113734_INJECTED-inj1_llc.csv',conversion='fits2csv')
 
 
 def GenerateDataset(og_X, og_y, filename, filename_words):
@@ -140,23 +162,44 @@ def GenerateDataset(og_X, og_y, filename, filename_words):
 
 if __name__ == "__main__":
 
-    X, y = LoadDataset('lc_original.csv')
+    # #X, y = LoadDataset('lc_original.csv')
+    # X_train, y_train, pvals, keys, time = LoadPickledData()
+    #
+    #
+    # y = pd.DataFrame(y_train, columns=['LABEL'])
+    # X = pd.DataFrame(X_train)
+    #
+    # new_df = y.join(X)
+    #
+    # new_df = new_df.iloc[0:1000, :]
+    #
+    # new_df.to_csv('data/shortedX.csv')
 
-        # Read filename and store lines in list
-    filenames = list(open('data/datasets.txt'))
-
-    for fn in filenames:
-        words = fn.rstrip('\n').split("_")
-
-        GenerateDataset(X, y, fn.rstrip('\n'), words)
-
-
-
-
-        # Split data
-        # X_train, y_train, X_test, y_test = SplitData(X,y, test_size=0.2)
-        # X_train, y_train, X_val, y_val, X_test, y_test = SplitData(X, y, test_size=0.2, val_set=True)
+    ReadFITS()
 
 
+    #
+    # X.to_csv('F:\X_Test.csv')
+    # y.to_csv('F:\y_test.csv')
 
+    # X_train = pd.read_csv('F:\X_Test.csv')
+    # y_train = pd.read_csv('F:\y_test.csv')
+    #
+    # print('')
+    #
+    # X_train =  X_train.drop(['0'], axis=1 )
+    # y_train = y_train.drop(['0'], axis=1)
+    #
+    # X_train_shortened = X_train[10000]
+    # y_train_shortened = y_train[10000]
+    #
+    #
+    # print('')
+    # # Read filename and store lines in list
+    # filenames = list(open('data/datasets.txt'))
+    #
+    # for fn in filenames:
+    #     words = fn.rstrip('\n').split("_")
+    #
+    #     GenerateDataset(X, y, fn.rstrip('\n'), words)
 

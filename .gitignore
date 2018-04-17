@@ -1,1 +1,4 @@
 *.csv
+data/pickled_data/transit_data_train/K_results/output.pkl
+data/pickled_data/transit_data_train/K_keys/output.pkl
+data/pickled_data/transit_data_train/K_time/output.pkl

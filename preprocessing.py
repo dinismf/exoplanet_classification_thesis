@@ -40,7 +40,7 @@ class Standardizer:
                 return standardized_df
 
             else:
-                self.scaler = self.standard_scaler.fit(data)
+                self.standard_scaler = self.standard_scaler.fit(data)
 
 
             return self.standard_scaler.transform(data)
