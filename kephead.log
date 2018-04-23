@@ -1,0 +1,16 @@
+--------------------------------------------------------------
+KEPHEAD --  infile=data\fits\kplr010027247-2012179063303_llc.fits outfile=data\fits\kplr010027247-2012179063303_llc_HEAD.fits keyname=all overwrite=False verbose=False logfile=kephead.log
+
+--------------------------------------------------------------
+KEPHEAD --  infile=data\fits\kplr010027247-2012179063303_llc.fits outfile=kplr010027247-2012179063303_llc_HEAD.fits keyname=all overwrite=False verbose=False logfile=kephead.log
+
+--------------------------------------------------------------
+KEPHEAD --  infile=data\fits\kplr010027247-2012179063303_llc.fits outfile=kplr010027247-2012179063303_llc_HEAD.fits keyname=mag overwrite=False verbose=False logfile=kephead.log
+
+ERROR -- KEPHEAD: kplr010027247-2012179063303_llc_HEAD.fits exists. Use --overwrite
+--------------------------------------------------------------
+KEPHEAD --  infile=data\fits\kplr010027247-2012179063303_llc.fits outfile=kplr010027247-2012179063303_llc_HEAD.txt keyname=mag overwrite=False verbose=False logfile=kephead.log
+
+--------------------------------------------------------------
+KEPHEAD --  infile=data\fits\kplr010027247-2012179063303_llc.fits outfile=kplr010027247-2012179063303_llc_HEAD.txt keyname=mag overwrite=False verbose=False logfile=kephead.log
+

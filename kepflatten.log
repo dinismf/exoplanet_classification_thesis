@@ -1,0 +1,48 @@
+--------------------------------------------------------------
+KEPFLATTEN --  infile=data\fits\kplr010471515-2010078095331_llc.fits outfile=data\fits\kplr010471515-2010078095331_llc_FLATTENED.fits datacol=PDCSAP_FLUX errcol=PDCSAP_FLUX_ERR nsig=3.0 stepsize=0.5 winsize=5.0 npoly=3 niter=1 ranges=0,0 plot=False overwrite=False verbose=False logfile=kepflatten.log
+
+--------------------------------------------------------------
+KEPFLATTEN --  infile=data\fits\kplr010471515-2010078095331_llc.fits outfile=data\fits\kplr010471515-2010078095331_llc_FLATTENED.fits datacol=PDCSAP_FLUX errcol=PDCSAP_FLUX_ERR nsig=3.0 stepsize=0.5 winsize=5.0 npoly=3 niter=1 ranges=0,0 plot=False overwrite=False verbose=False logfile=kepflatten.log
+
+ERROR -- KEPFLATTEN: data\fits\kplr010471515-2010078095331_llc_FLATTENED.fits exists. Use overwrite=True
+--------------------------------------------------------------
+KEPFLATTEN --  infile=data\fits\kplr010471515-2010078095331_llc.fits outfile=data\fits\kplr010471515-2010078095331_llc_FLATTENED.fits datacol=PDCSAP_FLUX errcol=PDCSAP_FLUX_ERR nsig=3.0 stepsize=0.5 winsize=5.0 npoly=3 niter=1 ranges=0,0 plot=False overwrite=False verbose=False logfile=kepflatten.log
+
+--------------------------------------------------------------
+KEPFLATTEN --  infile=data\fits\kplr010000162-2012179063303_llc.fits outfile=data\fits\kplr010000162-2012179063303_llc_FLATTENED.fits.fits datacol=PDCSAP_FLUX errcol=PDCSAP_FLUX_ERR nsig=3.0 stepsize=0.5 winsize=5.0 npoly=3 niter=1 ranges=0,0 plot=False overwrite=False verbose=False logfile=kepflatten.log
+
+--------------------------------------------------------------
+KEPFLATTEN --  infile=data\fits\kplr010000162-2012179063303_llc.fits outfile=data\fits\kplr010000162-2012179063303_llc_FLATTENED.fits datacol=PDCSAP_FLUX errcol=PDCSAP_FLUX_ERR nsig=3.0 stepsize=0.5 winsize=5.0 npoly=3 niter=1 ranges=0,0 plot=False overwrite=False verbose=False logfile=kepflatten.log
+
+--------------------------------------------------------------
+KEPFLATTEN --  infile=data\fits\kplr010000162-2012179063303_llc.fits outfile=data\fits\kplr010000162-2012179063303_llc_FLATTENED.fits datacol=PDCSAP_FLUX errcol=PDCSAP_FLUX_ERR nsig=3.0 stepsize=0.5 winsize=5.0 npoly=3 niter=1 ranges=0,0 plot=False overwrite=False verbose=False logfile=kepflatten.log
+
+ERROR -- KEPFLATTEN: data\fits\kplr010000162-2012179063303_llc_FLATTENED.fits exists. Use overwrite=True
+--------------------------------------------------------------
+KEPFLATTEN --  infile=data\fits\kplr010000162-2012179063303_llc.fits outfile=data\fits\kplr010000162-2012179063303_llc_FLATTENED.fits datacol=PDCSAP_FLUX errcol=PDCSAP_FLUX_ERR nsig=3.0 stepsize=0.5 winsize=5.0 npoly=3 niter=1 ranges=0,0 plot=False overwrite=False verbose=False logfile=kepflatten.log
+
+--------------------------------------------------------------
+KEPFLATTEN --  infile=data\fits\kplr010000162-2012179063303_llc.fits outfile=data\fits\kplr010000162-2012179063303_llc_FLATTENED.fits datacol=PDCSAP_FLUX errcol=PDCSAP_FLUX_ERR nsig=3 stepsize=1 winsize=5.0 npoly=2 niter=10 ranges=0,0 plot=False overwrite=False verbose=False logfile=kepflatten.log
+
+--------------------------------------------------------------
+KEPFLATTEN --  infile=data\fits\kplr010000162-2012179063303_llc.fits outfile=data\fits\kplr010000162-2012179063303_llc_FLATTENED.fits datacol=PDCSAP_FLUX errcol=PDCSAP_FLUX_ERR nsig=3 stepsize=1 winsize=5.0 npoly=2 niter=10 ranges=0,0 plot=False overwrite=False verbose=False logfile=kepflatten.log
+
+--------------------------------------------------------------
+KEPFLATTEN --  infile=data\fits\kplr010027247-2012179063303_llc.fits outfile=data\fits\kplr010027247-2012179063303_llcFLATTENED.fits datacol=PDCSAP_FLUX errcol=PDCSAP_FLUX_ERR nsig=3 stepsize=1 winsize=5.0 npoly=2 niter=10 ranges=0,0 plot=False overwrite=False verbose=False logfile=kepflatten.log
+
+--------------------------------------------------------------
+KEPFLATTEN --  infile=data\fits\kplr010027247-2012179063303_llc.fits outfile=data\fits\kplr010027247-2012179063303_llcFLATTENED.fits datacol=PDCSAP_FLUX errcol=PDCSAP_FLUX_ERR nsig=3 stepsize=1 winsize=5.0 npoly=2 niter=10 ranges=0,0 plot=False overwrite=False verbose=False logfile=kepflatten.log
+
+ERROR -- KEPFLATTEN: data\fits\kplr010027247-2012179063303_llcFLATTENED.fits exists. Use overwrite=True
+--------------------------------------------------------------
+KEPFLATTEN --  infile=data\fits\kplr010027247-2012179063303_llc.fits outfile=data\fits\kplr010027247-2012179063303_llcFLATTENED.fits datacol=PDCSAP_FLUX errcol=PDCSAP_FLUX_ERR nsig=3 stepsize=1 winsize=5.0 npoly=2 niter=10 ranges=0,0 plot=False overwrite=True verbose=False logfile=kepflatten.log
+
+--------------------------------------------------------------
+KEPFLATTEN --  infile=data\fits\kplr010027247-2012179063303_llc.fits outfile=data\fits\kplr010027247-2012179063303_llcFLATTENED.fits datacol=PDCSAP_FLUX errcol=PDCSAP_FLUX_ERR nsig=3 stepsize=1 winsize=5.0 npoly=2 niter=10 ranges=0,0 plot=False overwrite=True verbose=False logfile=kepflatten.log
+
+--------------------------------------------------------------
+KEPFLATTEN --  infile=data\fits\kplr010027247-2012179063303_llc.fits outfile=data\fits\kplr010027247-2012179063303_llcFLATTENED.fits datacol=PDCSAP_FLUX errcol=PDCSAP_FLUX_ERR nsig=3 stepsize=1 winsize=5.0 npoly=2 niter=10 ranges=0,0 plot=False overwrite=True verbose=False logfile=kepflatten.log
+
+--------------------------------------------------------------
+KEPFLATTEN --  infile=data\fits\kplr010027247-2012179063303_llc.fits outfile=data\fits\kplr010027247-2012179063303_llcFLATTENED.fits datacol=PDCSAP_FLUX errcol=PDCSAP_FLUX_ERR nsig=3 stepsize=1 winsize=5.0 npoly=2 niter=10 ranges=0,0 plot=False overwrite=True verbose=False logfile=kepflatten.log
+

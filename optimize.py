@@ -33,18 +33,13 @@ import json
 #     #return X_train, y_train, X_test, y_test
 #     return X_train, y_train, X_val, y_val, X_test, y_test
 
-# X, y = LoadOriginalData()
-#X, y = LoadDataset('lc_std_nanimputed.csv')
+X, y = LoadDataset('lc_std_nanimputed_ADASYN.csv')
 # X, y = LoadDataset('lc_std_nanmasked_SMOTE.csv')
 # X, y = LoadDataset('lc_std.csv')
 
 # Split data
 X_train, y_train, X_test, y_test = SplitData(X,y, test_size=0.2)
 #X_train, y_train, X_val, y_val, X_test, y_test = SplitData(X, y, test_size=0.2, val_set=True)
-
-
-
-
 
 space = {
 
@@ -62,12 +57,14 @@ space = {
         'momentum': hp.choice('momentum', [0, 0.25, 0.4]),
         'batch_norm': hp.choice('batch_norm', [True, False]),
 
-        'nb_epochs' :  40,
+        'nb_epochs' :  35,
         'activation': 'prelu'
         }
 
 
 def create_cnn_model(params):
+
+    start_time = time.time()
 
     cnn = CNN_Model(output_dim=1, sequence_length=X_train.shape[1], nb_blocks=params['nb_blocks'], filters=params['filters'],
                     kernel_size=params['kernel_size'],
@@ -84,7 +81,7 @@ def create_cnn_model(params):
     batch_size = params['batch_size']
 
     # define 10-fold cross validation test harness
-    kfold = StratifiedKFold(n_splits=3, shuffle=True, random_state=7)
+    kfold = StratifiedKFold(n_splits=5, shuffle=True, random_state=7)
 
     cvscores = []
 
@@ -120,8 +117,11 @@ def create_cnn_model(params):
         # print("%s: %.2f%%" % (cnn.GetModel().metrics_names[1], acc * 100))
         cvscores.append(acc)
 
-    print("%.2f%% (+/- %.2f%%)" % (np.mean(cvscores), np.std(cvscores)))
 
+    print("CV Score: %.2f%% (+/- %.2f%%)" % (np.mean(cvscores), np.std(cvscores)))
+
+    total_seconds = time.time() - start_time
+    print('CV Time: ', str(datetime.timedelta(seconds=total_seconds)) )
 
     return {'loss': -acc, 'status': STATUS_OK}
 
@@ -165,19 +165,20 @@ def create_cnn_model(params):
 #     return {'loss': -acc, 'status': STATUS_OK, 'model': lstm.GetModel()}
 
 
-def run_trials(model_type):
+def run_trials(model_type, evals=5):
 
     start_time = time.time()
 
     trials = Trials()
 
     if model_type == 'cnn':
-        best_model = fmin(create_cnn_model, space, algo=tpe.suggest, max_evals=15, trials=trials)
+        best_model = fmin(create_cnn_model, space, algo=tpe.suggest, max_evals=evals, trials=trials)
     elif model_type == 'lstm':
         pass
 
     total_seconds = time.time() - start_time
     print('Hyperparameter Optimization Time: ', str(datetime.timedelta(seconds=total_seconds)) )
+    print('')
 
     # print("Best performing model chosen hyper-parameters:")
     # print(best_run)
@@ -186,7 +187,7 @@ def run_trials(model_type):
 
     print ('Best: ', best_model)
 
-    best_model_config =  eval_hyperopt_space(space, best_model)
+    best_model_config = eval_hyperopt_space(space, best_model)
 
 
 

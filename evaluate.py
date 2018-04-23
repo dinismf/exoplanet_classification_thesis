@@ -45,9 +45,8 @@ class ModelEvaluator():
 
 
 
-        if self.binary_classification:
-            self.rocauc = roc_auc_score(self.y_test, self.Y_score)
-            print('ROC/AUC Score: ', self.rocauc)
+        self.rocauc = roc_auc_score(self.y_test, self.Y_score)
+        print('ROC/AUC Score: ', self.rocauc)
 
     def GenerateROCPlot(self):
 

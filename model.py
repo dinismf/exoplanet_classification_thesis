@@ -323,7 +323,7 @@ class CNN_Model(Keras_Model):
             self.model.add(Activation(self.activation))
 
 
-        self.model.add(Dense(int(self.dense_units/2)))
+        self.model.add(Dense(int(self.dense_units)))
 
         # Activation Layer
         if (self.activation == 'prelu'):
@@ -334,7 +334,7 @@ class CNN_Model(Keras_Model):
         if self.fc_dropout is not None:
             self.model.add(Dropout(self.fc_dropout))
 
-        self.model.add(Dense(int(self.dense_units/4)))
+        self.model.add(Dense(int(self.dense_units)))
 
         # Activation Layer
         if (self.activation == 'prelu'):
@@ -345,7 +345,7 @@ class CNN_Model(Keras_Model):
         if self.fc_dropout is not None:
             self.model.add(Dropout(self.fc_dropout))
 
-        self.model.add(Dense(int(self.dense_units/6)))
+        self.model.add(Dense(int(self.dense_units)))
 
         # Activation Layer
         if (self.activation == 'prelu'):
@@ -362,7 +362,7 @@ class CNN_Model(Keras_Model):
     def SetOutputDimension(self, dim):
         self.output_dim = dim
 
-    def SaveModel(self, name, weights=True):
+    def SaveModel(self, name, weights=False):
 
         root = 'models/'
 

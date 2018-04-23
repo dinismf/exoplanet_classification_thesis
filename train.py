@@ -50,7 +50,7 @@ def train_cnn(model, X_train, y_train, X_val, y_val, X_test, y_test, batch_size 
     history = model.FitDataWithValidation(X_train=X_train, y_train=y_train, X_val=X_val, y_val=y_val, batch_size=batch_size, nb_epochs=nb_epochs, verbose=1)
 
     if (save):
-        model.SaveModel('new_cnn', weights=True)
+        model.SaveModel('new_cnn', weights=False)
 
     if (X_train.shape[1] != X_test.shape[1]):
         evaluator = ModelEvaluator(model, X_test=X_test, y_test=y_test, batch_size=batch_size, segmentEval=True)

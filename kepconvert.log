@@ -41,3 +41,14 @@ KEPCONVERT --  infile=data\kplr000757076-2011271113734_INJECTED-inj1_llc.fits.gz
 --------------------------------------------------------------
 KEPCONVERT --  infile=data\kplr000757076-2011271113734_INJECTED-inj1_llc.fits.gz outfile=data\kplr000757076-2011271113734_INJECTED-inj1_llc.csv conversion=fits2csv columns=TIME,SAP_FLUX,PDCSAP_FLUX,SAP_FLUX_ERR,SAP_QUALITY baddata=True overwrite=False verbose=False logfile=kepconvert.log
 
+--------------------------------------------------------------
+KEPCONVERT --  infile=data\kplr000757076-2011271113734_INJECTED-inj1_llc.fits.gz outfile=data\kplr000757076-2011271113734_INJECTED-inj1_llc.csv conversion=fits2csv columns=TIME,SAP_FLUX,PDCSAP_FLUX,SAP_FLUX_ERR,SAP_QUALITY baddata=True overwrite=False verbose=False logfile=kepconvert.log
+
+ERROR -- KEPCONVERT: data\kplr000757076-2011271113734_INJECTED-inj1_llc.csv exists. Use --overwrite
+--------------------------------------------------------------
+KEPCONVERT --  infile=data\fits\kplr010471515-2009131105131_llc.fits outfile=data\kplr000757076-2011271113734_INJECTED-inj1_llc.csv conversion=fits2csv columns=TIME,SAP_FLUX,PDCSAP_FLUX,SAP_FLUX_ERR,SAP_QUALITY baddata=True overwrite=False verbose=False logfile=kepconvert.log
+
+--------------------------------------------------------------
+KEPCONVERT --  infile=data\fits\kplr010471515-2009131105131_llc.fits outfile=data\kplr000757076-2011271113734_INJECTED-inj1_llc.csv conversion=fits2csv columns=TIME,SAP_FLUX,PDCSAP_FLUX,SAP_FLUX_ERR,SAP_QUALITY baddata=True overwrite=False verbose=False logfile=kepconvert.log
+
+ERROR -- KEPCONVERT: data\kplr000757076-2011271113734_INJECTED-inj1_llc.csv exists. Use --overwrite

@@ -9,7 +9,7 @@ import data
 #%matplotlib inline
 
 #df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//original_lc//planets_labelled_final_original.csv')
-df = pd.read_csv('C:\\Users\\DYN\\Desktop\\exoplanet_classification_repo\\data\\shortedX.csv')
+df = pd.read_csv('C:\\Users\\DYN\\Desktop\\exoplanet_classification_repo\\data\\final.csv')
 #df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//lc_kalman_nan//kalman_nan_data.csv')
 #df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//lc_movingaverage_nan//movingaverage_nan_data.csv')
 #df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//lc_interpolated_nan//planets_labelled_final_interpolated_nan.csv')
@@ -29,7 +29,7 @@ labels_planets = df.LABEL
 df = df.drop('LABEL',axis=1)
 
 # Number of rows to sample
-n_sample_rows = 10;
+n_sample_rows = 30;
 
 # Timeseries max length
 x_planets = np.array(range(len(df.columns)))
