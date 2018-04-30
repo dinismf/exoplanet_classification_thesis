@@ -8,7 +8,7 @@ import seaborn as sns
 #%matplotlib inline
 
 #df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//original_lc//planets_labelled_final_original.csv')
-df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//kepler_planets//confirmed//candidates.csv')
+df = pd.read_csv('C:\\Users\\DYN\\Desktop\\exoplanet_classification_repo\\data\\OLD\\lc_original.csv')
 #df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//lc_kalman_nan//kalman_nan_data.csv')
 #df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//lc_movingaverage_nan//movingaverage_nan_data.csv')
 #df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//lc_interpolated_nan//planets_labelled_final_interpolated_nan.csv')
@@ -60,6 +60,7 @@ for i in range(plot_rows):
 
 # Display
 plt.show()
+plt.savefig('original_flux_scatters')
 
 
 

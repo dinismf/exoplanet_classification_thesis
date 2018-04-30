@@ -65,8 +65,8 @@ def plot_comparison_statistics(df):
     fig = plt.figure(figsize=(12, 8))
 
     ax = fig.add_subplot(231)
-    ax.hist(means1, alpha=0.8, bins=50, color='b', normed=False, range=(min(means1.min(), means2.min()), max(means1.max(), means2.max())))
-    ax.hist(means2, alpha=0.8, bins=50, color='r', normed=False, range=(min(means1.min(), means2.min()), max(means1.max(), means2.max())))
+    ax.hist(means1, label='No Planet', alpha=0.8, bins=50, color='b',normed=False, range=(min(means1.min(), means2.min()), max(means1.max(), means2.max())))
+    ax.hist(means2, label='Planet', alpha=0.8, bins=50, color='r', normed=False, range=(min(means1.min(), means2.min()), max(means1.max(), means2.max())))
     ax.get_legend()
     ax.set_xlabel('Mean Intensity')
     ax.set_ylabel('Num. of Stars')
@@ -110,7 +110,9 @@ def plot_comparison_statistics(df):
 
 
 
-df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//original_lc//planets_labelled_final_original.csv')
+#df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//original_lc//planets_labelled_final_original.csv')
+df = pd.read_csv('C:\\Users\\DYN\\Desktop\\exoplanet_classification_repo\\data\\final.csv')
+
 print(df.head())
 print(df.info())
 print(df.describe())

@@ -9,14 +9,14 @@ plt.style.use('fivethirtyeight')
 
 class ModelEvaluator():
 
-    def __init__(self, model, X_test, y_test, batch_size, generate_plots=True, segmentEval=False):
+    def __init__(self, model, X_test, y_test, batch_size, generate_plots=True):
         self.model = model
         self.y_test = y_test
 
 
         # Evaluate and Predict
         #self.score, self.acc = self.model.Evaluate(X_test, y_test, batch_size)
-        self.Y_score, self.Y_predict, self.Y_true = self.model.Predict(X_test, y_test, segmentEval)
+        self.Y_score, self.Y_predict, self.Y_true = self.model.Predict(X_test, y_test)
 
 
         # Generate Metrics
@@ -74,10 +74,15 @@ class ModelEvaluator():
 
     def GenerateReliabilityPlot(self):
         y_probas = np.concatenate((1 - self.Y_score, self.Y_score), axis=1)
-        probas_list = [y_probas ]
+        probas_list = [y_probas]
         y_true = list(self.y_test)
-        skplt.metrics.plot_calibration_curve(self.y_test, probas_list)
-        plt.show()
+
+        try:
+            skplt.metrics.plot_calibration_curve(self.y_test, probas_list)
+            plt.show()
+        except:
+            print('Failed to create the Reliability Plot.')
+
 
 
     def GenerateConfusionMatrix(self):

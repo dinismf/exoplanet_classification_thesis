@@ -2,30 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b6e7bf2-6b59-4a47-9150-7240666c9632" name="Default" comment="Preprocessing Progress 2&#10;&#10;- Added ability to normalise and standardize data with missing values (NaN)&#10;- Minor progress on ability to train models using settings from a configuration file.">
-      <change afterPath="$PROJECT_DIR$/data/KeplerDataNew.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/OLD/datasets.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/fits/pyketest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/log_cnnbest.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/final/cnn_100evals/logs.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/fits/kplr012557548-2012179063303_llc.fits" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/final/cnn_50eval_dataset_binned_conf_fps/cnn_50evals_dataset_conf_fps_binned.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/final/cnn_50eval_dataset_binned_conf_fps/config/cnn_50evals_dataset_conf_fps_binned.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KeplerData.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/KeplerData.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KeplerDataSingle.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/KeplerDataSingle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis/histograms/StatisticsPlots.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/histograms/StatisticsPlots.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analysis/scatter/ExplorationScatter_Single.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/scatter/ExplorationScatter_Single.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analysis/scatter/Exploration_Scatter_1Class_Multiple.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/scatter/Exploration_Scatter_1Class_Multiple.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis/scatter/Exploration_Scatter_2Classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/scatter/Exploration_Scatter_2Classes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/datasets.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/datasets_full.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/OLD/datasets_full.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/datasets_partial.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/OLD/datasets_partial.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/kplr000757076-2011271113734_INJECTED-inj1_llc.fits.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/logs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/logs.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/KeplerDataNew.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/KeplerDataNew.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/fits/kplr012557548-2012179063303_llc_lc.tbl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/fits/pyketest.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/fits/pyketest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/impute_ts.R" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/impute_ts_ma_interp.R" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imputing_ts_2.R" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imputing_ts_kalman.R" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kepconvert.log" beforeDir="false" afterPath="$PROJECT_DIR$/kepconvert.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/logs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logs/logs.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lstm_tuned.hdf5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/folded" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kepconvert.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kepdraw.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kepflatten.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kepfold.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kephead.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kplr010027247-2012179063303_llc_HEAD.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/optimize.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimize.py" afterDir="false" />
@@ -43,14 +39,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="136" lean-forward="true" selection-start-line="136" selection-end-line="136" />
+            <state relative-caret-position="410">
+              <caret line="86" column="74" selection-start-line="86" selection-start-column="74" selection-end-line="86" selection-end-column="74" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
-                <marker date="1524503529198" expanded="true" signature="2752:2898" ph="..." />
               </folding>
             </state>
           </provider>
@@ -59,8 +54,8 @@
       <file leaf-file-name="train.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="52" column="19" lean-forward="true" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="19" />
+            <state relative-caret-position="975">
+              <caret line="119" selection-start-line="119" selection-end-line="119" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -72,50 +67,19 @@
         <entry file="file://$PROJECT_DIR$/optimize.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="193">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="preprocessing.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/preprocessing.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="69" column="8" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="data.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1235">
-              <caret line="151" column="12" selection-start-line="151" selection-start-column="12" selection-end-line="151" selection-end-column="12" />
+              <caret line="228" selection-start-line="228" selection-end-line="228" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
-                <marker date="1524232306160" expanded="true" signature="3624:4063" ph="..." />
+                <element signature="e#0#15#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Exploration_Scatter_1Class_Multiple.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/analysis/scatter/Exploration_Scatter_1Class_Multiple.py">
+      <file leaf-file-name="frame.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/pandas/core/frame.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lightcurve.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python35/site-packages/pyke/lightcurve.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="827" column="39" selection-start-line="827" selection-start-column="39" selection-end-line="827" selection-end-column="39" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-1466">
+              <caret line="1453" column="12" selection-start-line="1453" selection-start-column="12" selection-end-line="1453" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -123,8 +87,8 @@
       <file leaf-file-name="KeplerDataNew.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/KeplerDataNew.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-867">
-              <caret line="39" selection-start-line="39" selection-end-line="39" />
+            <state relative-caret-position="340">
+              <caret line="107" column="80" selection-start-line="107" selection-start-column="61" selection-end-line="107" selection-end-column="80" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -132,11 +96,45 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="log_cnnbest.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/logs/log_cnnbest.txt">
+      <file leaf-file-name="model.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="32314" selection-start-line="32314" selection-end-line="32323" selection-end-column="25" />
+            <state relative-caret-position="302">
+              <caret line="267" column="13" lean-forward="true" selection-start-line="267" selection-start-column="13" selection-end-line="267" selection-end-column="13" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pooling.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/keras/layers/pooling.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1425">
+              <caret line="677" selection-start-line="677" selection-end-line="677" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="data.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="96" column="34" selection-start-line="96" selection-end-line="97" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+                <marker date="1525013107934" expanded="true" signature="4083:4522" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pyketest.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/fits/pyketest.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
@@ -153,16 +151,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Ini</find>
-      <find>Initialising CNN Model...</find>
-      <find>74.87</find>
-      <find>74.</find>
-      <find>Initialising</find>
-      <find>dropout</find>
-      <find>(+/-</find>
-      <find>0.49% (</find>
-      <find>Initialising CNN Model</find>
-      <find>Initialising CNN</find>
       <find>0.52%</find>
       <find>0.55%</find>
       <find>df_planets</find>
@@ -176,16 +164,27 @@
       <find>CV Score: 0.59</find>
       <find>CV Score: 0.60</find>
       <find>Building CNN</find>
-      <find>CV Score:</find>
       <find>CV Score: 0.6</find>
       <find>PERIOD</find>
       <find>BJ</find>
       <find>B</find>
       <find>TSTART</find>
       <find>CV Score: 0.62</find>
+      <find>val_loss: 0.16</find>
+      <find>bins</find>
+      <find>CV Score: 0.89</find>
+      <find>confirmed_flux</find>
+      <find>CV Score: 0.93</find>
+      <find>join</find>
+      <find>Trainable params: 1</find>
+      <find>pooling_val</find>
+      <find>CV Score: 0.8</find>
+      <find>CV Score:</find>
+      <find>0.90</find>
     </findStrings>
     <replaceStrings>
       <replace>normed=False</replace>
+      <replace>bins=1000</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -213,7 +212,6 @@
         <option value="$PROJECT_DIR$/plotting.py" />
         <option value="$PROJECT_DIR$/data/data.py" />
         <option value="$PROJECT_DIR$/models/concept_models/LSTM.py" />
-        <option value="$PROJECT_DIR$/analysis/histograms/StatisticsPlots.py" />
         <option value="$PROJECT_DIR$/experiment.ini" />
         <option value="$PROJECT_DIR$/gpu.py" />
         <option value="$PROJECT_DIR$/models/concept_models/CNN.py" />
@@ -227,29 +225,30 @@
         <option value="$PROJECT_DIR$/models/optim_65acc.json" />
         <option value="$PROJECT_DIR$/data/logs.txt" />
         <option value="$PROJECT_DIR$/data/datasets_partial.txt" />
-        <option value="$PROJECT_DIR$/analysis/scatter/Exploration_Scatter_2Classes.py" />
         <option value="$PROJECT_DIR$/preprocessing.py" />
         <option value="$PROJECT_DIR$/data/datasets.txt" />
-        <option value="$PROJECT_DIR$/evaluate.py" />
         <option value="$PROJECT_DIR$/logs/logs.txt" />
-        <option value="$PROJECT_DIR$/optimize.py" />
-        <option value="$PROJECT_DIR$/model.py" />
-        <option value="$PROJECT_DIR$/data.py" />
         <option value="$PROJECT_DIR$/pyketest.py" />
         <option value="$PROJECT_DIR$/analysis.py" />
         <option value="$USER_HOME$/AppData/Roaming/Python/Python35/site-packages/pyke/PykeTest.py" />
-        <option value="$PROJECT_DIR$/data/fits/pyketest.py" />
+        <option value="$PROJECT_DIR$/analysis/histograms/StatisticsPlots.py" />
+        <option value="$PROJECT_DIR$/analysis/scatter/Exploration_Scatter_2Classes.py" />
         <option value="$PROJECT_DIR$/analysis/scatter/ExplorationScatter_Single.py" />
-        <option value="$PROJECT_DIR$/data/KeplerDataNew.py" />
         <option value="$PROJECT_DIR$/analysis/scatter/Exploration_Scatter_1Class_Multiple.py" />
+        <option value="$PROJECT_DIR$/evaluate.py" />
+        <option value="$PROJECT_DIR$/data/KeplerDataNew.py" />
+        <option value="$PROJECT_DIR$/data/fits/pyketest.py" />
+        <option value="$PROJECT_DIR$/data.py" />
         <option value="$PROJECT_DIR$/train.py" />
+        <option value="$PROJECT_DIR$/optimize.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/model.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-2038" />
-    <option name="y" value="-27" />
+    <option name="x" value="5" />
+    <option name="y" value="-22" />
     <option name="width" value="1918" />
     <option name="height" value="1038" />
   </component>
@@ -287,12 +286,31 @@
             <path>
               <item name="exoplanet_classification_repo" type="b2602c69:ProjectViewProjectNode" />
               <item name="exoplanet_classification_repo" type="462c0819:PsiDirectoryNode" />
-              <item name="logs" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="fits" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="exoplanet_classification_repo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exoplanet_classification_repo" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="pickled_data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="exoplanet_classification_repo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exoplanet_classification_repo" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="testing_data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="exoplanet_classification_repo" type="b2602c69:ProjectViewProjectNode" />
               <item name="exoplanet_classification_repo" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="exoplanet_classification_repo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exoplanet_classification_repo" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="configs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="exoplanet_classification_repo" type="b2602c69:ProjectViewProjectNode" />
@@ -324,18 +342,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\logs" />
+      <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\models\final\cnn_50eval_dataset_binned_conf_fps\data" />
+      <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\models\final\cnn_50eval_dataset_binned_conf_fps\config" />
+      <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\models\final\cnn_50eval_dataset_binned_conf_fps" />
       <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\data\fits" />
-      <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\models\final\cnn_100evals" />
-      <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\data" />
-      <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\data\pickled" />
+      <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\logs" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\models\final\cnn_50eval_dataset_binned_conf_fps" />
       <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\data\r" />
       <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\data" />
       <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\data\csv\OLD" />
       <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\data\csv" />
-      <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\data\fits" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -480,19 +498,19 @@
     <list>
       <item itemvalue="Python.ExplorationPandas (1)" />
       <item itemvalue="Python.KeplerData" />
-      <item itemvalue="Python.pyketest" />
       <item itemvalue="Python.KeplerDataNew" />
       <item itemvalue="Python.Exploration_Scatter_1Class_Multiple" />
-      <item itemvalue="Python.ExplorationScatter_Single" />
       <item itemvalue="Python.main" />
+      <item itemvalue="Python.ExplorationScatter_Single" />
+      <item itemvalue="Python.pyketest" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.Exploration_Scatter_1Class_Multiple" />
-        <item itemvalue="Python.KeplerDataNew" />
-        <item itemvalue="Python.ExplorationScatter_Single" />
         <item itemvalue="Python.pyketest" />
+        <item itemvalue="Python.KeplerDataNew" />
+        <item itemvalue="Python.Exploration_Scatter_1Class_Multiple" />
+        <item itemvalue="Python.ExplorationScatter_Single" />
       </list>
     </recent_temporary>
   </component>
@@ -534,10 +552,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49401197" visible="true" weight="0.24446785" />
+      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.90014684" visible="true" weight="0.24183351" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32900432" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5036881" side_tool="true" weight="0.26623377" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32900432" />
@@ -546,7 +563,7 @@
       <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.8277134" visible="true" weight="0.3181818" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24973656" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49947312" weight="0.3365801" />
-      <window_info id="Favorites" order="0" sideWeight="0.505988" side_tool="true" weight="0.16280295" />
+      <window_info id="Favorites" order="0" sideWeight="0.09985316" side_tool="true" weight="0.24183351" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4963119" weight="0.26298702" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Autodoc" order="8" weight="0.1482684" />
@@ -608,13 +625,8 @@
           <option name="timeStamp" value="349" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/model.py</url>
-          <line>85</line>
-          <option name="timeStamp" value="449" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/data.py</url>
-          <line>122</line>
+          <line>141</line>
           <option name="timeStamp" value="492" />
         </line-breakpoint>
       </breakpoints>
@@ -625,38 +637,10 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="518" />
+      <option name="time" value="583" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/pandas/core/series.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3">
-          <caret line="695" selection-start-line="695" selection-end-line="695" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/keras/wrappers/scikit_learn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-294">
-          <caret line="174" column="6" selection-start-line="174" selection-start-column="6" selection-end-line="174" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/copy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="181" selection-start-line="181" selection-end-line="181" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/sklearn/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/sklearn/externals/joblib/parallel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -689,20 +673,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-345">
           <caret line="1362" column="4" selection-start-line="1362" selection-start-column="4" selection-end-line="1362" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/analysis/scatter/Exploration_Scatter_2Classes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="36" column="36" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/sklearn/model_selection/_split.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1919" column="24" lean-forward="true" selection-start-line="1919" selection-start-column="24" selection-end-line="1919" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -794,13 +764,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/matplotlib/pyplot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="700" selection-start-line="700" selection-end-line="700" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/matplotlib/figure.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -822,11 +785,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/fits/kplr012557548-2012179063303_llc.fits">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1734" />
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python35/site-packages/pyke/PykeTest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -834,56 +792,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kepfold.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-415" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python35/site-packages/pyke/kepfold.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-697">
-          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/kepfold.log" />
     <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python35/site-packages/pyke/kepdraw.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="130" column="58" selection-start-line="130" selection-start-column="52" selection-end-line="130" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logs/logs.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/logs.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-191762">
-          <caret line="32736" column="34" selection-start-line="32736" selection-start-column="34" selection-end-line="32736" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/fits/pyketest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/evaluate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/pandas/core/frame.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="5072" column="8" selection-start-line="5072" selection-start-column="8" selection-end-line="5072" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -894,54 +807,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python35/site-packages/pyke/lightcurve.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="827" column="39" selection-start-line="827" selection-start-column="39" selection-end-line="827" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/analysis/scatter/ExplorationScatter_Single.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="21" column="19" lean-forward="true" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/KeplerDataNew.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-867">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/analysis/scatter/Exploration_Scatter_1Class_Multiple.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1235">
-          <caret line="151" column="12" selection-start-line="151" selection-start-column="12" selection-end-line="151" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <marker date="1524232306160" expanded="true" signature="3624:4063" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/logs/log_cnnbest.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="173">
@@ -949,23 +814,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train.py">
+    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python35/site-packages/scikitplot/metrics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="52" column="19" lean-forward="true" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="369" column="21" lean-forward="true" selection-start-line="369" selection-start-column="21" selection-end-line="369" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="13">
+          <caret line="651" column="41" selection-start-line="651" selection-start-column="41" selection-end-line="651" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -976,20 +828,166 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/optimize.py">
+    <entry file="file://$PROJECT_DIR$/analysis/histograms/StatisticsPlots.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        <state relative-caret-position="918">
+          <caret line="59" column="38" selection-start-line="59" selection-start-column="38" selection-end-line="59" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analysis/scatter/Exploration_Scatter_2Classes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="45" column="26" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/logs.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="32736" column="34" selection-start-line="32736" selection-start-column="34" selection-end-line="32736" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/matplotlib/pyplot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="47">
+          <caret line="3248" column="4" selection-start-line="3248" selection-start-column="4" selection-end-line="3248" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analysis/scatter/ExplorationScatter_Single.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="11" column="84" selection-start-line="11" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/evaluate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="68" selection-start-line="18" selection-start-column="68" selection-end-line="18" selection-end-column="68" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python35/site-packages/pyke/kepfold.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="145" column="34" selection-start-line="145" selection-start-column="34" selection-end-line="145" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python35/site-packages/pyke/lightcurve.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="137" column="8" selection-start-line="137" selection-start-column="8" selection-end-line="137" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/fits/pyketest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analysis/scatter/Exploration_Scatter_1Class_Multiple.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/sklearn/model_selection/_split.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-136">
+          <caret line="1919" column="4" selection-start-line="1919" selection-start-column="4" selection-end-line="1919" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/pandas/core/frame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1466">
+          <caret line="1453" column="12" selection-start-line="1453" selection-start-column="12" selection-end-line="1453" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="96" column="34" selection-start-line="96" selection-end-line="97" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <marker date="1525013107934" expanded="true" signature="4083:4522" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/final/cnn_50eval_dataset_binned_conf_fps/cnn_50evals_dataset_conf_fps_binned.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/final/cnn_50eval_dataset_binned_conf_fps/data/1st_binneddata_XTEST.csv">
+      <provider selected="true" editor-type-id="LargeFileEditor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/final/cnn_50eval_dataset_binned_conf_fps/config/cnn_50evals_dataset_conf_fps_binned.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="975">
+          <caret line="119" selection-start-line="119" selection-end-line="119" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/keras/layers/pooling.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1425">
+          <caret line="677" selection-start-line="677" selection-end-line="677" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/KeplerDataNew.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="107" column="80" selection-start-line="107" selection-start-column="61" selection-end-line="107" selection-end-column="80" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="136" lean-forward="true" selection-start-line="136" selection-end-line="136" />
+        <state relative-caret-position="410">
+          <caret line="86" column="74" selection-start-line="86" selection-start-column="74" selection-end-line="86" selection-end-column="74" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-            <marker date="1524503529198" expanded="true" signature="2752:2898" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/optimize.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="228" selection-start-line="228" selection-end-line="228" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="267" column="13" lean-forward="true" selection-start-line="267" selection-start-column="13" selection-end-line="267" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -8,7 +8,7 @@ from keras.wrappers.scikit_learn import KerasClassifier
 from keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLROnPlateau
 from evaluate import ModelEvaluator
 from sklearn.model_selection import StratifiedKFold
-from sklearn.metrics import roc_auc_score
+from sklearn.metrics import roc_auc_score, recall_score, precision_score
 import json
 
 # def data():
@@ -33,7 +33,7 @@ import json
 #     #return X_train, y_train, X_test, y_test
 #     return X_train, y_train, X_val, y_val, X_test, y_test
 
-X, y = LoadDataset('lc_std_nanimputed_ADASYN.csv')
+X, y = LoadDataset('binned_confirmed_fps_binned.csv')
 # X, y = LoadDataset('lc_std_nanmasked_SMOTE.csv')
 # X, y = LoadDataset('lc_std.csv')
 
@@ -41,23 +41,73 @@ X, y = LoadDataset('lc_std_nanimputed_ADASYN.csv')
 X_train, y_train, X_test, y_test = SplitData(X,y, test_size=0.2)
 #X_train, y_train, X_val, y_val, X_test, y_test = SplitData(X, y, test_size=0.2, val_set=True)
 
+
+#Remove any NaNs
+X_train = MissingValuesHandler(X_train).imputeNaN()
+X_test = MissingValuesHandler(X_test).imputeNaN()
+
+# Standardize training data
+X_train = Standardizer().standardize(X_train, na_values=False)
+X_test = Standardizer().standardize(X_test, na_values=False)
+
+
+# Save the split train and test dataset before optimization for future reference
+y_train_save = pd.DataFrame(y_train, columns=['LABEL'])
+X_train_save = pd.DataFrame(X_train.astype(np.float))
+y_test_save = pd.DataFrame(y_test, columns=['LABEL'])
+X_test_save = pd.DataFrame(X_test.astype(np.float))
+
+X_train_save.to_csv('data//testing_data//1st_binneddata_XTRAIN.csv', index=False)
+y_train_save.to_csv('data//testing_data//1st_binneddata_YTRAIN.csv', index=False)
+X_test_save.to_csv('data//testing_data//1st_binneddata_XTEST.csv', index=False)
+y_test_save.to_csv('data//testing_data//1st_binneddata_YTEST.csv', index=False)
+
+
+
+#print('Reshaping the input data to 3D')
+
+# Reshape data to 3D input
+#X_train = X_train.reshape(X_train.shape[0], X_train.shape[1], 1)
+#X_test = X_test.reshape(X_test.shape[0], X_test.shape[1], 1)
+
+# space = {
+#
+#         'nb_blocks': hp.choice('nb_blocks', [0,1,2,3]),
+#         'filters': hp.choice('filters', [8,16,32,64]),
+#         'kernel_size':  hp.choice('kernel_size', [3, 5, 7, 9]),
+#         'pooling': hp.choice('pooling', ['max','average']),
+#         'pooling_size': hp.choice('pooling_size', [2,3,4]),
+#         'pooling_strides': hp.choice('pooling_strides', [2,3,4]),
+#         'conv_dropout': hp.uniform('conv_dropout', 0.0, 0.35),
+#         'fc_dropout': hp.uniform('fc_dropout', 0.0,0.6),
+#         'fc_units': hp.choice('fc_units', [32,64,128]),
+#         'batch_size' : hp.choice('batch_size', [16,32]),
+#         'lr_rate_mult': hp.loguniform('lr_rate_mult', -0.5, 0.5),
+#         'momentum': hp.choice('momentum', [0, 0.25, 0.4]),
+#         'batch_norm': hp.choice('batch_norm', [True, False]),
+#
+#         #'nb_epochs' :  35,
+#         'nb_epochs' :  hp.uniform('nb_epochs', 5.0, 40.0),
+#         'activation': 'prelu'
+#         }
+
 space = {
 
         'nb_blocks': hp.choice('nb_blocks', [0,1,2,3]),
-        'filters': hp.choice('filters', [8,16,32,64]),
+        'filters': hp.choice('filters', [8,16,32,64,128,254]),
         'kernel_size':  hp.choice('kernel_size', [3, 5, 7, 9]),
         'pooling': hp.choice('pooling', ['max','average']),
         'pooling_size': hp.choice('pooling_size', [2,3,4]),
         'pooling_strides': hp.choice('pooling_strides', [2,3,4]),
         'conv_dropout': hp.uniform('conv_dropout', 0.0, 0.35),
         'fc_dropout': hp.uniform('fc_dropout', 0.0,0.6),
-        'fc_units': hp.choice('fc_units', [32,64,128]),
+        'fc_units': hp.choice('fc_units', [32,64,128,254]),
         'batch_size' : hp.choice('batch_size', [16,32]),
         'lr_rate_mult': hp.loguniform('lr_rate_mult', -0.5, 0.5),
         'momentum': hp.choice('momentum', [0, 0.25, 0.4]),
         'batch_norm': hp.choice('batch_norm', [True, False]),
 
-        'nb_epochs' :  35,
+        'nb_epochs' :  hp.uniform('nb_epochs', 5.0, 50.0),
         'activation': 'prelu'
         }
 
@@ -77,7 +127,8 @@ def create_cnn_model(params):
     cnn.Compile(loss='binary_crossentropy', optimizer=SGD(lr= 0.001 * params['lr_rate_mult'], momentum=params['momentum'], decay=0.0001,
                           nesterov=True), metrics=['accuracy'])
 
-    nb_epochs = params['nb_epochs']
+    nb_epochs = int(params['nb_epochs'])
+    print('Number of Epochs: ', nb_epochs)
     batch_size = params['batch_size']
 
     # define 10-fold cross validation test harness
@@ -97,9 +148,6 @@ def create_cnn_model(params):
         # X_val = X_val.reshape(X_val.shape[0], X_val.shape[1], 1)
         X_valid_fold = X_valid_fold.reshape(X_valid_fold.shape[0], X_valid_fold.shape[1], 1)
 
-
-        nb_epochs = params['nb_epochs']
-        batch_size = params['batch_size']
         #reduceLR = ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=5, min_lr=0.0001, verbose=1)
         #earlyStopping = EarlyStopping(monitor='val_loss', min_delta=0, patience=10, mode='auto')
         cnn.FitData(X_train=X_train_fold, y_train=y_train_fold, batch_size = batch_size, nb_epochs = nb_epochs, verbose = 2)
@@ -109,13 +157,19 @@ def create_cnn_model(params):
         score, acc = cnn.Evaluate(X_valid_fold, y_valid_fold, batch_size, verbose=0)
 
         Y_score, Y_predict, Y_true = cnn.Predict(X_valid_fold, y_valid_fold)
-        acc = roc_auc_score(y_valid_fold, Y_score)
-        print('ROC/AUC Score: ', acc)
+        recall = recall_score(y_valid_fold, Y_predict)
+        precision = precision_score(y_valid_fold, Y_predict)
+        auc = roc_auc_score(y_valid_fold, Y_score)
+
+        print('ROC/AUC Score: ', auc)
+        print('Precision: ',precision )
+        print('Recall: ', recall)
+
         print('\n')
 
 
         # print("%s: %.2f%%" % (cnn.GetModel().metrics_names[1], acc * 100))
-        cvscores.append(acc)
+        cvscores.append(auc)
 
 
     print("CV Score: %.2f%% (+/- %.2f%%)" % (np.mean(cvscores), np.std(cvscores)))
@@ -123,7 +177,7 @@ def create_cnn_model(params):
     total_seconds = time.time() - start_time
     print('CV Time: ', str(datetime.timedelta(seconds=total_seconds)) )
 
-    return {'loss': -acc, 'status': STATUS_OK}
+    return {'loss': -auc, 'status': STATUS_OK}
 
 
 # def create_lstm(X_train, y_train, X_test, y_test):
@@ -185,10 +239,10 @@ def run_trials(model_type, evals=5):
 
     # json.dump(best_run, open("models/best_run.txt", 'w'))
 
-    print ('Best: ', best_model)
 
     best_model_config = eval_hyperopt_space(space, best_model)
 
+    print ('Best Configuration: ', best_model_config)
 
 
-    return best_model_config, X_train, y_train, X_test, y_test
+    return best_model_config

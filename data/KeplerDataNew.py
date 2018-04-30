@@ -11,10 +11,10 @@ def main():
     cummulative_table_falsepositives_df = cummulative_table_df[cummulative_table_df['koi_disposition'].isin(['FALSE POSITIVE']) ]
 
     # Remove duplicates (TEMPORARY FIX FOR MULTIPLANET SYSTEMS)
-    cummulative_table_confirmed_df = cummulative_table_confirmed_df.drop_duplicates('kepid')
-    cummulative_table_confirmed_df = cummulative_table_confirmed_df.set_index('kepid')
-    cummulative_table_falsepositives_df = cummulative_table_falsepositives_df.drop_duplicates('kepid')
-    cummulative_table_falsepositives_df = cummulative_table_falsepositives_df.set_index('kepid')
+    #cummulative_table_confirmed_df = cummulative_table_confirmed_df.drop_duplicates('kepid', keep=False)
+    #cummulative_table_confirmed_df = cummulative_table_confirmed_df.set_index('kepid')
+    #cummulative_table_falsepositives_df = cummulative_table_falsepositives_df.drop_duplicates('kepid', keep=False)
+    #cummulative_table_falsepositives_df = cummulative_table_falsepositives_df.set_index('kepid')
 
 
     # COLUMN kepoi_name:     KOI Name
@@ -23,7 +23,6 @@ def main():
     # COLUMN koi_time0bk:    Transit Epoch [BKJD]
     # COLUMN koi_duration:   Transit Duration [hrs]
     # COLUMN koi_model_snr:  Transit Signal-to-Noise
-
 
     root_dict = {'confirmed': 'E://fits//confirmed//',
                  'false_positives': 'E://fits//false_positives//',
@@ -34,20 +33,31 @@ def main():
     falsepositives_fits = os.listdir(root_dict['false_positives'])
     uncategorized_fits = os.listdir(root_dict['uncategorized'])
 
-    #confirmed_fluxes_df = LoadConfirmedFits(root_dict['confirmed'], confirmed_fits, cummulative_table_confirmed_df)
-    #falsepositive_flux_df = LoadConfirmedFits(root_dict['false_positives'], falsepositives_fits, cummulative_table_falsepositives_df)
-    unconfirmed_flux_df = LoadUncategorizedFits(root_dict['uncategorized'], uncategorized_fits)
+    flattened_confirmed_fluxes, folded_confirmed_fluxes, binned_confirmed_fluxes  = LoadConfirmedFits(root_dict['confirmed'], confirmed_fits, cummulative_table_confirmed_df)
+    flattened_falsepositive_fluxes, folded_falsepositive_fluxes, binned_falsepositive_fluxes_flux = LoadConfirmedFits(root_dict['false_positives'], falsepositives_fits, cummulative_table_falsepositives_df)
+    #unconfirmed_flux_df = LoadUncategorizedFits(root_dict['uncategorized'], uncategorized_fits)
 
 
-    #confirmed_fluxes_df.to_csv('confirmed_candidates.csv', na_rep='nan', index=False)
-    unconfirmed_flux_df.to_csv('unconfirmed.csv', na_rep='nan', index=False)
+    # flattened_confirmed_fluxes.to_pickle('pickled_data//flattened_confirmed_candidates.pkl')
+    # folded_confirmed_fluxes.to_pickle('pickled_data//folded_confirmed_candidates.pkl')
+    #binned_confirmed_fluxes.to_pickle('pickled_data//binned_confirmed_candidates.pkl')
 
+    # flattened_falsepositive_fluxes.to_pickle('pickled_data//flattened_falsepositives.pkl')
+    # folded_falsepositive_fluxes.to_pickle('pickled_data//folded_falsepositives.pkl')
+    #binned_falsepositive_fluxes_flux.to_pickle('pickled_data//binned_falsepositives.pkl')
+
+    #folded_confirmed_fluxes.to_csv('folded_confirmed.csv', na_rep='nan', index=False)
+    #folded_falsepositive_fluxes.to_csv('folded_falsepositives.csv', na_rep='nan', index=False)
+    binned_confirmed_fluxes.to_csv('binned_confirmed.csv', na_rep='nan', index=False)
+    binned_falsepositive_fluxes_flux.to_csv('binned_falsepositives.csv', na_rep='nan', index=False)
 
 
 def LoadConfirmedFits(path, confirmed_fits_list, cummulative_table_confirmed_df, plot_show = False):
 
     # Load and Process Confirmed and Candidate Planet Light Curves
-    confirmed_fluxes_df = pd.DataFrame()
+    flattened_fluxes_df = pd.DataFrame()
+    folded_fluxes_df = pd.DataFrame()
+    binned_fluxes_df = pd.DataFrame()
 
     for file in confirmed_fits_list:
         try:
@@ -68,26 +78,50 @@ def LoadConfirmedFits(path, confirmed_fits_list, cummulative_table_confirmed_df,
                 # postlist, trial_periods, best_period = box_period_search(flattened_lc, nperiods=2000)
                 # print('Best period: ', best_period)
 
-                # Phase fold the detrended light curve
-                period = cummulative_table_confirmed_df.get_value(og_lc_pdcsap.keplerid, 'koi_period')
-                bjk0 = cummulative_table_confirmed_df.get_value(og_lc_pdcsap.keplerid, 'koi_time0bk')
+                ids = cummulative_table_confirmed_df.loc[cummulative_table_confirmed_df['kepid'] == og_lc_pdcsap.keplerid  ]
+                #ids = ids.set_index('kepid')
+                rows = ids.values.shape[0]
 
-                folded_lc = flattened_lc.fold(period=period, phase=bjk0)
+                folded_lcs_df = pd.DataFrame()
+                binned_lcs_df = pd.DataFrame()
 
-                # Bin the folded light curve
-                binned_lc = folded_lc.bin(binsize=100, method='median')
+                for lc in range(rows):
 
-                if plot_show:
-                    plt.plot(folded_lc.time, folded_lc.flux, 'x', markersize=1, label='FLUX')
-                    plt.show()
+                    # Obtain period and transit centre
+                    period = ids.iloc[lc]['koi_period']
+                    bjk0 = ids.iloc[lc]['koi_time0bk']
 
-                # Add folded DET_FLUX to dataframe
-                det_flux = pd.Series(folded_lc.flux)
-                confirmed_fluxes_df = confirmed_fluxes_df.append(det_flux, ignore_index=True)
+                    # Other attributes
+                    snr = ids.iloc[lc]['koi_model_snr']
+                    duration = ids.iloc[lc]['koi_duration']
+                    depth = ids.iloc[lc]['koi_depth']
+
+                    # print('SNR:', snr)
+                    # print('Duration: ', duration)
+                    # print('Depth: ', depth)
+
+                    # Phase fold the detrended light curve
+                    folded_lc = flattened_lc.fold(period=period, phase=bjk0)
+                    # Bin the folded light curve
+
+
+                    binned_lc_global = folded_lc.bin(binsize=len(folded_lc.flux)/1001 ,method='median')
+
+                    if plot_show:
+                        plt.plot(folded_lc.time, folded_lc.flux, 'o', markersize=1, label='FLUX')
+                        plt.show()
+                        plt.plot(binned_lc_global.time, binned_lc_global.flux, 'o', markersize=1, label='FLUX')
+                        plt.show()
+
+                    flattened_fluxes_df = flattened_fluxes_df.append(pd.Series(flattened_lc.flux), ignore_index=True)
+                    folded_fluxes_df = folded_fluxes_df.append(pd.Series(folded_lc.flux), ignore_index=True)
+                    binned_fluxes_df = binned_fluxes_df.append(pd.Series(binned_lc_global.flux), ignore_index=True)
+
+
         except:
-            print('Kepler ID: {} not dispositioned as Confirmed or Candidate'.format(og_lc_pdcsap.keplerid))
+            print('Kepler ID: {} failed'.format(og_lc_pdcsap.keplerid))
 
-    return confirmed_fluxes_df
+    return flattened_fluxes_df, folded_fluxes_df, binned_fluxes_df
 
 def LoadUncategorizedFits(path, uncategorized_fits_list, plot_show = False):
 

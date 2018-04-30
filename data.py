@@ -8,6 +8,7 @@ from preprocessing import *
 from sklearn.model_selection import train_test_split
 from pyke import *
 import matplotlib.pyplot as plt
+
 def LoadDataset(dataset_name='lc_original.csv', directory='data/'):
 
     path = directory + dataset_name
@@ -26,9 +27,27 @@ def LoadDataset(dataset_name='lc_original.csv', directory='data/'):
 
     return X, y
 
-def LoadPickledData(dataset_name='output.pkl',directory='C:\\Users\\DYN\\Desktop\\exoplanet_classification_repo\\data\\pickled_data\\'):
+def LoadPickledDataset(dataset_name='lc_original.csv', directory='data/'):
 
-    d = klepto.archives.dir_archive(directory + 'transit_data_train', cached=True, serialized=True)
+    path = directory + dataset_name
+
+    X = None
+    y = None
+
+    try:
+        if (os.path.isfile(str(path))):
+            print('Dataset: ' + dataset_name + ' found. Loading...')
+            data = pd.read_pickle(str(path))
+            y = data.LABEL
+            X = data.drop('LABEL', axis=1)
+    except:
+        print('Dataset: ' + dataset_name + ' not found. ')
+
+    return X, y
+
+def LoadLargePickledData(dataset_name='output.pkl',directory='C:\\Users\\DYN\\Desktop\\exoplanet_classification_repo\\data\\pickled_data\\'):
+
+    d = klepto.archives.dir_archive(directory + dataset_name, cached=True, serialized=True)
 
     #pvals_data = pickle.load(open(directory + 'K_keys/' + dataset_name, 'rb'))
     #transits_data = pickle.load(open(directory + 'K_results/' + dataset_name, 'rb'))
@@ -73,7 +92,7 @@ def SplitData(X, y, test_size=0.20, val_set = False):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = test_size, random_state = 42, stratify=y)
 
     if val_set:
-        X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.15, random_state= 42, stratify=y_train)
+        X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.1, random_state= 42, stratify=y_train)
 
     X_train =  X_train.as_matrix().astype(np.float)
 

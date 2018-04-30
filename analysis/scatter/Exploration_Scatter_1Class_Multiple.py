@@ -9,7 +9,9 @@ import data
 #%matplotlib inline
 
 #df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//original_lc//planets_labelled_final_original.csv')
-df = pd.read_csv('C:\\Users\\DYN\\Desktop\\exoplanet_classification_repo\\data\\final.csv')
+#df = pd.read_csv('C:\\Users\\DYN\\Desktop\\exoplanet_classification_repo\\data\\final_new_fps.csv')
+df = pd.read_csv('C:\\Users\\DYN\\Desktop\\exoplanet_classification_repo\\data\\binned_confirmed.csv')
+
 #df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//lc_kalman_nan//kalman_nan_data.csv')
 #df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//lc_movingaverage_nan//movingaverage_nan_data.csv')
 #df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//lc_interpolated_nan//planets_labelled_final_interpolated_nan.csv')
@@ -29,13 +31,13 @@ labels_planets = df.LABEL
 df = df.drop('LABEL',axis=1)
 
 # Number of rows to sample
-n_sample_rows = 30;
+n_sample_rows = 5;
 
 # Timeseries max length
 x_planets = np.array(range(len(df.columns)))
 
 # Randomly sample n rows from each dataframe
-random_sample_df_planets = df.sample(n=n_sample_rows)
+random_sample_df_planets = df.sample(n=n_sample_rows, random_state=np.random.RandomState())
 
 plot_cols = 1;
 plot_rows = int(n_sample_rows)
@@ -45,7 +47,7 @@ fig, axes = plt.subplots(figsize=(20,40), nrows=plot_rows, ncols=plot_cols)
 
 for i in range(plot_rows):
 
-    y = df.iloc[i,:]
+    y = random_sample_df_planets.iloc[i,:]
 
     axes[i].scatter(x=x_planets,y=y,s=1)
 

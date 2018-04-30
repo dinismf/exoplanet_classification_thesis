@@ -1,0 +1,1 @@
+{"pooling_strides": 2, "activation": "prelu", "kernel_size": 9, "conv_dropout": 1.623235288543759e-05, "filters": 8, "fc_dropout": 0.1529870895215522, "nb_blocks": 3, "batch_norm": true, "fc_units": 32}

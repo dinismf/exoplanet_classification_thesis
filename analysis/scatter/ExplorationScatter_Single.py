@@ -9,7 +9,7 @@ import seaborn as sns
 
 #df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//original_lc//planets_labelled_final_original.csv')
 #df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//smoted.csv')
-df = pd.read_csv('C:\\Users\\DYN\\Desktop\\exoplanet_classification_repo\\data\confirmed_candidates.csv')
+df = pd.read_csv('C:\\Users\\DYN\\Desktop\\exoplanet_classification_repo\\data\\OLD\\lc_original.csv')
 #df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//main//lc_movingaverage_nan//movingaverage_nan_data.csv')
 
 df = df.loc[df['LABEL'] == 1]
@@ -19,12 +19,12 @@ df = df.drop('LABEL',axis=1)
 print(df.head())
 print(df.info())
 
-df = df.sample(n=1)
+single_sample_df = df.sample(n=1, random_state=np.random.RandomState())
 
 
 x = np.array(range(len(df.columns)))
 
-plt.scatter(x, df.iloc[0, :], s=1)
+plt.scatter(x, single_sample_df.iloc[0, :], s=1)
 #plt.plot(x, df.iloc[0, :])
 
 plt.show()

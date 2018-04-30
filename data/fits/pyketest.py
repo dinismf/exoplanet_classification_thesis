@@ -9,6 +9,7 @@ from pyke import *
 # kepdraw('kplr012557548-2012179063303_llc-kepflatten.fits', plottype='fast', datacol='DETSAP_FLUX')
 
 
+
 #kepfold(infile='kplr012557548-2012179063303_llc-kepflatten.fits', period=0.65355361, bjd0=2454965.059, datacol='DETSAP_FLUX', bindata=True, nbins=100, overwrite=True)
 
 #kepdraw('folded_lc.fits', datacol='FLUX',  plottype='fast')
@@ -22,18 +23,24 @@ from pyke import *
 og_lc = KeplerLightCurveFile(path='kplr012557548-2012179063303_llc.fits')
 print(og_lc.header())
 og_lc_pdcsap = og_lc.get_lightcurve('PDCSAP_FLUX')
-
+plt.plot(og_lc_pdcsap.time, og_lc_pdcsap.flux, 'o', markersize=1, label='PDCSAP FLUX')
+plt.show()
 print(og_lc_pdcsap.keplerid)
 flattened_lc = og_lc_pdcsap.flatten()
-
+plt.plot(flattened_lc.time, flattened_lc.flux, 'o', markersize=1, label='DET FLUX')
+plt.show()
 # Detect best period
 # postlist, trial_periods, best_period = box_period_search(flattened_lc, nperiods=2000)
 # print('Best period: ', best_period)
 
 # Fold light curve
-folded_lc = flattened_lc.fold(period=0.65355361, phase=2454965.059)
+period = 0.65355361
+phase = 2454965.059
+folded_lc = flattened_lc.fold(period=period, phase=phase)
+plt.plot(folded_lc.time, folded_lc.flux, 'o', markersize=1, label='DET FLUX')
+plt.show()
 
-binned_lc = folded_lc.bin(binsize=100, method='median')
-
-plt.plot(folded_lc.time, folded_lc.flux, 'x', markersize=1, label='FLUX')
+# Bin light curve
+binned_lc = folded_lc.bin(binsize=len(folded_lc.flux)/1001, method='median')
+plt.plot(binned_lc.time, binned_lc.flux, 'o', markersize=1, label='DET FLUX')
 plt.show()
