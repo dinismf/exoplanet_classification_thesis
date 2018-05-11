@@ -2,6 +2,8 @@ import os
 import numpy as np
 import pandas as pd
 from pyke import *
+from kepler.preprocess import *
+
 
 def main():
 
@@ -52,7 +54,7 @@ def main():
     binned_falsepositive_fluxes_flux.to_csv('binned_falsepositives.csv', na_rep='nan', index=False)
 
 
-def LoadConfirmedFits(path, confirmed_fits_list, cummulative_table_confirmed_df, plot_show = False):
+def LoadConfirmedFits(path, confirmed_fits_list, cummulative_table_confirmed_df, plot_show = True):
 
     # Load and Process Confirmed and Candidate Planet Light Curves
     flattened_fluxes_df = pd.DataFrame()
@@ -100,22 +102,33 @@ def LoadConfirmedFits(path, confirmed_fits_list, cummulative_table_confirmed_df,
                     # print('Duration: ', duration)
                     # print('Depth: ', depth)
 
-                    # Phase fold the detrended light curve
-                    folded_lc = flattened_lc.fold(period=period, phase=bjk0)
-                    # Bin the folded light curve
+                    # PYKE
+                    # # Phase fold the detrended light curve
+                    # folded_lc = flattened_lc.fold(period=period, phase=bjk0)
+                    # # Bin the folded light curve
+                    #
+                    #
+                    # binned_lc_global = folded_lc.bin(binsize=len(folded_lc.flux)/1001 ,method='median')
 
+                    time, flux = phase_fold_and_sort_light_curve(flattened_lc.time, flattened_lc.flux, period, bjk0)
 
-                    binned_lc_global = folded_lc.bin(binsize=len(folded_lc.flux)/1001 ,method='median')
+                    global_sequence = global_view(time, flux, period)
+                    x_global = np.array(range(len(global_sequence)))
+
+                    local_sequence = local_view(time, flux, period, duration)
+                    x_local =  np.array(range(len(local_sequence)))
 
                     if plot_show:
-                        plt.plot(folded_lc.time, folded_lc.flux, 'o', markersize=1, label='FLUX')
+                        plt.plot(time, flux, 'o', markersize=1, label='FLUX')
                         plt.show()
-                        plt.plot(binned_lc_global.time, binned_lc_global.flux, 'o', markersize=1, label='FLUX')
+                        plt.plot(x_global, global_sequence, 'o', markersize=1, label='FLUX')
+                        plt.show()
+                        plt.plot(x_local, local_sequence, 'o', markersize=1, label='FLUX')
                         plt.show()
 
-                    flattened_fluxes_df = flattened_fluxes_df.append(pd.Series(flattened_lc.flux), ignore_index=True)
-                    folded_fluxes_df = folded_fluxes_df.append(pd.Series(folded_lc.flux), ignore_index=True)
-                    binned_fluxes_df = binned_fluxes_df.append(pd.Series(binned_lc_global.flux), ignore_index=True)
+                    # flattened_fluxes_df = flattened_fluxes_df.append(pd.Series(flattened_lc.flux), ignore_index=True)
+                    # folded_fluxes_df = folded_fluxes_df.append(pd.Series(folded_lc.flux), ignore_index=True)
+                    # binned_fluxes_df = binned_fluxes_df.append(pd.Series(binned_lc_global.flux), ignore_index=True)
 
 
         except:
