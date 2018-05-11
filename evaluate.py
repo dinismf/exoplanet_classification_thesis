@@ -31,9 +31,6 @@ class ModelEvaluator():
             self.GenerateCumulativeGainPlot()
             self.GenerateLiftPlot()
 
-
-
-
     def GeneratePerformanceSummary(self):
 
         print('--- Performance Summary ---')
@@ -90,38 +87,32 @@ class ModelEvaluator():
         skplt.metrics.plot_confusion_matrix(self.y_test, self.Y_predict)
         plt.show()
 
-        # print('Confusion Matrix: \n')
-        # conf_matrix = confusion_matrix(self.y_test, self.Y_predict)
-        # print(conf_matrix)
-        #
-        # conf_matrix_data = {
-        #     1: {
-        #         'matrix': conf_matrix,
-        #         'title': 'Confusion Matrix of Classifier',
-        #     },
-        # }
-        #
-        # plt.suptitle('Confusion Matrix of Classifier')
-        # for ii, values in conf_matrix_data.items():
-        #     matrix = values['matrix']
-        #     title = values['title']
-        #     plt.plot(3, 3, ii)  # starts from 1
-        #     plt.title(title);
-        #     sns.heatmap(matrix, annot=True, fmt='');
-        #
-        # plt.show()
-        #
-        #
-        # print('---------------------------')
-
-
-    def PlotTrainingPerformance(self, history):
+    def PlotTrainingPerformanceFromHistory(self, history):
 
         # list all data in history
         print(history.history.keys())
         # summarize history for accuracy
         plt.plot(history.history['acc'])
         plt.plot(history.history['val_acc'])
+        plt.title('model accuracy')
+        plt.ylabel('accuracy')
+        plt.xlabel('epoch')
+        plt.legend(['train', 'test'], loc='upper left')
+        plt.show()
+        # summarize history for loss
+        plt.plot(history.history['loss'])
+        plt.plot(history.history['val_loss'])
+        plt.title('model loss')
+        plt.ylabel('loss')
+        plt.xlabel('epoch')
+        plt.legend(['train', 'test'], loc='upper left')
+        plt.show()
+
+    def GetTrainingPerformanceFromHistory(self, history):
+
+        return history.history['acc'], history.history['val_acc']
+
+
         plt.title('model accuracy')
         plt.ylabel('accuracy')
         plt.xlabel('epoch')

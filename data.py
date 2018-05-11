@@ -10,6 +10,15 @@ from pyke import *
 import matplotlib.pyplot as plt
 
 def LoadDataset(dataset_name='lc_original.csv', directory='data/'):
+    """
+
+    Args:
+        dataset_name: Name of dataset to load
+        directory: Directory of the dataset
+
+    Returns: Returns X (features), and y (target column)
+
+    """
 
     path = directory + dataset_name
 
@@ -28,6 +37,15 @@ def LoadDataset(dataset_name='lc_original.csv', directory='data/'):
     return X, y
 
 def LoadPickledDataset(dataset_name='lc_original.csv', directory='data/'):
+    """
+
+    Args:
+        dataset_name: Name of dataset to load
+        directory: Directory of the dataset
+
+    Returns:
+
+    """
 
     path = directory + dataset_name
 
@@ -45,13 +63,20 @@ def LoadPickledDataset(dataset_name='lc_original.csv', directory='data/'):
 
     return X, y
 
+
 def LoadLargePickledData(dataset_name='output.pkl',directory='C:\\Users\\DYN\\Desktop\\exoplanet_classification_repo\\data\\pickled_data\\'):
+    """
+     Loads large pickled data using Klepto
+
+    Args:
+        dataset_name: Name of dataset to load
+        directory: Directory of the dataset
+
+    Returns:
+
+    """
 
     d = klepto.archives.dir_archive(directory + dataset_name, cached=True, serialized=True)
-
-    #pvals_data = pickle.load(open(directory + 'K_keys/' + dataset_name, 'rb'))
-    #transits_data = pickle.load(open(directory + 'K_results/' + dataset_name, 'rb'))
-    #null_data = pickle.load(open(directory + 'K_time/' + dataset_name, 'rb'))
 
     d.load('keys')
     d.load('results')
@@ -69,23 +94,26 @@ def LoadLargePickledData(dataset_name='output.pkl',directory='C:\\Users\\DYN\\De
     X = np.vstack([transits, null])
     y = np.hstack([np.ones(transits.shape[0]), np.zeros(null.shape[0])])
 
-
-    #if categorical: y = np_utils.to_categorical(y, np.unique(y).shape[0])
-    #if whiten: X = preprocessing.scale(X, axis=1)
-
     return X, y, pvals, keys, time
 
 
 def SplitData(X, y, test_size=0.20, val_set = False):
     """
+    Splits X and y into training and testing sets, and optionally a validation set also.
 
     Args:
-        X:
-        y:
-        test_size:
-        val_set:
+        X: Features matrix to split
+        y: Target column to split
+        test_size: Size of the splits in percentage
+        val_set: Boolean to determine if validation set is also created.
 
     Returns:
+        X_train = Training features
+        y_train = Training target column
+        X_test = Testing features
+        y_test = Testing target column
+        X_val (Optional) = Validation features
+        y_val (Optional) = Validation target column
 
     """
 
@@ -106,42 +134,17 @@ def SplitData(X, y, test_size=0.20, val_set = False):
     else:
         return (X_train, y_train, X_test, y_test)
 
-def ReadFITS():
-
-    #file = kepconvert('data\\fits\\kplr010471515-2009131105131_llc.fits', columns='TIME,SAP_FLUX,PDCSAP_FLUX,SAP_FLUX_ERR,SAP_QUALITY', outfile='data\\kplr000757076-2011271113734_INJECTED-inj1_llc.csv',conversion='fits2csv')
-
-
-    # Read Original FITS into Light Curve structure
-    og_lc = KeplerLightCurveFile( path='data\\fits\\kplr010027247-2012179063303_llc.fits')
-    print(og_lc.header())
-    og_lc_pdcsap = og_lc.get_lightcurve('PDCSAP_FLUX')
-
-    print(og_lc_pdcsap.keplerid)
-    flattened_lc = og_lc_pdcsap.flatten()
-
-    # Detect best period
-    #postlist, trial_periods, best_period = box_period_search(flattened_lc, nperiods=2000)
-    #print('Best period: ', best_period)
-
-
-    # Fold light curve
-    folded_lc = flattened_lc.fold(period=0.868295, phase=2455022.262)
-
-    binned_lc = folded_lc.bin(binsize=100, method='median')
-
-    plt.plot(binned_lc.time, binned_lc.flux, 'x', markersize=1, label='FLUX')
-    plt.show()
-    # kephead('data\\fits\\kplr010027247-2012179063303_llc.fits', outfile='kplr010027247-2012179063303_llc_HEAD.txt', keyname='mag')
-    # kepdraw('data\\fits\\kplr010027247-2012179063303_llc.fits', plottype='pretty', datacol='PDCSAP_FLUX')
-    # #
-    # kepflatten(infile='data\\fits\\kplr010027247-2012179063303_llc.fits', outfile='data\\fits\\kplr010027247-2012179063303_llcFLATTENED.fits', nsig=3, stepsize=1, npoly=2,niter=10, overwrite=True)
-    # kepdraw('data\\fits\\kplr010027247-2012179063303_llcFLATTENED.fits', outfile=None, plottype='pretty', datacol='DETSAP_FLUX')
-    #
-     #kepfold(infile='data\\fits\\kplr010027247-2012179063303_llcFLATTENED.fits', outfile='data\\fits\\kplr010027247-2012179063303_llcFOLDED.fits',period=0.653534, bjd0=2455372.883, bindata=True, nbins=100)
-    # # kepdraw('data\\fits\\kplr010471515-2010078095331_llc_FOLDED.fits', plottype='pretty')
-    print()
 
 def GenerateDataset(og_X, og_y, filename, filename_words):
+    """
+    Generates multiple pre_processed versions of an input dataset
+
+    Args:
+        og_X: Original features data
+        og_y: Original target column data
+        filename: Name of the dataset
+        filename_words: Datasets to generate
+    """
 
     root = 'data/'
     cadence = filename_words[0]
@@ -205,57 +208,9 @@ def GenerateDataset(og_X, og_y, filename, filename_words):
         new_df.to_csv(path, na_rep='nan', index=False)
         print('Dataset: ' + filename + ' created successfully')
 
-        # d = klepto.archives.dir_archive('pickle_data/transit_data_train', cached=True, serialized=True)
-        #
-        # d['keys'] = data.keys
-        # d['results'] = data.results
-        # d['time'] = data.t
-        #
-        # d.dump()
-        # d.clear()
-
-
-
 
 if __name__ == "__main__":
-
-    # #X, y = LoadDataset('lc_original.csv')
-    # X_train, y_train, pvals, keys, time = LoadPickledData()
-    #
-    #
-    # y = pd.DataFrame(y_train, columns=['LABEL'])
-    # X = pd.DataFrame(X_train)
-    #
-    # new_df = y.join(X)
-    #
-    # new_df = new_df.iloc[0:1000, :]
-    #
-    # new_df.to_csv('data/shortedX.csv')
-
-    ReadFITS()
-
-
-
-    # X.to_csv('F:\X_Test.csv')
-    # y.to_csv('F:\y_test.csv')
-
-    # X_train = pd.read_csv('F:\X_Test.csv')
-    # y_train = pd.read_csv('F:\y_test.csv')
-    #
-    # print('')
-    #
-    # X_train =  X_train.drop(['0'], axis=1 )
-    # y_train = y_train.drop(['0'], axis=1)
-    #
-    # X_train_shortened = X_train[10000]
-    # y_train_shortened = y_train[10000]
-    #
-    #
-
-
-
-
-    # X, y = LoadDataset('lc_original.csv')
+    #X, y = LoadDataset('lc_original.csv')
     # # Read filename and store lines in list
     # filenames = list(open('data/datasets.txt'))
     #
@@ -263,4 +218,3 @@ if __name__ == "__main__":
     #     words = fn.rstrip('\n').split("_")
     #
     #     GenerateDataset(X, y, fn.rstrip('\n'), words)
-

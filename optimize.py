@@ -8,7 +8,7 @@ from keras.wrappers.scikit_learn import KerasClassifier
 from keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLROnPlateau
 from evaluate import ModelEvaluator
 from sklearn.model_selection import StratifiedKFold
-from sklearn.metrics import roc_auc_score, recall_score, precision_score
+from sklearn.metrics import roc_auc_score, recall_score, precision_score, f1_score
 import json
 
 # def data():
@@ -33,18 +33,18 @@ import json
 #     #return X_train, y_train, X_test, y_test
 #     return X_train, y_train, X_val, y_val, X_test, y_test
 
-X, y = LoadDataset('binned_confirmed_fps_binned.csv')
+X, y = LoadDataset('final_binned_global.csv', directory='kepler//csv_data//')
 # X, y = LoadDataset('lc_std_nanmasked_SMOTE.csv')
 # X, y = LoadDataset('lc_std.csv')
 
 # Split data
-X_train, y_train, X_test, y_test = SplitData(X,y, test_size=0.2)
+X_train, y_train, X_test, y_test = SplitData(X,y, test_size=0.1)
 #X_train, y_train, X_val, y_val, X_test, y_test = SplitData(X, y, test_size=0.2, val_set=True)
 
 
-#Remove any NaNs
-X_train = MissingValuesHandler(X_train).imputeNaN()
-X_test = MissingValuesHandler(X_test).imputeNaN()
+# #Remove any NaNs
+# X_train = MissingValuesHandler(X_train).imputeNaN()
+# X_test = MissingValuesHandler(X_test).imputeNaN()
 
 # Standardize training data
 X_train = Standardizer().standardize(X_train, na_values=False)
@@ -57,10 +57,10 @@ X_train_save = pd.DataFrame(X_train.astype(np.float))
 y_test_save = pd.DataFrame(y_test, columns=['LABEL'])
 X_test_save = pd.DataFrame(X_test.astype(np.float))
 
-X_train_save.to_csv('data//testing_data//1st_binneddata_XTRAIN.csv', index=False)
-y_train_save.to_csv('data//testing_data//1st_binneddata_YTRAIN.csv', index=False)
-X_test_save.to_csv('data//testing_data//1st_binneddata_XTEST.csv', index=False)
-y_test_save.to_csv('data//testing_data//1st_binneddata_YTEST.csv', index=False)
+X_train_save.to_pickle('kepler//testing_data//lstm_binneddata_XTRAIN.pkl')
+y_train_save.to_pickle('kepler//testing_data//lstm_binneddata_YTRAIN.pkl')
+X_test_save.to_pickle('kepler//testing_data//lstm_binneddata_XTEST.pkl')
+y_test_save.to_pickle('kepler//testing_data//lstm_binneddata_YTEST.pkl')
 
 
 
@@ -159,6 +159,8 @@ def create_cnn_model(params):
         Y_score, Y_predict, Y_true = cnn.Predict(X_valid_fold, y_valid_fold)
         recall = recall_score(y_valid_fold, Y_predict)
         precision = precision_score(y_valid_fold, Y_predict)
+        f1 = f1_score(y_valid_fold, Y_predict)
+
         auc = roc_auc_score(y_valid_fold, Y_score)
 
         print('ROC/AUC Score: ', auc)
@@ -167,8 +169,6 @@ def create_cnn_model(params):
 
         print('\n')
 
-
-        # print("%s: %.2f%%" % (cnn.GetModel().metrics_names[1], acc * 100))
         cvscores.append(auc)
 
 
@@ -180,43 +180,109 @@ def create_cnn_model(params):
     return {'loss': -auc, 'status': STATUS_OK}
 
 
-# def create_lstm(X_train, y_train, X_test, y_test):
-#
-#     lstm = LSTM_Model(output_dim=1, sequence_length=X_train.shape[1],
-#                     nb_lstm_layers={{choice([1, 2, 3])}}, nb_units={{choice([5, 10, 15])}},
-#                     activation={{choice(['relu', 'prelu'])}},
-#                     dropout={{uniform(0, 1)}})
-#
-#     lstm.Build()
-#
-#     lstm.Compile(loss='binary_crossentropy',
-#                 optimizer={{choice([SGD(lr=0.1, momentum=0.25, decay=0.0001, nesterov=True)])}},
-#                 metrics=['accuracy'])
-#
-#     # reduceLR = ReduceLROnPlateau(monitor='loss', factor=0.5, patience=5, min_lr=0.0001, verbose=1)
-#
-#     earlyStopping = EarlyStopping(monitor='val_loss', min_delta=0, patience=5, mode='auto')
-#     checkpointer = ModelCheckpoint(filepath='lstm_tuned.hdf5',
-#                                    verbose=0,
-#                                    save_best_only=True)
-#
-#
-#     # hist = model.FitData(X_train, y_train, batch_size=batch_size, nb_epochs=nb_epochs, cb1=reduceLR)
-#     batch_size = {{choice([16, 32, 64, 128])}}
-#
-#     lstm.FitData(X_train=X_train, y_train=y_train, validation_split=0.08,
-#                 batch_size=batch_size, nb_epochs=50, verbose=2, cb1=earlyStopping, cb2=checkpointer)
-#     # cnn.FitDataWithValidation(X_train=X_train, y_train=y_train, X_val=X_val, y_val=y_val,
-#     #                                       batch_size=batch_size, nb_epochs=1, verbose=2)
-#
-#     score, acc = lstm.Evaluate(X_test, y_test, batch_size, verbose=0)
-#
-#     print('Test Accuracy: ', acc)
-#
-#     evaluator = ModelEvaluator(lstm, X_test=X_test, y_test=y_test, batch_size=32, generate_plots=False)
-#
-#
-#     return {'loss': -acc, 'status': STATUS_OK, 'model': lstm.GetModel()}
+
+
+
+lstm_space = {
+
+        'nb_lstm_layers': hp.choice('nb_lstm_layers', [0,1]),
+        'lstm_units': hp.choice('lstm_units', [2, 5, 10, 15]),
+
+        'dropout': hp.uniform('dropout', 0.0, 0.5),
+        'fc_units': hp.choice('fc_units', [32,64,128]),
+        'fc_layers': hp.choice('fc_layers', [0, 1, 2]),
+
+
+        'batch_size' : hp.choice('batch_size', [16,32,64]),
+        'lr_rate_mult': hp.loguniform('lr_rate_mult', -0.5, 0.5),
+        'momentum': hp.choice('momentum', [0, 0.25, 0.4]),
+        'batch_norm': hp.choice('batch_norm', [True, False]),
+        'nb_epochs' :  hp.uniform('nb_epochs', 10.0, 50.0),
+        'activation': hp.choice('activation', ['prelu', 'relu'])
+        }
+
+
+def create_lstm(params):
+
+    lstm = LSTM_Model(output_dim=1, sequence_length=X_train.shape[1],
+                    nb_lstm_layers=params['nb_lstm_layers'], nb_lstm_units=params['lstm_units'], nb_fc_layers=params['fc_layers'], nb_fc_units=params['fc_units'],
+                    activation=params['activation'],
+                    dropout=params['dropout'], batch_normalisation=params['batch_norm'])
+
+    lstm.Build()
+
+
+    print('LR Multiplier: ', params['lr_rate_mult'])
+    print('Momentum: ', params['momentum'])
+
+    lstm.Compile(loss='binary_crossentropy',
+                optimizer=SGD(lr=0.001 * params['lr_rate_mult'], momentum=params['momentum'], decay=0.0001,
+                              nesterov=True), metrics=['accuracy'])
+
+    nb_epochs = int(params['nb_epochs'])
+    batch_size = params['batch_size']
+    print('Number of Epochs: ', nb_epochs)
+    print('Batch Size: ', batch_size)
+
+    start_time = time.time()
+
+    # define 10-fold cross validation test harness
+    kfold = StratifiedKFold(n_splits=5, shuffle=True, random_state=7)
+
+    cvaucscores = []
+    cvf1scores = []
+    cvrecallscores = []
+    cvprecisionscores = []
+
+    for train_index, valid_index in kfold.split(X_train, y_train):
+        X_train_fold = X_train[train_index]
+        X_valid_fold = X_train[valid_index]
+        y_train_fold = y_train.iloc[train_index]
+        y_valid_fold = y_train.iloc[valid_index]
+
+        # Reshape data to 3D input
+        X_train_fold = X_train_fold.reshape(X_train_fold.shape[0], X_train_fold.shape[1], 1)
+        # X_val = X_val.reshape(X_val.shape[0], X_val.shape[1], 1)
+        X_valid_fold = X_valid_fold.reshape(X_valid_fold.shape[0], X_valid_fold.shape[1], 1)
+
+        # reduceLR = ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=5, min_lr=0.0001, verbose=1)
+        # earlyStopping = EarlyStopping(monitor='val_loss', min_delta=0, patience=10, mode='auto')
+        lstm.FitData(X_train=X_train_fold, y_train=y_train_fold, batch_size=batch_size, nb_epochs=nb_epochs, verbose=2)
+        # cnn.FitDataWithValidationCallbacks(X_train=X[train], y_train=y[train], X_val=X[valid], y_val=y[valid],
+        #                                   batch_size=batch_size, nb_epochs=50, verbose=2, cb1=earlyStopping)
+
+        score, acc = lstm.Evaluate(X_valid_fold, y_valid_fold, batch_size, verbose=0)
+
+        Y_score, Y_predict, Y_true = lstm.Predict(X_valid_fold, y_valid_fold)
+        recall = recall_score(y_valid_fold, Y_predict)
+        precision = precision_score(y_valid_fold, Y_predict)
+        auc = roc_auc_score(y_valid_fold, Y_score)
+        f1 = f1_score(y_valid_fold, Y_predict)
+
+        print('Accuracy: ', acc)
+        print('ROC/AUC Score: ', auc)
+        print('Precision: ', precision)
+        print('Recall: ', recall)
+        print('F1 Score: ', f1)
+        print('\n')
+
+        cvaucscores.append(auc)
+        cvf1scores.append(f1)
+        cvprecisionscores.append(precision)
+        cvrecallscores.append(recall)
+
+    print("CV AUC Score: %.2f%% (+/- %.2f%%)" % (np.mean(cvaucscores), np.std(cvaucscores)))
+    print("CV Precision Score: %.2f%% (+/- %.2f%%)" % (np.mean(cvprecisionscores), np.std(cvprecisionscores)))
+    print("CV Recall Score: %.2f%% (+/- %.2f%%)" % (np.mean(cvrecallscores), np.std(cvrecallscores)))
+    print("CV F1 Score: %.2f%% (+/- %.2f%%)" % (np.mean(cvf1scores), np.std(cvf1scores)))
+
+
+    total_seconds = time.time() - start_time
+    print('CV Time: ', str(datetime.timedelta(seconds=total_seconds)))
+
+    return {'loss': -auc, 'status': STATUS_OK}
+
+
 
 
 def run_trials(model_type, evals=5):
@@ -228,7 +294,9 @@ def run_trials(model_type, evals=5):
     if model_type == 'cnn':
         best_model = fmin(create_cnn_model, space, algo=tpe.suggest, max_evals=evals, trials=trials)
     elif model_type == 'lstm':
-        pass
+        best_model = fmin(create_lstm, lstm_space, algo=tpe.suggest, max_evals=evals, trials=trials)
+
+
 
     total_seconds = time.time() - start_time
     print('Hyperparameter Optimization Time: ', str(datetime.timedelta(seconds=total_seconds)) )

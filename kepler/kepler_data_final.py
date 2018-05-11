@@ -1,220 +1,155 @@
-import os
-import numpy as np
 import pandas as pd
 from pyke import *
-from kepler.preprocess import *
+import kepler.third_party.preprocess as preprocess
 
+KEPLER_DATA_DIR = 'E:\\new_fits'
+TCE_TABLE_DIR = 'E:\\new_fits\\q1_q17_dr24_tce.csv'
 
 def main():
 
-    # Load Cummulative KOI Table
-    cummulative_table_df = pd.read_csv('C://Users//DYN//Google Drive//Intelligent_Systems_MSc//MSc_Project//data//kepler_planets//cumulative.csv')
-    cummulative_table_confirmed_df = cummulative_table_df[cummulative_table_df['koi_disposition'].isin(['CONFIRMED','CANDIDATE']) ]
-    cummulative_table_falsepositives_df = cummulative_table_df[cummulative_table_df['koi_disposition'].isin(['FALSE POSITIVE']) ]
+    # Load TCE Table
+    tce_table = pd.read_csv(filepath_or_buffer=TCE_TABLE_DIR, comment='#' )
 
-    # Remove duplicates (TEMPORARY FIX FOR MULTIPLANET SYSTEMS)
-    #cummulative_table_confirmed_df = cummulative_table_confirmed_df.drop_duplicates('kepid', keep=False)
-    #cummulative_table_confirmed_df = cummulative_table_confirmed_df.set_index('kepid')
-    #cummulative_table_falsepositives_df = cummulative_table_falsepositives_df.drop_duplicates('kepid', keep=False)
-    #cummulative_table_falsepositives_df = cummulative_table_falsepositives_df.set_index('kepid')
+    tce_table["tce_duration"] /= 24  # Convert hours to days.
 
+    # Name and values of the target column in the input TCE table to use as training labels.
+    _LABEL_COLUMN = "av_training_set"
+    _ALLOWED_LABELS = {"PC", "AFP", "NTP"}
 
-    # COLUMN kepoi_name:     KOI Name
-    # COLUMN kepler_name:    Kepler Name
-    # COLUMN koi_period:     Orbital Period [days]
-    # COLUMN koi_time0bk:    Transit Epoch [BKJD]
-    # COLUMN koi_duration:   Transit Duration [hrs]
-    # COLUMN koi_model_snr:  Transit Signal-to-Noise
+    # Filter TCE table to allowed labels.
+    allowed_tces = tce_table[_LABEL_COLUMN].apply(lambda l: l in _ALLOWED_LABELS)
+    tce_table = tce_table[allowed_tces]
+    num_tces = len(tce_table)
 
-    root_dict = {'confirmed': 'E://fits//confirmed//',
-                 'false_positives': 'E://fits//false_positives//',
-                 'uncategorized': 'E://fits//uncategorized//'}
+    # Randomly shuffle the TCE table.
+    np.random.seed(123)
+    tce_table = tce_table.iloc[np.random.permutation(num_tces)]
 
-    # Read directory files
-    confirmed_fits = os.listdir(root_dict['confirmed'])
-    falsepositives_fits = os.listdir(root_dict['false_positives'])
-    uncategorized_fits = os.listdir(root_dict['uncategorized'])
-
-    flattened_confirmed_fluxes, folded_confirmed_fluxes, binned_confirmed_fluxes  = LoadConfirmedFits(root_dict['confirmed'], confirmed_fits, cummulative_table_confirmed_df)
-    flattened_falsepositive_fluxes, folded_falsepositive_fluxes, binned_falsepositive_fluxes_flux = LoadConfirmedFits(root_dict['false_positives'], falsepositives_fits, cummulative_table_falsepositives_df)
-    #unconfirmed_flux_df = LoadUncategorizedFits(root_dict['uncategorized'], uncategorized_fits)
+    neg = ['AFP', 'NTP']
+    tce_table = tce_table.loc[tce_table['av_training_set'].isin(neg)]
 
 
-    # flattened_confirmed_fluxes.to_pickle('pickled_data//flattened_confirmed_candidates.pkl')
-    # folded_confirmed_fluxes.to_pickle('pickled_data//folded_confirmed_candidates.pkl')
-    #binned_confirmed_fluxes.to_pickle('pickled_data//binned_confirmed_candidates.pkl')
+    # positive_flattened_df, positive_folded_df, positive_globalbinned_df, positive_localbinned_df = generate_tce_data(tce_table, positive_class=True, plot_show=False)
+    # positive_globalbinned_df.to_csv('csv_data//positives_globalbinned.csv', na_rep='nan', index=False)
+    # positive_localbinned_df.to_csv('csv_data//positives_localbinned.csv', na_rep='nan', index=False)
+    # print('Succesfully processed and saved positive samples.')
+    # print('\n')
 
-    # flattened_falsepositive_fluxes.to_pickle('pickled_data//flattened_falsepositives.pkl')
-    # folded_falsepositive_fluxes.to_pickle('pickled_data//folded_falsepositives.pkl')
-    #binned_falsepositive_fluxes_flux.to_pickle('pickled_data//binned_falsepositives.pkl')
+    negative_flattened_df, negative_folded_df, negative_globalbinned_df, negative_localbinned_df = generate_tce_data(tce_table[0:3500], positive_class=False)
+    negative_globalbinned_df.to_csv('csv_data//negatives_globalbinned1.csv', na_rep='nan', index=False)
+    negative_localbinned_df.to_csv('csv_data//negatives_localbinned1.csv', na_rep='nan', index=False)
+    print('Succesfully processed and saved negative samples. (1)')
+    print('\n')
 
-    #folded_confirmed_fluxes.to_csv('folded_confirmed.csv', na_rep='nan', index=False)
-    #folded_falsepositive_fluxes.to_csv('folded_falsepositives.csv', na_rep='nan', index=False)
-    binned_confirmed_fluxes.to_csv('binned_confirmed.csv', na_rep='nan', index=False)
-    binned_falsepositive_fluxes_flux.to_csv('binned_falsepositives.csv', na_rep='nan', index=False)
+    negative_flattened_df, negative_folded_df, negative_globalbinned_df, negative_localbinned_df = generate_tce_data(tce_table[3501:7000], positive_class=False)
+    negative_globalbinned_df.to_csv('csv_data//negatives_globalbinned2.csv', na_rep='nan', index=False)
+    negative_localbinned_df.to_csv('csv_data//negatives_localbinned2.csv', na_rep='nan', index=False)
+    print('Succesfully processed and saved negative samples. (2)')
+    print('\n')
+
+    negative_flattened_df, negative_folded_df, negative_globalbinned_df, negative_localbinned_df = generate_tce_data(tce_table[7001:10000], positive_class=False)
+    negative_globalbinned_df.to_csv('csv_data//negatives_globa lbinned3.csv', na_rep='nan', index=False)
+    negative_localbinned_df.to_csv('csv_data//negatives_localbinned3.csv', na_rep='nan', index=False)
+    print('Succesfully processed and saved negative samples. (3)')
+    print('\n')
+
+    negative_flattened_df, negative_folded_df, negative_globalbinned_df, negative_localbinned_df = generate_tce_data(
+        tce_table[10001:], positive_class=False)
+    negative_globalbinned_df.to_csv('csv_data//negatives_globalbinned4.csv', na_rep='nan', index=False)
+    negative_localbinned_df.to_csv('csv_data//negatives_localbinned4.csv', na_rep='nan', index=False)
+    print('Succesfully processed and saved negative samples. (4)')
+    print('\n')
 
 
-def LoadConfirmedFits(path, confirmed_fits_list, cummulative_table_confirmed_df, plot_show = True):
+
+    # positive_globalbinned_df.to_pickle('pickled_data//positives_globalbinned.pkl')
+    # positive_localbinned_df.to_pickle('pickled_data//positives_localbinned.pkl')
+    # negative_globalbinned_df.to_pickle('pickled_data//negatives_globalbinned.pkl')
+    # negative_localbinned_df.to_pickle('pickled_data//negatives_localbinned.pkl')
+
+
+def generate_tce_data(tce_table, positive_class, plot_show=False):
+
+    # if positive_class:
+    #     tce_table = tce_table.loc[tce_table['av_training_set'] == 'PC']
+    # else:
+    #     neg = ['AFP','NTP']
+    #     tce_table = tce_table.loc[tce_table['av_training_set'].isin(neg)]
 
     # Load and Process Confirmed and Candidate Planet Light Curves
     flattened_fluxes_df = pd.DataFrame()
     folded_fluxes_df = pd.DataFrame()
-    binned_fluxes_df = pd.DataFrame()
+    globalbinned_fluxes_df = pd.DataFrame()
+    localbinned_fluxes_df = pd.DataFrame()
 
-    for file in confirmed_fits_list:
+
+    num_tces = len(tce_table)
+    processed_count = 0
+    failed_count = 0
+
+    for _, tce in tce_table.iterrows():
+
         try:
-            if ".fits" in file:
-
-                # Read Original FITS into Light Curve structure
-                og_lc = KeplerLightCurveFile(path=path + file)
-                # print(og_lc.header())
-
-                # Retrieve PDCSAP_FLUX data from .fits
-                og_lc_pdcsap = og_lc.get_lightcurve('PDCSAP_FLUX')
-                print(og_lc_pdcsap.keplerid)
-
-                # Flatten the PDC_SAP flux signal into a detrended version
-                flattened_lc = og_lc_pdcsap.flatten()
-
-                # Detect best period
-                # postlist, trial_periods, best_period = box_period_search(flattened_lc, nperiods=2000)
-                # print('Best period: ', best_period)
-
-                ids = cummulative_table_confirmed_df.loc[cummulative_table_confirmed_df['kepid'] == og_lc_pdcsap.keplerid  ]
-                #ids = ids.set_index('kepid')
-                rows = ids.values.shape[0]
-
-                folded_lcs_df = pd.DataFrame()
-                binned_lcs_df = pd.DataFrame()
-
-                for lc in range(rows):
-
-                    # Obtain period and transit centre
-                    period = ids.iloc[lc]['koi_period']
-                    bjk0 = ids.iloc[lc]['koi_time0bk']
-
-                    # Other attributes
-                    snr = ids.iloc[lc]['koi_model_snr']
-                    duration = ids.iloc[lc]['koi_duration']
-                    depth = ids.iloc[lc]['koi_depth']
-
-                    # print('SNR:', snr)
-                    # print('Duration: ', duration)
-                    # print('Depth: ', depth)
-
-                    # PYKE
-                    # # Phase fold the detrended light curve
-                    # folded_lc = flattened_lc.fold(period=period, phase=bjk0)
-                    # # Bin the folded light curve
-                    #
-                    #
-                    # binned_lc_global = folded_lc.bin(binsize=len(folded_lc.flux)/1001 ,method='median')
-
-                    time, flux = phase_fold_and_sort_light_curve(flattened_lc.time, flattened_lc.flux, period, bjk0)
-
-                    global_sequence = global_view(time, flux, period)
-                    x_global = np.array(range(len(global_sequence)))
-
-                    local_sequence = local_view(time, flux, period, duration)
-                    x_local =  np.array(range(len(local_sequence)))
-
-                    if plot_show:
-                        plt.plot(time, flux, 'o', markersize=1, label='FLUX')
-                        plt.show()
-                        plt.plot(x_global, global_sequence, 'o', markersize=1, label='FLUX')
-                        plt.show()
-                        plt.plot(x_local, local_sequence, 'o', markersize=1, label='FLUX')
-                        plt.show()
-
-                    # flattened_fluxes_df = flattened_fluxes_df.append(pd.Series(flattened_lc.flux), ignore_index=True)
-                    # folded_fluxes_df = folded_fluxes_df.append(pd.Series(folded_lc.flux), ignore_index=True)
-                    # binned_fluxes_df = binned_fluxes_df.append(pd.Series(binned_lc_global.flux), ignore_index=True)
+            flattened_flux, folded_flux, global_view, local_view = process_tce(tce)
 
 
+            if plot_show:
+                plt.plot(range(len(flattened_flux)), flattened_flux, 'o', markersize=1, label='FLUX')
+                plt.show()
+                plt.plot(range(len(folded_flux)), folded_flux, 'o', markersize=1, label='FLUX')
+                plt.show()
+                plt.plot(range(len(global_view)), global_view, 'o', markersize=1, label='FLUX')
+                plt.show()
+                plt.plot(range(len(local_view)), local_view, 'o', markersize=1, label='FLUX')
+                plt.show()
+
+            # Append retrieved and processed fluxes to output dataframes
+            # flattened_fluxes_df = flattened_fluxes_df.append(pd.Series(flattened_flux), ignore_index=True)
+            # folded_fluxes_df = folded_fluxes_df.append(pd.Series(folded_flux), ignore_index=True)
+            globalbinned_fluxes_df = globalbinned_fluxes_df.append(pd.Series(global_view), ignore_index=True)
+            localbinned_fluxes_df = localbinned_fluxes_df.append(pd.Series(local_view), ignore_index=True)
+
+            print('Kepler ID: {} processed'.format(tce.kepid))
+            print("Processed Percentage: ", ((processed_count + failed_count) / num_tces) * 100, "%")
+
+            processed_count += 1
         except:
-            print('Kepler ID: {} failed'.format(og_lc_pdcsap.keplerid))
-
-    return flattened_fluxes_df, folded_fluxes_df, binned_fluxes_df
-
-def LoadUncategorizedFits(path, uncategorized_fits_list, plot_show = False):
-
-    # Load and Process Confirmed and Candidate Planet Light Curves
-    uncategorized_fluxes_df = pd.DataFrame()
-
-    for file in uncategorized_fits_list:
-        try:
-            if ".fits" in file:
-
-                # Read Original FITS into Light Curve structure
-                og_lc = KeplerLightCurveFile(path=path + file)
-                # print(og_lc.header())
-
-                # Retrieve PDCSAP_FLUX data from .fits
-                og_lc_pdcsap = og_lc.get_lightcurve('PDCSAP_FLUX')
-                print(og_lc_pdcsap.keplerid)
-
-                # Flatten the PDC_SAP flux signal into a detrended version
-                flattened_lc = og_lc_pdcsap.flatten()
-
-                if plot_show:
-                    plt.plot(flattened_lc.time, flattened_lc.flux, 'x', markersize=1, label='FLUX')
-                    plt.show()
-
-                # Add folded DET_FLUX to dataframe
-                det_flux = pd.Series(flattened_lc.flux)
-                uncategorized_fluxes_df = uncategorized_fluxes_df.append(det_flux, ignore_index=True)
-
-                print('Kepler ID: {} processed succesfully.'.format(og_lc_pdcsap.keplerid))
-        except:
-            print('Kepler ID: {} failed gargantuously'.format(og_lc_pdcsap.keplerid))
-
-    return uncategorized_fluxes_df
+            #print('Kepler ID: {} failed'.format(tce.kepid))
+            failed_count += 1
 
 
-def LoadFalsePositiveFits(path, falsepositive_fits_list, cummulative_table_falsepositive_df, plot_show = False):
 
-    # Load and Process Confirmed and Candidate Planet Light Curves
-    falsepositive_fluxes_df = pd.DataFrame()
 
-    for file in falsepositive_fits_list:
-        try:
-            if ".fits" in file:
 
-                # Read Original FITS into Light Curve structure
-                og_lc = KeplerLightCurveFile(path=path + file)
-                # print(og_lc.header())
+    return flattened_fluxes_df, folded_fluxes_df, globalbinned_fluxes_df, localbinned_fluxes_df
 
-                # Retrieve PDCSAP_FLUX data from .fits
-                og_lc_pdcsap = og_lc.get_lightcurve('PDCSAP_FLUX')
-                print(og_lc_pdcsap.keplerid)
 
-                # Flatten the PDC_SAP flux signal into a detrended version
-                flattened_lc = og_lc_pdcsap.flatten()
 
-                # Detect best period
-                # postlist, trial_periods, best_period = box_period_search(flattened_lc, nperiods=2000)
-                # print('Best period: ', best_period)
+def process_tce(tce):
+  """Processes the light curve for a Kepler TCE and returns an Example proto.
 
-                # Phase fold the detrended light curve
-                period = cummulative_table_falsepositive_df.get_value(og_lc_pdcsap.keplerid, 'koi_period')
-                bjk0 = cummulative_table_falsepositive_df.get_value(og_lc_pdcsap.keplerid, 'koi_time0bk')
+  Args:
+    tce: Row of the input TCE table.
 
-                folded_lc = flattened_lc.fold(period=period, phase=bjk0)
+  Returns:
+    A tensorflow.train.Example proto containing TCE features.
 
-                # Bin the folded light curve
-                binned_lc = folded_lc.bin(binsize=100, method='median')
+  Raises:
+    IOError: If the light curve files for this Kepler ID cannot be found.
+  """
+  # Read and process the light curve.
+  time, flattened_flux = preprocess.read_and_process_light_curve(tce.kepid, KEPLER_DATA_DIR)
 
-                if plot_show:
-                    plt.plot(folded_lc.time, folded_lc.flux, 'x', markersize=1, label='FLUX')
-                    plt.show()
+  time, folded_flux = preprocess.phase_fold_and_sort_light_curve(time, flattened_flux, tce.tce_period, tce.tce_time0bk)
 
-                # Add folded DET_FLUX to dataframe
-                det_flux = pd.Series(folded_lc.flux)
-                falsepositive_fluxes_df = falsepositive_fluxes_df.append(det_flux, ignore_index=True)
-        except:
-            print('Kepler ID: {} not dispositioned as Confirmed or Candidate'.format(og_lc_pdcsap.keplerid))
+  # Generate the local and global views.
+  global_view = preprocess.global_view(time, folded_flux, tce.tce_period, num_bins=2001, bin_width_factor=1 / 2001)
+  local_view = preprocess.local_view(time, folded_flux, tce.tce_period,
+                                     tce.tce_duration, num_bins=201, bin_width_factor=0.16, num_durations=4)
 
-    return falsepositive_fluxes_df
+  return flattened_flux, folded_flux, global_view, local_view
+
+
 
 if __name__ == "__main__":
     main()

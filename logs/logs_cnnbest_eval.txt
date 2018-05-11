@@ -1,1796 +1,903 @@
-C:\Users\DYN\AppData\Local\Programs\Python\Python35\python.exe C:/Users/DYN/Desktop/exoplanet_classification_repo/main.py
+logs.txtC:\Users\DYN\AppData\Local\Programs\Python\Python35\python.exe C:/Users/DYN/Desktop/exoplanet_classification_repo/main.py
 C:\Users\DYN\AppData\Roaming\Python\Python35\site-packages\h5py\__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
   from ._conv import register_converters as _register_converters
 Using TensorFlow backend.
-Dataset: final_binned_global.csv found. Loading...
-2018-05-06 13:31:44.083941: I C:\tf_jenkins\workspace\rel-win\M\windows-gpu\PY\35\tensorflow\core\platform\cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX AVX2
-2018-05-06 13:31:44.382267: I C:\tf_jenkins\workspace\rel-win\M\windows-gpu\PY\35\tensorflow\core\common_runtime\gpu\gpu_device.cc:1105] Found device 0 with properties: 
+2018-05-09 20:45:37.303880: I C:\tf_jenkins\workspace\rel-win\M\windows-gpu\PY\35\tensorflow\core\platform\cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX AVX2
+2018-05-09 20:45:37.618597: I C:\tf_jenkins\workspace\rel-win\M\windows-gpu\PY\35\tensorflow\core\common_runtime\gpu\gpu_device.cc:1105] Found device 0 with properties:
 name: GeForce GTX 970 major: 5 minor: 2 memoryClockRate(GHz): 1.279
 pciBusID: 0000:01:00.0
 totalMemory: 4.00GiB freeMemory: 3.31GiB
-2018-05-06 13:31:44.383112: I C:\tf_jenkins\workspace\rel-win\M\windows-gpu\PY\35\tensorflow\core\common_runtime\gpu\gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 970, pci bus id: 0000:01:00.0, compute capability: 5.2)
+2018-05-09 20:45:37.619399: I C:\tf_jenkins\workspace\rel-win\M\windows-gpu\PY\35\tensorflow\core\common_runtime\gpu\gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 970, pci bus id: 0000:01:00.0, compute capability: 5.2)
 ['/job:localhost/replica:0/task:0/device:GPU:0']
-2018-05-06 13:31:45.237220: I C:\tf_jenkins\workspace\rel-win\M\windows-gpu\PY\35\tensorflow\core\common_runtime\gpu\gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 970, pci bus id: 0000:01:00.0, compute capability: 5.2)
-Initialising LSTM Model... 
-
-Building CNN... 
-
-Number of LSTM layers:  0
-Number of LSTM units:  10
-Number of FC layers:  1
-Number of FC units:  64
-Dropout:  0.1719197530111497
-Activation: relu
-Batch Normalisation: False
+Loading the train and testing data...
+2018-05-09 20:45:38.467935: I C:\tf_jenkins\workspace\rel-win\M\windows-gpu\PY\35\tensorflow\core\common_runtime\gpu\gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 970, pci bus id: 0000:01:00.0, compute capability: 5.2)
+Final Evaluation of Best Model Configuration
 
 
-LR Multiplier:  1.0123833550161987
-Momentum:  0
-Compilation Time:  0.013012409210205078
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-cu_dnnlstm_1 (CuDNNLSTM)     (None, 2001, 10)          520       
-_________________________________________________________________
-batch_normalization_1 (Batch (None, 2001, 10)          40        
-_________________________________________________________________
-dropout_1 (Dropout)          (None, 2001, 10)          0         
-_________________________________________________________________
-activation_1 (Activation)    (None, 2001, 10)          0         
-_________________________________________________________________
-flatten_1 (Flatten)          (None, 20010)             0         
-_________________________________________________________________
-dense_1 (Dense)              (None, 64)                1280704   
-_________________________________________________________________
-dropout_2 (Dropout)          (None, 64)                0         
-_________________________________________________________________
-activation_2 (Activation)    (None, 64)                0         
-_________________________________________________________________
-dense_2 (Dense)              (None, 1)                 65        
-_________________________________________________________________
-activation_3 (Activation)    (None, 1)                 0         
-=================================================================
-Total params: 1,281,329
-Trainable params: 1,281,309
-Non-trainable params: 20
-_________________________________________________________________
-None
-Number of Epochs:  35
-Batch Size:  32
-Epoch 1/35
- - 30s - loss: 0.3605 - acc: 0.8148
-Epoch 2/35
- - 29s - loss: 0.2973 - acc: 0.8571
-Epoch 3/35
- - 29s - loss: 0.2746 - acc: 0.8772
-Epoch 4/35
- - 29s - loss: 0.2590 - acc: 0.8833
-Epoch 5/35
- - 29s - loss: 0.2487 - acc: 0.8892
-Epoch 6/35
- - 29s - loss: 0.2378 - acc: 0.8949
-Epoch 7/35
- - 29s - loss: 0.2341 - acc: 0.8978
-Epoch 8/35
- - 29s - loss: 0.2262 - acc: 0.9005
-Epoch 9/35
- - 29s - loss: 0.2259 - acc: 0.9001
-Epoch 10/35
- - 29s - loss: 0.2167 - acc: 0.9078
-Epoch 11/35
- - 29s - loss: 0.2148 - acc: 0.9076
-Epoch 12/35
- - 29s - loss: 0.2131 - acc: 0.9067
-Epoch 13/35
- - 29s - loss: 0.2103 - acc: 0.9077
-Epoch 14/35
- - 29s - loss: 0.2059 - acc: 0.9131
-Epoch 15/35
- - 29s - loss: 0.2041 - acc: 0.9109
-Epoch 16/35
- - 29s - loss: 0.2021 - acc: 0.9127
-Epoch 17/35
- - 29s - loss: 0.1990 - acc: 0.9169
-Epoch 18/35
- - 29s - loss: 0.1977 - acc: 0.9165
-Epoch 19/35
- - 29s - loss: 0.1927 - acc: 0.9206
-Epoch 20/35
- - 29s - loss: 0.1935 - acc: 0.9174
-Epoch 21/35
- - 29s - loss: 0.1905 - acc: 0.9186
-Epoch 22/35
- - 29s - loss: 0.1892 - acc: 0.9202
-Epoch 23/35
- - 29s - loss: 0.1890 - acc: 0.9200
-Epoch 24/35
- - 29s - loss: 0.1849 - acc: 0.9224
-Epoch 25/35
- - 29s - loss: 0.1856 - acc: 0.9198
-Epoch 26/35
- - 29s - loss: 0.1782 - acc: 0.9258
-Epoch 27/35
- - 29s - loss: 0.1774 - acc: 0.9235
-Epoch 28/35
- - 30s - loss: 0.1766 - acc: 0.9240
-Epoch 29/35
- - 31s - loss: 0.1772 - acc: 0.9222
-Epoch 30/35
- - 31s - loss: 0.1760 - acc: 0.9243
-Epoch 31/35
- - 31s - loss: 0.1726 - acc: 0.9266
-Epoch 32/35
- - 31s - loss: 0.1759 - acc: 0.9260
-Epoch 33/35
- - 31s - loss: 0.1750 - acc: 0.9252
-Epoch 34/35
- - 31s - loss: 0.1712 - acc: 0.9279
-Epoch 35/35
- - 31s - loss: 0.1674 - acc: 0.9284
-C:\Users\DYN\AppData\Local\Programs\Python\Python35\lib\site-packages\numpy\core\fromnumeric.py:52: FutureWarning: 'argmax' is deprecated. Use 'idxmax' instead. The behavior of 'argmax' will be corrected to return the positional maximum in the future. Use 'series.values.argmax' to get the position of the maximum now.
-  return getattr(obj, method)(*args, **kwds)
-Accuracy:  0.9201161946259986
-ROC/AUC Score:  0.9693635400671686
-Precision:  0.8363338788870703
-Recall:  0.8098256735340729
-F1 Score:  0.822866344605475
-
-
-Epoch 1/35
- - 31s - loss: 0.1758 - acc: 0.9248
-Epoch 2/35
- - 31s - loss: 0.1781 - acc: 0.9250
-Epoch 3/35
- - 31s - loss: 0.1763 - acc: 0.9275
-Epoch 4/35
- - 31s - loss: 0.1751 - acc: 0.9257
-Epoch 5/35
- - 31s - loss: 0.1722 - acc: 0.9276
-Epoch 6/35
- - 31s - loss: 0.1754 - acc: 0.9265
-Epoch 7/35
- - 31s - loss: 0.1685 - acc: 0.9309
-Epoch 8/35
- - 31s - loss: 0.1709 - acc: 0.9296
-Epoch 9/35
- - 31s - loss: 0.1690 - acc: 0.9300
-Epoch 10/35
- - 31s - loss: 0.1700 - acc: 0.9281
-Epoch 11/35
- - 31s - loss: 0.1629 - acc: 0.9328
-Epoch 12/35
- - 31s - loss: 0.1685 - acc: 0.9294
-Epoch 13/35
- - 31s - loss: 0.1662 - acc: 0.9307
-Epoch 14/35
- - 31s - loss: 0.1619 - acc: 0.9332
-Epoch 15/35
- - 31s - loss: 0.1646 - acc: 0.9314
-Epoch 16/35
- - 31s - loss: 0.1626 - acc: 0.9326
-Epoch 17/35
- - 31s - loss: 0.1599 - acc: 0.9353
-Epoch 18/35
- - 31s - loss: 0.1615 - acc: 0.9326
-Epoch 19/35
- - 31s - loss: 0.1592 - acc: 0.9317
-Epoch 20/35
- - 31s - loss: 0.1582 - acc: 0.9353
-Epoch 21/35
- - 31s - loss: 0.1569 - acc: 0.9346
-Epoch 22/35
- - 31s - loss: 0.1574 - acc: 0.9345
-Epoch 23/35
- - 31s - loss: 0.1577 - acc: 0.9358
-Epoch 24/35
- - 30s - loss: 0.1570 - acc: 0.9347
-Epoch 25/35
- - 29s - loss: 0.1543 - acc: 0.9355
-Epoch 26/35
- - 30s - loss: 0.1579 - acc: 0.9339
-Epoch 27/35
- - 30s - loss: 0.1527 - acc: 0.9374
-Epoch 28/35
- - 30s - loss: 0.1517 - acc: 0.9369
-Epoch 29/35
- - 29s - loss: 0.1512 - acc: 0.9382
-Epoch 30/35
- - 29s - loss: 0.1510 - acc: 0.9376
-Epoch 31/35
- - 29s - loss: 0.1512 - acc: 0.9378
-Epoch 32/35
- - 29s - loss: 0.1503 - acc: 0.9377
-Epoch 33/35
- - 29s - loss: 0.1503 - acc: 0.9379
-Epoch 34/35
- - 29s - loss: 0.1484 - acc: 0.9409
-Epoch 35/35
- - 29s - loss: 0.1472 - acc: 0.9405
-Accuracy:  0.9404502541757443
-ROC/AUC Score:  0.9833653450660751
-Precision:  0.8340486409155937
-Recall:  0.9239302694136292
-F1 Score:  0.8766917293233083
-
-
-Epoch 1/35
- - 29s - loss: 0.1503 - acc: 0.9383
-Epoch 2/35
- - 29s - loss: 0.1508 - acc: 0.9382
-Epoch 3/35
- - 29s - loss: 0.1548 - acc: 0.9339
-Epoch 4/35
- - 29s - loss: 0.1490 - acc: 0.9396
-Epoch 5/35
- - 29s - loss: 0.1499 - acc: 0.9365
-Epoch 6/35
- - 29s - loss: 0.1467 - acc: 0.9407
-Epoch 7/35
- - 29s - loss: 0.1499 - acc: 0.9374
-Epoch 8/35
- - 29s - loss: 0.1474 - acc: 0.9402
-Epoch 9/35
- - 29s - loss: 0.1496 - acc: 0.9370
-Epoch 10/35
- - 30s - loss: 0.1477 - acc: 0.9408
-Epoch 11/35
- - 31s - loss: 0.1455 - acc: 0.9425
-Epoch 12/35
- - 31s - loss: 0.1460 - acc: 0.9405
-Epoch 13/35
- - 31s - loss: 0.1455 - acc: 0.9402
-Epoch 14/35
- - 31s - loss: 0.1447 - acc: 0.9396
-Epoch 15/35
- - 31s - loss: 0.1448 - acc: 0.9412
-Epoch 16/35
- - 31s - loss: 0.1429 - acc: 0.9397
-Epoch 17/35
- - 31s - loss: 0.1449 - acc: 0.9388
-Epoch 18/35
- - 31s - loss: 0.1444 - acc: 0.9399
-Epoch 19/35
- - 31s - loss: 0.1445 - acc: 0.9417
-Epoch 20/35
- - 31s - loss: 0.1430 - acc: 0.9416
-Epoch 21/35
- - 31s - loss: 0.1405 - acc: 0.9429
-Epoch 22/35
- - 31s - loss: 0.1402 - acc: 0.9420
-Epoch 23/35
- - 31s - loss: 0.1404 - acc: 0.9423
-Epoch 24/35
- - 31s - loss: 0.1383 - acc: 0.9450
-Epoch 25/35
- - 31s - loss: 0.1391 - acc: 0.9415
-Epoch 26/35
- - 31s - loss: 0.1400 - acc: 0.9433
-Epoch 27/35
- - 31s - loss: 0.1404 - acc: 0.9420
-Epoch 28/35
- - 31s - loss: 0.1378 - acc: 0.9445
-Epoch 29/35
- - 31s - loss: 0.1358 - acc: 0.9451
-Epoch 30/35
- - 31s - loss: 0.1374 - acc: 0.9451
-Epoch 31/35
- - 31s - loss: 0.1371 - acc: 0.9442
-Epoch 32/35
- - 31s - loss: 0.1367 - acc: 0.9455
-Epoch 33/35
- - 31s - loss: 0.1352 - acc: 0.9422
-Epoch 34/35
- - 31s - loss: 0.1347 - acc: 0.9451
-Epoch 35/35
- - 31s - loss: 0.1357 - acc: 0.9445
-Accuracy:  0.9538685070831819
-ROC/AUC Score:  0.9893449670651743
-Precision:  0.9049919484702094
-Recall:  0.8920634920634921
-F1 Score:  0.8984812150279777
-
-
-Epoch 1/35
- - 31s - loss: 0.1373 - acc: 0.9423
-Epoch 2/35
- - 31s - loss: 0.1397 - acc: 0.9426
-Epoch 3/35
- - 31s - loss: 0.1415 - acc: 0.9425
-Epoch 4/35
- - 31s - loss: 0.1375 - acc: 0.9419
-Epoch 5/35
- - 31s - loss: 0.1380 - acc: 0.9416
-Epoch 6/35
- - 31s - loss: 0.1367 - acc: 0.9430
-Epoch 7/35
- - 31s - loss: 0.1360 - acc: 0.9440
-Epoch 8/35
- - 31s - loss: 0.1344 - acc: 0.9459
-Epoch 9/35
- - 31s - loss: 0.1349 - acc: 0.9465
-Epoch 10/35
- - 31s - loss: 0.1336 - acc: 0.9451
-Epoch 11/35
- - 31s - loss: 0.1343 - acc: 0.9444
-Epoch 12/35
- - 31s - loss: 0.1320 - acc: 0.9466
-Epoch 13/35
- - 31s - loss: 0.1334 - acc: 0.9444
-Epoch 14/35
- - 31s - loss: 0.1331 - acc: 0.9450
-Epoch 15/35
- - 31s - loss: 0.1306 - acc: 0.9487
-Epoch 16/35
- - 31s - loss: 0.1303 - acc: 0.9468
-Epoch 17/35
- - 31s - loss: 0.1325 - acc: 0.9441
-Epoch 18/35
- - 31s - loss: 0.1324 - acc: 0.9462
-Epoch 19/35
- - 31s - loss: 0.1304 - acc: 0.9442
-Epoch 20/35
- - 31s - loss: 0.1311 - acc: 0.9450
-Epoch 21/35
- - 31s - loss: 0.1288 - acc: 0.9480
-Epoch 22/35
- - 31s - loss: 0.1281 - acc: 0.9473
-Epoch 23/35
- - 31s - loss: 0.1276 - acc: 0.9476
-Epoch 24/35
- - 31s - loss: 0.1293 - acc: 0.9470
-Epoch 25/35
- - 31s - loss: 0.1269 - acc: 0.9497
-Epoch 26/35
- - 31s - loss: 0.1292 - acc: 0.9463
-Epoch 27/35
- - 31s - loss: 0.1303 - acc: 0.9465
-Epoch 28/35
- - 31s - loss: 0.1291 - acc: 0.9457
-Epoch 29/35
- - 31s - loss: 0.1259 - acc: 0.9482
-Epoch 30/35
- - 31s - loss: 0.1277 - acc: 0.9476
-Epoch 31/35
- - 31s - loss: 0.1274 - acc: 0.9495
-Epoch 32/35
- - 31s - loss: 0.1287 - acc: 0.9476
-Epoch 33/35
- - 31s - loss: 0.1247 - acc: 0.9489
-Epoch 34/35
- - 31s - loss: 0.1230 - acc: 0.9512
-Epoch 35/35
- - 31s - loss: 0.1253 - acc: 0.9480
-Accuracy:  0.9564111877951326
-ROC/AUC Score:  0.9902444130423405
-Precision:  0.909967845659164
-Recall:  0.8984126984126984
-F1 Score:  0.904153354632588
-
-
-Epoch 1/35
- - 31s - loss: 0.1265 - acc: 0.9482
-Epoch 2/35
- - 31s - loss: 0.1269 - acc: 0.9494
-Epoch 3/35
- - 31s - loss: 0.1285 - acc: 0.9493
-Epoch 4/35
- - 31s - loss: 0.1252 - acc: 0.9508
-Epoch 5/35
- - 31s - loss: 0.1271 - acc: 0.9489
-Epoch 6/35
- - 31s - loss: 0.1264 - acc: 0.9502
-Epoch 7/35
- - 31s - loss: 0.1242 - acc: 0.9492
-Epoch 8/35
- - 31s - loss: 0.1244 - acc: 0.9512
-Epoch 9/35
- - 31s - loss: 0.1221 - acc: 0.9522
-Epoch 10/35
- - 31s - loss: 0.1272 - acc: 0.9472
-Epoch 11/35
- - 31s - loss: 0.1262 - acc: 0.9503
-Epoch 12/35
- - 31s - loss: 0.1219 - acc: 0.9516
-Epoch 13/35
- - 31s - loss: 0.1267 - acc: 0.9500
-Epoch 14/35
- - 31s - loss: 0.1231 - acc: 0.9517
-Epoch 15/35
- - 31s - loss: 0.1235 - acc: 0.9489
-Epoch 16/35
- - 31s - loss: 0.1214 - acc: 0.9518
-Epoch 17/35
- - 31s - loss: 0.1206 - acc: 0.9512
-Epoch 18/35
- - 31s - loss: 0.1223 - acc: 0.9515
-Epoch 19/35
- - 31s - loss: 0.1225 - acc: 0.9521
-Epoch 20/35
- - 31s - loss: 0.1217 - acc: 0.9517
-Epoch 21/35
- - 31s - loss: 0.1225 - acc: 0.9527
-Epoch 22/35
- - 31s - loss: 0.1208 - acc: 0.9508
-Epoch 23/35
- - 31s - loss: 0.1205 - acc: 0.9532
-Epoch 24/35
- - 31s - loss: 0.1224 - acc: 0.9500
-Epoch 25/35
- - 31s - loss: 0.1214 - acc: 0.9514
-Epoch 26/35
- - 31s - loss: 0.1200 - acc: 0.9524
-Epoch 27/35
- - 31s - loss: 0.1212 - acc: 0.9523
-Epoch 28/35
- - 31s - loss: 0.1191 - acc: 0.9519
-Epoch 29/35
- - 31s - loss: 0.1213 - acc: 0.9514
-Epoch 30/35
- - 31s - loss: 0.1170 - acc: 0.9533
-Epoch 31/35
- - 31s - loss: 0.1218 - acc: 0.9487
-Epoch 32/35
- - 31s - loss: 0.1200 - acc: 0.9526
-Epoch 33/35
- - 31s - loss: 0.1185 - acc: 0.9534
-Epoch 34/35
- - 31s - loss: 0.1159 - acc: 0.9551
-Epoch 35/35
- - 31s - loss: 0.1180 - acc: 0.9516
-Accuracy:  0.9589538685070832
-ROC/AUC Score:  0.9910675967670787
-Precision:  0.9176090468497576
-Recall:  0.9015873015873016
-F1 Score:  0.9095276220976782
-
-
-CV AUC Score: 0.98% (+/- 0.01%)
-CV Precision Score: 0.88% (+/- 0.04%)
-CV Recall Score: 0.89% (+/- 0.04%)
-CV F1 Score: 0.88% (+/- 0.03%)
-CV Time:  1:29:34.374833
-Initialising LSTM Model...
+Initialising CNN Model...
 
 Building CNN...
 
-Number of LSTM layers:  0
-Number of LSTM units:  10
-Number of FC layers:  2
-Number of FC units:  64
-Dropout:  0.29796647089233186
+Filters:  128
+Kernel Size:  5
+Number of blocks:  1
+Pooling type: max
+Pooling Strides: 2
+Pooling Length: 3
+Conv Dropout:  0.08625213973083698
+FC Dropout:  0.2650803877994672
+Dense Units:  64
 Activation: prelu
-Batch Normalisation: False
+Batch Normalisation: True
 
 
-LR Multiplier:  1.64341939565237
-Momentum:  0.25
-Compilation Time:  0.013013124465942383
+Compilation Time:  0.014513492584228516
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #
 =================================================================
-cu_dnnlstm_2 (CuDNNLSTM)     (None, 2001, 10)          520
+conv1d_1 (Conv1D)            (None, 1997, 128)         768
 _________________________________________________________________
-batch_normalization_2 (Batch (None, 2001, 10)          40
+batch_normalization_1 (Batch (None, 1997, 128)         512
 _________________________________________________________________
-dropout_3 (Dropout)          (None, 2001, 10)          0
+max_pooling1d_1 (MaxPooling1 (None, 998, 128)          0
 _________________________________________________________________
-p_re_lu_1 (PReLU)            (None, 2001, 10)          20010
+dropout_1 (Dropout)          (None, 998, 128)          0
 _________________________________________________________________
-flatten_2 (Flatten)          (None, 20010)             0
+p_re_lu_1 (PReLU)            (None, 998, 128)          127744
 _________________________________________________________________
-dense_3 (Dense)              (None, 64)                1280704
+conv1d_2 (Conv1D)            (None, 994, 128)          82048
 _________________________________________________________________
-dropout_4 (Dropout)          (None, 64)                0
+batch_normalization_2 (Batch (None, 994, 128)          512
 _________________________________________________________________
-p_re_lu_2 (PReLU)            (None, 64)                64
+max_pooling1d_2 (MaxPooling1 (None, 496, 128)          0
 _________________________________________________________________
-dense_4 (Dense)              (None, 64)                4160
+dropout_2 (Dropout)          (None, 496, 128)          0
 _________________________________________________________________
-dropout_5 (Dropout)          (None, 64)                0
+p_re_lu_2 (PReLU)            (None, 496, 128)          63488
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 63488)             0
+_________________________________________________________________
+dense_1 (Dense)              (None, 64)                4063296
+_________________________________________________________________
+dropout_3 (Dropout)          (None, 64)                0
 _________________________________________________________________
 p_re_lu_3 (PReLU)            (None, 64)                64
 _________________________________________________________________
-dense_5 (Dense)              (None, 1)                 65
+dense_2 (Dense)              (None, 64)                4160
 _________________________________________________________________
-activation_4 (Activation)    (None, 1)                 0
-=================================================================
-Total params: 1,305,627
-Trainable params: 1,305,607
-Non-trainable params: 20
+p_re_lu_4 (PReLU)            (None, 64)                64
 _________________________________________________________________
-None
-Number of Epochs:  43
-Batch Size:  16
-Epoch 1/43
- - 60s - loss: 0.3540 - acc: 0.8184
-Epoch 2/43
- - 60s - loss: 0.2801 - acc: 0.8698
-Epoch 3/43
- - 60s - loss: 0.2585 - acc: 0.8795
-Epoch 4/43
- - 59s - loss: 0.2421 - acc: 0.8877
-Epoch 5/43
- - 59s - loss: 0.2301 - acc: 0.8972
-Epoch 6/43
- - 59s - loss: 0.2248 - acc: 0.9012
-Epoch 7/43
- - 59s - loss: 0.2156 - acc: 0.9034
-Epoch 8/43
- - 59s - loss: 0.2120 - acc: 0.9105
-Epoch 9/43
- - 59s - loss: 0.2016 - acc: 0.9116
-Epoch 10/43
- - 59s - loss: 0.1972 - acc: 0.9153
-Epoch 11/43
- - 59s - loss: 0.1946 - acc: 0.9179
-Epoch 12/43
- - 59s - loss: 0.1876 - acc: 0.9226
-Epoch 13/43
- - 59s - loss: 0.1845 - acc: 0.9199
-Epoch 14/43
- - 59s - loss: 0.1822 - acc: 0.9245
-Epoch 15/43
- - 59s - loss: 0.1783 - acc: 0.9256
-Epoch 16/43
- - 59s - loss: 0.1749 - acc: 0.9255
-Epoch 17/43
- - 59s - loss: 0.1674 - acc: 0.9265
-Epoch 18/43
- - 59s - loss: 0.1661 - acc: 0.9290
-Epoch 19/43
- - 59s - loss: 0.1669 - acc: 0.9293
-Epoch 20/43
- - 59s - loss: 0.1644 - acc: 0.9290
-Epoch 21/43
- - 59s - loss: 0.1577 - acc: 0.9338
-Epoch 22/43
- - 59s - loss: 0.1565 - acc: 0.9349
-Epoch 23/43
- - 59s - loss: 0.1561 - acc: 0.9361
-Epoch 24/43
- - 59s - loss: 0.1540 - acc: 0.9371
-Epoch 25/43
- - 59s - loss: 0.1524 - acc: 0.9359
-Epoch 26/43
- - 59s - loss: 0.1497 - acc: 0.9384
-Epoch 27/43
- - 59s - loss: 0.1440 - acc: 0.9406
-Epoch 28/43
- - 59s - loss: 0.1437 - acc: 0.9406
-Epoch 29/43
- - 59s - loss: 0.1425 - acc: 0.9414
-Epoch 30/43
- - 59s - loss: 0.1406 - acc: 0.9420
-Epoch 31/43
- - 59s - loss: 0.1356 - acc: 0.9462
-Epoch 32/43
- - 59s - loss: 0.1381 - acc: 0.9429
-Epoch 33/43
- - 59s - loss: 0.1366 - acc: 0.9429
-Epoch 34/43
- - 59s - loss: 0.1359 - acc: 0.9423
-Epoch 35/43
- - 59s - loss: 0.1319 - acc: 0.9454
-Epoch 36/43
- - 59s - loss: 0.1325 - acc: 0.9452
-Epoch 37/43
- - 59s - loss: 0.1280 - acc: 0.9462
-Epoch 38/43
- - 59s - loss: 0.1298 - acc: 0.9482
-Epoch 39/43
- - 59s - loss: 0.1260 - acc: 0.9478
-Epoch 40/43
- - 59s - loss: 0.1261 - acc: 0.9459
-Epoch 41/43
- - 59s - loss: 0.1240 - acc: 0.9495
-Epoch 42/43
- - 59s - loss: 0.1253 - acc: 0.9473
-Epoch 43/43
- - 59s - loss: 0.1243 - acc: 0.9494
-Accuracy:  0.9277414669571532
-ROC/AUC Score:  0.9723696321250987
-Precision:  0.8461538461538461
-Recall:  0.8367670364500792
-F1 Score:  0.8414342629482071
-
-
-Epoch 1/43
- - 59s - loss: 0.1456 - acc: 0.9440
-Epoch 2/43
- - 59s - loss: 0.1453 - acc: 0.9430
-Epoch 3/43
- - 59s - loss: 0.1387 - acc: 0.9432
-Epoch 4/43
- - 59s - loss: 0.1407 - acc: 0.9446
-Epoch 5/43
- - 59s - loss: 0.1370 - acc: 0.9445
-Epoch 6/43
- - 59s - loss: 0.1345 - acc: 0.9461
-Epoch 7/43
- - 59s - loss: 0.1322 - acc: 0.9469
-Epoch 8/43
- - 59s - loss: 0.1290 - acc: 0.9468
-Epoch 9/43
- - 60s - loss: 0.1294 - acc: 0.9470
-Epoch 10/43
- - 59s - loss: 0.1322 - acc: 0.9479
-Epoch 11/43
- - 59s - loss: 0.1277 - acc: 0.9477
-Epoch 12/43
- - 59s - loss: 0.1278 - acc: 0.9482
-Epoch 13/43
- - 59s - loss: 0.1294 - acc: 0.9475
-Epoch 14/43
- - 59s - loss: 0.1231 - acc: 0.9526
-Epoch 15/43
- - 59s - loss: 0.1222 - acc: 0.9530
-Epoch 16/43
- - 59s - loss: 0.1222 - acc: 0.9513
-Epoch 17/43
- - 59s - loss: 0.1233 - acc: 0.9511
-Epoch 18/43
- - 59s - loss: 0.1221 - acc: 0.9495
-Epoch 19/43
- - 59s - loss: 0.1190 - acc: 0.9525
-Epoch 20/43
- - 59s - loss: 0.1165 - acc: 0.9523
-Epoch 21/43
- - 59s - loss: 0.1153 - acc: 0.9520
-Epoch 22/43
- - 59s - loss: 0.1134 - acc: 0.9528
-Epoch 23/43
- - 59s - loss: 0.1158 - acc: 0.9511
-Epoch 24/43
- - 56s - loss: 0.1127 - acc: 0.9551
-Epoch 25/43
- - 56s - loss: 0.1126 - acc: 0.9556
-Epoch 26/43
- - 57s - loss: 0.1121 - acc: 0.9551
-Epoch 27/43
- - 56s - loss: 0.1086 - acc: 0.9576
-Epoch 28/43
- - 56s - loss: 0.1125 - acc: 0.9522
-Epoch 29/43
- - 57s - loss: 0.1074 - acc: 0.9568
-Epoch 30/43
- - 56s - loss: 0.1059 - acc: 0.9563
-Epoch 31/43
- - 56s - loss: 0.1107 - acc: 0.9529
-Epoch 32/43
- - 57s - loss: 0.1052 - acc: 0.9560
-Epoch 33/43
- - 56s - loss: 0.1085 - acc: 0.9573
-Epoch 34/43
- - 57s - loss: 0.1069 - acc: 0.9552
-Epoch 35/43
- - 56s - loss: 0.1054 - acc: 0.9568
-Epoch 36/43
- - 57s - loss: 0.1051 - acc: 0.9569
-Epoch 37/43
- - 57s - loss: 0.1052 - acc: 0.9571
-Epoch 38/43
- - 57s - loss: 0.1032 - acc: 0.9586
-Epoch 39/43
- - 57s - loss: 0.1056 - acc: 0.9556
-Epoch 40/43
- - 57s - loss: 0.1025 - acc: 0.9580
-Epoch 41/43
- - 56s - loss: 0.1028 - acc: 0.9584
-Epoch 42/43
- - 57s - loss: 0.1030 - acc: 0.9571
-Epoch 43/43
- - 57s - loss: 0.1025 - acc: 0.9563
-Accuracy:  0.9622367465504721
-ROC/AUC Score:  0.9933921214559727
-Precision:  0.879136690647482
-Recall:  0.9683042789223455
-F1 Score:  0.9215686274509804
-
-
-Epoch 1/43
- - 57s - loss: 0.1057 - acc: 0.9559
-Epoch 2/43
- - 57s - loss: 0.1042 - acc: 0.9582
-Epoch 3/43
- - 57s - loss: 0.1068 - acc: 0.9560
-Epoch 4/43
- - 57s - loss: 0.1021 - acc: 0.9591
-Epoch 5/43
- - 57s - loss: 0.1037 - acc: 0.9575
-Epoch 6/43
- - 57s - loss: 0.1004 - acc: 0.9600
-Epoch 7/43
- - 57s - loss: 0.1038 - acc: 0.9571
-Epoch 8/43
- - 56s - loss: 0.1004 - acc: 0.9601
-Epoch 9/43
- - 57s - loss: 0.1017 - acc: 0.9599
-Epoch 10/43
- - 57s - loss: 0.1017 - acc: 0.9589
-Epoch 11/43
- - 56s - loss: 0.1059 - acc: 0.9582
-Epoch 12/43
- - 57s - loss: 0.0980 - acc: 0.9608
-Epoch 13/43
- - 57s - loss: 0.1024 - acc: 0.9595
-Epoch 14/43
- - 57s - loss: 0.1004 - acc: 0.9601
-Epoch 15/43
- - 57s - loss: 0.0974 - acc: 0.9624
-Epoch 16/43
- - 57s - loss: 0.0984 - acc: 0.9587
-Epoch 17/43
- - 56s - loss: 0.1009 - acc: 0.9597
-Epoch 18/43
- - 56s - loss: 0.0997 - acc: 0.9589
-Epoch 19/43
- - 57s - loss: 0.0965 - acc: 0.9602
-Epoch 20/43
- - 57s - loss: 0.0960 - acc: 0.9620
-Epoch 21/43
- - 57s - loss: 0.0969 - acc: 0.9607
-Epoch 22/43
- - 56s - loss: 0.0969 - acc: 0.9607
-Epoch 23/43
- - 56s - loss: 0.0941 - acc: 0.9611
-Epoch 24/43
- - 57s - loss: 0.0949 - acc: 0.9620
-Epoch 25/43
- - 57s - loss: 0.0973 - acc: 0.9612
-Epoch 26/43
- - 56s - loss: 0.0937 - acc: 0.9620
-Epoch 27/43
- - 57s - loss: 0.0951 - acc: 0.9614
-Epoch 28/43
- - 56s - loss: 0.0921 - acc: 0.9641
-Epoch 29/43
- - 56s - loss: 0.0945 - acc: 0.9630
-Epoch 30/43
- - 57s - loss: 0.0940 - acc: 0.9630
-Epoch 31/43
- - 56s - loss: 0.0926 - acc: 0.9635
-Epoch 32/43
- - 57s - loss: 0.0947 - acc: 0.9605
-Epoch 33/43
- - 56s - loss: 0.0938 - acc: 0.9630
-Epoch 34/43
- - 56s - loss: 0.0891 - acc: 0.9662
-Epoch 35/43
- - 57s - loss: 0.0908 - acc: 0.9633
-Epoch 36/43
- - 57s - loss: 0.0934 - acc: 0.9622
-Epoch 37/43
- - 56s - loss: 0.0907 - acc: 0.9634
-Epoch 38/43
- - 57s - loss: 0.0884 - acc: 0.9639
-Epoch 39/43
- - 57s - loss: 0.0919 - acc: 0.9634
-Epoch 40/43
- - 57s - loss: 0.0890 - acc: 0.9641
-Epoch 41/43
- - 57s - loss: 0.0865 - acc: 0.9644
-Epoch 42/43
- - 57s - loss: 0.0875 - acc: 0.9632
-Epoch 43/43
- - 57s - loss: 0.0897 - acc: 0.9640
-Accuracy:  0.9727569923719579
-ROC/AUC Score:  0.9968044620894362
-Precision:  0.9526916802610114
-Recall:  0.926984126984127
-F1 Score:  0.9396621078037007
-
-
-Epoch 1/43
- - 57s - loss: 0.0957 - acc: 0.9599
-Epoch 2/43
- - 56s - loss: 0.0941 - acc: 0.9605
-Epoch 3/43
- - 57s - loss: 0.0891 - acc: 0.9631
-Epoch 4/43
- - 57s - loss: 0.0862 - acc: 0.9647
-Epoch 5/43
- - 57s - loss: 0.0899 - acc: 0.9640
-Epoch 6/43
- - 57s - loss: 0.0928 - acc: 0.9600
-Epoch 7/43
- - 57s - loss: 0.0908 - acc: 0.9641
-Epoch 8/43
- - 57s - loss: 0.0856 - acc: 0.9645
-Epoch 9/43
- - 57s - loss: 0.0913 - acc: 0.9605
-Epoch 10/43
- - 57s - loss: 0.0880 - acc: 0.9652
-Epoch 11/43
- - 57s - loss: 0.0907 - acc: 0.9640
-Epoch 12/43
- - 57s - loss: 0.0911 - acc: 0.9604
-Epoch 13/43
- - 57s - loss: 0.0875 - acc: 0.9642
-Epoch 14/43
- - 57s - loss: 0.0913 - acc: 0.9619
-Epoch 15/43
- - 57s - loss: 0.0883 - acc: 0.9636
-Epoch 16/43
- - 57s - loss: 0.0860 - acc: 0.9647
-Epoch 17/43
- - 57s - loss: 0.0866 - acc: 0.9633
-Epoch 18/43
- - 57s - loss: 0.0857 - acc: 0.9651
-Epoch 19/43
- - 57s - loss: 0.0884 - acc: 0.9640
-Epoch 20/43
- - 57s - loss: 0.0821 - acc: 0.9689
-Epoch 21/43
- - 57s - loss: 0.0856 - acc: 0.9665
-Epoch 22/43
- - 57s - loss: 0.0846 - acc: 0.9645
-Epoch 23/43
- - 57s - loss: 0.0821 - acc: 0.9653
-Epoch 24/43
- - 57s - loss: 0.0804 - acc: 0.9671
-Epoch 25/43
- - 57s - loss: 0.0821 - acc: 0.9665
-Epoch 26/43
- - 57s - loss: 0.0823 - acc: 0.9674
-Epoch 27/43
- - 57s - loss: 0.0863 - acc: 0.9636
-Epoch 28/43
- - 59s - loss: 0.0854 - acc: 0.9651
-Epoch 29/43
- - 59s - loss: 0.0849 - acc: 0.9649
-Epoch 30/43
- - 59s - loss: 0.0806 - acc: 0.9656
-Epoch 31/43
- - 59s - loss: 0.0826 - acc: 0.9649
-Epoch 32/43
- - 59s - loss: 0.0805 - acc: 0.9670
-Epoch 33/43
- - 59s - loss: 0.0815 - acc: 0.9676
-Epoch 34/43
- - 59s - loss: 0.0821 - acc: 0.9652
-Epoch 35/43
- - 60s - loss: 0.0803 - acc: 0.9650
-Epoch 36/43
- - 59s - loss: 0.0815 - acc: 0.9659
-Epoch 37/43
- - 59s - loss: 0.0851 - acc: 0.9646
-Epoch 38/43
- - 59s - loss: 0.0793 - acc: 0.9662
-Epoch 39/43
- - 59s - loss: 0.0815 - acc: 0.9640
-Epoch 40/43
- - 59s - loss: 0.0800 - acc: 0.9667
-Epoch 41/43
- - 59s - loss: 0.0818 - acc: 0.9667
-Epoch 42/43
- - 59s - loss: 0.0773 - acc: 0.9680
-Epoch 43/43
- - 59s - loss: 0.0793 - acc: 0.9658
-Accuracy:  0.979295314202688
-ROC/AUC Score:  0.9964672633066415
-Precision:  0.9704433497536946
-Recall:  0.9380952380952381
-F1 Score:  0.953995157384988
-
-
-Epoch 1/43
- - 59s - loss: 0.0808 - acc: 0.9675
-Epoch 2/43
- - 59s - loss: 0.0818 - acc: 0.9661
-Epoch 3/43
- - 59s - loss: 0.0856 - acc: 0.9643
-Epoch 4/43
- - 59s - loss: 0.0813 - acc: 0.9694
-Epoch 5/43
- - 59s - loss: 0.0823 - acc: 0.9675
-Epoch 6/43
- - 59s - loss: 0.0841 - acc: 0.9668
-Epoch 7/43
- - 59s - loss: 0.0809 - acc: 0.9675
-Epoch 8/43
- - 59s - loss: 0.0844 - acc: 0.9656
-Epoch 9/43
- - 59s - loss: 0.0837 - acc: 0.9649
-Epoch 10/43
- - 59s - loss: 0.0810 - acc: 0.9670
-Epoch 11/43
- - 59s - loss: 0.0811 - acc: 0.9670
-Epoch 12/43
- - 59s - loss: 0.0797 - acc: 0.9681
-Epoch 13/43
- - 59s - loss: 0.0856 - acc: 0.9646
-Epoch 14/43
- - 59s - loss: 0.0819 - acc: 0.9651
-Epoch 15/43
- - 59s - loss: 0.0790 - acc: 0.9679
-Epoch 16/43
- - 59s - loss: 0.0811 - acc: 0.9675
-Epoch 17/43
- - 60s - loss: 0.0796 - acc: 0.9679
-Epoch 18/43
- - 60s - loss: 0.0838 - acc: 0.9651
-Epoch 19/43
- - 59s - loss: 0.0785 - acc: 0.9689
-Epoch 20/43
- - 59s - loss: 0.0796 - acc: 0.9676
-Epoch 21/43
- - 59s - loss: 0.0768 - acc: 0.9702
-Epoch 22/43
- - 60s - loss: 0.0776 - acc: 0.9691
-Epoch 23/43
- - 59s - loss: 0.0775 - acc: 0.9702
-Epoch 24/43
- - 59s - loss: 0.0800 - acc: 0.9683
-Epoch 25/43
- - 59s - loss: 0.0779 - acc: 0.9685
-Epoch 26/43
- - 59s - loss: 0.0780 - acc: 0.9681
-Epoch 27/43
- - 59s - loss: 0.0806 - acc: 0.9679
-Epoch 28/43
- - 59s - loss: 0.0756 - acc: 0.9699
-Epoch 29/43
- - 59s - loss: 0.0781 - acc: 0.9675
-Epoch 30/43
- - 59s - loss: 0.0770 - acc: 0.9691
-Epoch 31/43
- - 59s - loss: 0.0781 - acc: 0.9689
-Epoch 32/43
- - 59s - loss: 0.0769 - acc: 0.9700
-Epoch 33/43
- - 59s - loss: 0.0783 - acc: 0.9687
-Epoch 34/43
- - 59s - loss: 0.0746 - acc: 0.9697
-Epoch 35/43
- - 59s - loss: 0.0775 - acc: 0.9699
-Epoch 36/43
- - 59s - loss: 0.0739 - acc: 0.9715
-Epoch 37/43
- - 59s - loss: 0.0771 - acc: 0.9668
-Epoch 38/43
- - 59s - loss: 0.0780 - acc: 0.9683
-Epoch 39/43
- - 59s - loss: 0.0791 - acc: 0.9683
-Epoch 40/43
- - 59s - loss: 0.0744 - acc: 0.9707
-Epoch 41/43
- - 59s - loss: 0.0749 - acc: 0.9686
-Epoch 42/43
- - 59s - loss: 0.0749 - acc: 0.9689
-Epoch 43/43
- - 59s - loss: 0.0807 - acc: 0.9664
-Accuracy:  0.9814747548129313
-ROC/AUC Score:  0.9984829793119949
-Precision:  0.9559055118110236
-Recall:  0.9634920634920635
-F1 Score:  0.9596837944664032
-
-
-CV AUC Score: 0.99% (+/- 0.01%)
-CV Precision Score: 0.92% (+/- 0.05%)
-CV Recall Score: 0.93% (+/- 0.05%)
-CV F1 Score: 0.92% (+/- 0.04%)
-CV Time:  3:29:59.406457
-Initialising LSTM Model...
-
-Building CNN...
-
-Number of LSTM layers:  1
-Number of LSTM units:  5
-Number of FC layers:  1
-Number of FC units:  64
-Dropout:  0.1767260525291463
-Activation: prelu
-Batch Normalisation: False
-
-
-LR Multiplier:  0.9194488265785095
-Momentum:  0
-Compilation Time:  0.01301264762878418
+dropout_4 (Dropout)          (None, 64)                0
 _________________________________________________________________
-Layer (type)                 Output Shape              Param #
-=================================================================
-cu_dnnlstm_3 (CuDNNLSTM)     (None, 2001, 5)           160
+dense_3 (Dense)              (None, 64)                4160
 _________________________________________________________________
-batch_normalization_3 (Batch (None, 2001, 5)           20
+p_re_lu_5 (PReLU)            (None, 64)                64
 _________________________________________________________________
-dropout_6 (Dropout)          (None, 2001, 5)           0
+dropout_5 (Dropout)          (None, 64)                0
 _________________________________________________________________
-p_re_lu_4 (PReLU)            (None, 2001, 5)           10005
-_________________________________________________________________
-cu_dnnlstm_4 (CuDNNLSTM)     (None, 2001, 5)           240
-_________________________________________________________________
-dropout_7 (Dropout)          (None, 2001, 5)           0
-_________________________________________________________________
-p_re_lu_5 (PReLU)            (None, 2001, 5)           10005
-_________________________________________________________________
-flatten_3 (Flatten)          (None, 10005)             0
-_________________________________________________________________
-dense_6 (Dense)              (None, 64)                640384
-_________________________________________________________________
-dropout_8 (Dropout)          (None, 64)                0
+dense_4 (Dense)              (None, 64)                4160
 _________________________________________________________________
 p_re_lu_6 (PReLU)            (None, 64)                64
 _________________________________________________________________
-dense_7 (Dense)              (None, 1)                 65
-_________________________________________________________________
-activation_5 (Activation)    (None, 1)                 0
+dense_5 (Dense)              (None, 1)                 65
 =================================================================
-Total params: 660,943
-Trainable params: 660,933
-Non-trainable params: 10
+Total params: 4,351,169
+Trainable params: 4,350,657
+Non-trainable params: 512
 _________________________________________________________________
 None
-Number of Epochs:  40
-Batch Size:  16
-Epoch 1/40
- - 110s - loss: 0.5443 - acc: 0.7493
-Epoch 2/40
- - 110s - loss: 0.4575 - acc: 0.7725
-Epoch 3/40
- - 110s - loss: 0.4118 - acc: 0.7925
-Epoch 4/40
- - 110s - loss: 0.3784 - acc: 0.8154
-Epoch 5/40
- - 110s - loss: 0.3512 - acc: 0.8348
-Epoch 6/40
- - 110s - loss: 0.3356 - acc: 0.8477
-Epoch 7/40
- - 110s - loss: 0.3235 - acc: 0.8554
-Epoch 8/40
- - 110s - loss: 0.3114 - acc: 0.8606
-Epoch 9/40
- - 110s - loss: 0.3060 - acc: 0.8619
-Epoch 10/40
- - 110s - loss: 0.3012 - acc: 0.8644
-Epoch 11/40
- - 110s - loss: 0.2973 - acc: 0.8669
-Epoch 12/40
- - 110s - loss: 0.2929 - acc: 0.8700
-Epoch 13/40
- - 110s - loss: 0.2893 - acc: 0.8716
-Epoch 14/40
- - 110s - loss: 0.2876 - acc: 0.8713
-Epoch 15/40
- - 110s - loss: 0.2863 - acc: 0.8733
-Epoch 16/40
- - 110s - loss: 0.2845 - acc: 0.8741
-Epoch 17/40
- - 110s - loss: 0.2797 - acc: 0.8810
-Epoch 18/40
- - 111s - loss: 0.2791 - acc: 0.8776
-Epoch 19/40
- - 111s - loss: 0.2762 - acc: 0.8812
-Epoch 20/40
- - 110s - loss: 0.2757 - acc: 0.8801
-Epoch 21/40
- - 111s - loss: 0.2746 - acc: 0.8798
-Epoch 22/40
- - 109s - loss: 0.2743 - acc: 0.8832
-Epoch 23/40
- - 105s - loss: 0.2729 - acc: 0.8842
-Epoch 24/40
- - 105s - loss: 0.2713 - acc: 0.8825
-Epoch 25/40
- - 105s - loss: 0.2694 - acc: 0.8845
-Epoch 26/40
- - 106s - loss: 0.2684 - acc: 0.8849
-Epoch 27/40
- - 110s - loss: 0.2671 - acc: 0.8830
-Epoch 28/40
- - 110s - loss: 0.2659 - acc: 0.8845
-Epoch 29/40
- - 110s - loss: 0.2658 - acc: 0.8855
-Epoch 30/40
- - 110s - loss: 0.2618 - acc: 0.8861
-Epoch 31/40
- - 110s - loss: 0.2620 - acc: 0.8865
-Epoch 32/40
- - 110s - loss: 0.2622 - acc: 0.8859
-Epoch 33/40
- - 110s - loss: 0.2617 - acc: 0.8885
-Epoch 34/40
- - 110s - loss: 0.2600 - acc: 0.8880
-Epoch 35/40
- - 110s - loss: 0.2585 - acc: 0.8890
-Epoch 36/40
- - 110s - loss: 0.2571 - acc: 0.8916
-Epoch 37/40
- - 110s - loss: 0.2563 - acc: 0.8899
-Epoch 38/40
- - 110s - loss: 0.2545 - acc: 0.8921
-Epoch 39/40
- - 110s - loss: 0.2562 - acc: 0.8895
-Epoch 40/40
- - 110s - loss: 0.2529 - acc: 0.8932
-Accuracy:  0.8961510530137982
-ROC/AUC Score:  0.9471750423443188
-Precision:  0.7969018932874354
-Recall:  0.7337559429477021
-F1 Score:  0.764026402640264
+Epoch 1/36
+ - 19s - loss: 0.4397 - acc: 0.7725
+Epoch 2/36
+ - 17s - loss: 0.3497 - acc: 0.8205
+Epoch 3/36
+ - 17s - loss: 0.3109 - acc: 0.8576
+Epoch 4/36
+ - 18s - loss: 0.2828 - acc: 0.8800
+Epoch 5/36
+ - 18s - loss: 0.2656 - acc: 0.8882
+Epoch 6/36
+ - 18s - loss: 0.2495 - acc: 0.8965
+Epoch 7/36
+ - 18s - loss: 0.2372 - acc: 0.9022
+Epoch 8/36
+ - 18s - loss: 0.2272 - acc: 0.9066
+Epoch 9/36
+ - 18s - loss: 0.2196 - acc: 0.9087
+Epoch 10/36
+ - 18s - loss: 0.2100 - acc: 0.9144
+Epoch 11/36
+ - 18s - loss: 0.2033 - acc: 0.9177
+Epoch 12/36
+ - 19s - loss: 0.1990 - acc: 0.9202
+Epoch 13/36
+ - 18s - loss: 0.1936 - acc: 0.9210
+Epoch 14/36
+ - 18s - loss: 0.1893 - acc: 0.9248
+Epoch 15/36
+ - 18s - loss: 0.1881 - acc: 0.9233
+Epoch 16/36
+ - 18s - loss: 0.1797 - acc: 0.9288
+Epoch 17/36
+ - 18s - loss: 0.1746 - acc: 0.9286
+Epoch 18/36
+ - 18s - loss: 0.1730 - acc: 0.9299
+Epoch 19/36
+ - 18s - loss: 0.1672 - acc: 0.9332
+Epoch 20/36
+ - 18s - loss: 0.1652 - acc: 0.9345
+Epoch 21/36
+ - 18s - loss: 0.1621 - acc: 0.9347
+Epoch 22/36
+ - 18s - loss: 0.1584 - acc: 0.9358
+Epoch 23/36
+ - 18s - loss: 0.1519 - acc: 0.9393
+Epoch 24/36
+ - 18s - loss: 0.1512 - acc: 0.9406
+Epoch 25/36
+ - 18s - loss: 0.1474 - acc: 0.9407
+Epoch 26/36
+ - 18s - loss: 0.1438 - acc: 0.9443
+Epoch 27/36
+ - 18s - loss: 0.1378 - acc: 0.9453
+Epoch 28/36
+ - 18s - loss: 0.1367 - acc: 0.9462
+Epoch 29/36
+ - 18s - loss: 0.1364 - acc: 0.9467
+Epoch 30/36
+ - 18s - loss: 0.1325 - acc: 0.9474
+Epoch 31/36
+ - 18s - loss: 0.1447 - acc: 0.9420
+Epoch 32/36
+ - 18s - loss: 0.1355 - acc: 0.9490
+Epoch 33/36
+ - 18s - loss: 0.1289 - acc: 0.9504
+Epoch 34/36
+ - 18s - loss: 0.1265 - acc: 0.9510
+Epoch 35/36
+ - 18s - loss: 0.1247 - acc: 0.9499
+Epoch 36/36
+ - 18s - loss: 0.1203 - acc: 0.9517
 
 
-Epoch 1/40
- - 110s - loss: 0.2531 - acc: 0.8917
-Epoch 2/40
- - 110s - loss: 0.2549 - acc: 0.8931
-Epoch 3/40
- - 110s - loss: 0.2541 - acc: 0.8941
-Epoch 4/40
- - 110s - loss: 0.2525 - acc: 0.8926
-Epoch 5/40
- - 110s - loss: 0.2517 - acc: 0.8915
-Epoch 6/40
- - 110s - loss: 0.2503 - acc: 0.8936
-Epoch 7/40
- - 110s - loss: 0.2496 - acc: 0.8935
-Epoch 8/40
- - 110s - loss: 0.2492 - acc: 0.8962
-Epoch 9/40
- - 110s - loss: 0.2500 - acc: 0.8934
-Epoch 10/40
- - 110s - loss: 0.2467 - acc: 0.8953
-Epoch 11/40
- - 110s - loss: 0.2467 - acc: 0.8943
-Epoch 12/40
- - 110s - loss: 0.2449 - acc: 0.8972
-Epoch 13/40
- - 110s - loss: 0.2452 - acc: 0.8959
-Epoch 14/40
- - 110s - loss: 0.2451 - acc: 0.8960
-Epoch 15/40
- - 110s - loss: 0.2426 - acc: 0.8991
-Epoch 16/40
- - 110s - loss: 0.2418 - acc: 0.8978
-Epoch 17/40
- - 110s - loss: 0.2437 - acc: 0.8970
-Epoch 18/40
- - 110s - loss: 0.2409 - acc: 0.8984
-Epoch 19/40
- - 110s - loss: 0.2392 - acc: 0.8999
-Epoch 20/40
- - 110s - loss: 0.2414 - acc: 0.8980
-Epoch 21/40
- - 110s - loss: 0.2405 - acc: 0.8977
-Epoch 22/40
- - 110s - loss: 0.2404 - acc: 0.8990
-Epoch 23/40
- - 110s - loss: 0.2373 - acc: 0.8997
-Epoch 24/40
- - 110s - loss: 0.2391 - acc: 0.9008
-Epoch 25/40
- - 110s - loss: 0.2371 - acc: 0.8999
-Epoch 26/40
- - 110s - loss: 0.2368 - acc: 0.9004
-Epoch 27/40
- - 110s - loss: 0.2367 - acc: 0.9031
-Epoch 28/40
- - 110s - loss: 0.2363 - acc: 0.9010
-Epoch 29/40
- - 110s - loss: 0.2365 - acc: 0.8989
-Epoch 30/40
- - 110s - loss: 0.2370 - acc: 0.8999
-Epoch 31/40
- - 110s - loss: 0.2374 - acc: 0.8989
-Epoch 32/40
- - 110s - loss: 0.2361 - acc: 0.9003
-Epoch 33/40
- - 110s - loss: 0.2366 - acc: 0.9028
-Epoch 34/40
- - 110s - loss: 0.2333 - acc: 0.9021
-Epoch 35/40
- - 110s - loss: 0.2346 - acc: 0.9011
-Epoch 36/40
- - 110s - loss: 0.2354 - acc: 0.9023
-Epoch 37/40
- - 110s - loss: 0.2347 - acc: 0.9027
-Epoch 38/40
- - 110s - loss: 0.2348 - acc: 0.9009
-Epoch 39/40
- - 110s - loss: 0.2362 - acc: 0.9014
-Epoch 40/40
- - 110s - loss: 0.2328 - acc: 0.9023
-Accuracy:  0.9139433551198257
-ROC/AUC Score:  0.9597473300124737
-Precision:  0.8068535825545171
-Recall:  0.820919175911252
-F1 Score:  0.8138256087981147
+Acc:  0.9179970972423802
+ROC/AUC Score:  0.9638370402154998
+Precision:  0.7827298050139275
+Recall:  0.8892405063291139
 
 
-Epoch 1/40
- - 111s - loss: 0.2324 - acc: 0.9042
-Epoch 2/40
- - 111s - loss: 0.2309 - acc: 0.9009
-Epoch 3/40
- - 111s - loss: 0.2295 - acc: 0.9050
-Epoch 4/40
- - 111s - loss: 0.2298 - acc: 0.9038
-Epoch 5/40
- - 111s - loss: 0.2302 - acc: 0.9056
-Epoch 6/40
- - 111s - loss: 0.2298 - acc: 0.9048
-Epoch 7/40
- - 110s - loss: 0.2281 - acc: 0.9050
-Epoch 8/40
- - 109s - loss: 0.2299 - acc: 0.9042
-Epoch 9/40
- - 105s - loss: 0.2308 - acc: 0.9049
-Epoch 10/40
- - 105s - loss: 0.2298 - acc: 0.9026
-Epoch 11/40
- - 105s - loss: 0.2304 - acc: 0.9037
-Epoch 12/40
- - 105s - loss: 0.2279 - acc: 0.9035
-Epoch 13/40
- - 105s - loss: 0.2288 - acc: 0.9034
-Epoch 14/40
- - 105s - loss: 0.2285 - acc: 0.9048
-Epoch 15/40
- - 105s - loss: 0.2289 - acc: 0.9038
-Epoch 16/40
- - 105s - loss: 0.2251 - acc: 0.9058
-Epoch 17/40
- - 105s - loss: 0.2295 - acc: 0.9068
-Epoch 18/40
- - 105s - loss: 0.2258 - acc: 0.9048
-Epoch 19/40
- - 105s - loss: 0.2269 - acc: 0.9047
-Epoch 20/40
- - 105s - loss: 0.2265 - acc: 0.9036
-Epoch 21/40
- - 105s - loss: 0.2255 - acc: 0.9073
-Epoch 22/40
- - 105s - loss: 0.2258 - acc: 0.9058
-Epoch 23/40
- - 105s - loss: 0.2270 - acc: 0.9061
-Epoch 24/40
- - 105s - loss: 0.2252 - acc: 0.9077
-Epoch 25/40
- - 105s - loss: 0.2266 - acc: 0.9050
-Epoch 26/40
- - 105s - loss: 0.2273 - acc: 0.9053
-Epoch 27/40
- - 105s - loss: 0.2259 - acc: 0.9045
-Epoch 28/40
- - 105s - loss: 0.2275 - acc: 0.9063
-Epoch 29/40
- - 105s - loss: 0.2255 - acc: 0.9063
-Epoch 30/40
- - 105s - loss: 0.2259 - acc: 0.9040
-Epoch 31/40
- - 105s - loss: 0.2239 - acc: 0.9088
-Epoch 32/40
- - 105s - loss: 0.2267 - acc: 0.9050
-Epoch 33/40
- - 105s - loss: 0.2243 - acc: 0.9066
-Epoch 34/40
- - 105s - loss: 0.2260 - acc: 0.9069
-Epoch 35/40
- - 105s - loss: 0.2255 - acc: 0.9048
-Epoch 36/40
- - 105s - loss: 0.2263 - acc: 0.9049
-Epoch 37/40
- - 105s - loss: 0.2236 - acc: 0.9071
-Epoch 38/40
- - 105s - loss: 0.2215 - acc: 0.9068
-Epoch 39/40
- - 105s - loss: 0.2240 - acc: 0.9057
-Epoch 40/40
- - 105s - loss: 0.2243 - acc: 0.9082
-Accuracy:  0.9066472938612423
-ROC/AUC Score:  0.9587122146707638
-Precision:  0.7714701601164483
-Recall:  0.8412698412698413
-F1 Score:  0.8048595292331054
+Epoch 1/36
+ - 18s - loss: 0.1326 - acc: 0.9505
+Epoch 2/36
+ - 18s - loss: 0.1296 - acc: 0.9513
+Epoch 3/36
+ - 18s - loss: 0.1260 - acc: 0.9505
+Epoch 4/36
+ - 18s - loss: 0.1212 - acc: 0.9535
+Epoch 5/36
+ - 18s - loss: 0.1206 - acc: 0.9533
+Epoch 6/36
+ - 18s - loss: 0.1189 - acc: 0.9546
+Epoch 7/36
+ - 18s - loss: 0.1161 - acc: 0.9558
+Epoch 8/36
+ - 18s - loss: 0.1127 - acc: 0.9569
+Epoch 9/36
+ - 18s - loss: 0.1114 - acc: 0.9558
+Epoch 10/36
+ - 18s - loss: 0.1103 - acc: 0.9582
+Epoch 11/36
+ - 18s - loss: 0.1070 - acc: 0.9583
+Epoch 12/36
+ - 18s - loss: 0.1112 - acc: 0.9595
+Epoch 13/36
+ - 18s - loss: 0.1022 - acc: 0.9595
+Epoch 14/36
+ - 18s - loss: 0.1024 - acc: 0.9614
+Epoch 15/36
+ - 18s - loss: 0.0997 - acc: 0.9632
+Epoch 16/36
+ - 18s - loss: 0.0979 - acc: 0.9630
+Epoch 17/36
+ - 18s - loss: 0.0955 - acc: 0.9653
+Epoch 18/36
+ - 18s - loss: 0.0977 - acc: 0.9626
+Epoch 19/36
+ - 18s - loss: 0.0920 - acc: 0.9671
+Epoch 20/36
+ - 18s - loss: 0.0929 - acc: 0.9646
+Epoch 21/36
+ - 18s - loss: 0.0897 - acc: 0.9652
+Epoch 22/36
+ - 18s - loss: 0.0888 - acc: 0.9666
+Epoch 23/36
+ - 18s - loss: 0.0871 - acc: 0.9681
+Epoch 24/36
+ - 19s - loss: 0.0879 - acc: 0.9660
+Epoch 25/36
+ - 18s - loss: 0.0872 - acc: 0.9676
+Epoch 26/36
+ - 18s - loss: 0.0826 - acc: 0.9699
+Epoch 27/36
+ - 18s - loss: 0.0834 - acc: 0.9696
+Epoch 28/36
+ - 18s - loss: 0.0829 - acc: 0.9697
+Epoch 29/36
+ - 18s - loss: 0.0823 - acc: 0.9703
+Epoch 30/36
+ - 18s - loss: 0.0795 - acc: 0.9706
+Epoch 31/36
+ - 18s - loss: 0.0828 - acc: 0.9680
+Epoch 32/36
+ - 18s - loss: 0.0796 - acc: 0.9692
+Epoch 33/36
+ - 18s - loss: 0.0794 - acc: 0.9693
+Epoch 34/36
+ - 18s - loss: 0.0772 - acc: 0.9712
+Epoch 35/36
+ - 18s - loss: 0.0763 - acc: 0.9713
+Epoch 36/36
+ - 18s - loss: 0.0753 - acc: 0.9710
 
 
-Epoch 1/40
- - 105s - loss: 0.2242 - acc: 0.9061
-Epoch 2/40
- - 105s - loss: 0.2235 - acc: 0.9068
-Epoch 3/40
- - 105s - loss: 0.2234 - acc: 0.9067
-Epoch 4/40
- - 105s - loss: 0.2243 - acc: 0.9044
-Epoch 5/40
- - 105s - loss: 0.2239 - acc: 0.9070
-Epoch 6/40
- - 105s - loss: 0.2249 - acc: 0.9048
-Epoch 7/40
- - 105s - loss: 0.2242 - acc: 0.9062
-Epoch 8/40
- - 105s - loss: 0.2237 - acc: 0.9052
-Epoch 9/40
- - 106s - loss: 0.2240 - acc: 0.9060
-Epoch 10/40
- - 105s - loss: 0.2230 - acc: 0.9060
-Epoch 11/40
- - 105s - loss: 0.2215 - acc: 0.9067
-Epoch 12/40
- - 105s - loss: 0.2231 - acc: 0.9078
-Epoch 13/40
- - 108s - loss: 0.2249 - acc: 0.9056
-Epoch 14/40
- - 110s - loss: 0.2232 - acc: 0.9047
-Epoch 15/40
- - 110s - loss: 0.2207 - acc: 0.9068
-Epoch 16/40
- - 110s - loss: 0.2226 - acc: 0.9044
-Epoch 17/40
- - 110s - loss: 0.2196 - acc: 0.9073
-Epoch 18/40
- - 110s - loss: 0.2223 - acc: 0.9066
-Epoch 19/40
- - 110s - loss: 0.2229 - acc: 0.9071
-Epoch 20/40
- - 110s - loss: 0.2201 - acc: 0.9088
-Epoch 21/40
- - 110s - loss: 0.2243 - acc: 0.9067
-Epoch 22/40
- - 110s - loss: 0.2218 - acc: 0.9086
-Epoch 23/40
- - 110s - loss: 0.2205 - acc: 0.9084
-Epoch 24/40
- - 110s - loss: 0.2203 - acc: 0.9071
-Epoch 25/40
- - 110s - loss: 0.2216 - acc: 0.9048
-Epoch 26/40
- - 110s - loss: 0.2222 - acc: 0.9062
-Epoch 27/40
- - 110s - loss: 0.2213 - acc: 0.9064
-Epoch 28/40
- - 110s - loss: 0.2211 - acc: 0.9081
-Epoch 29/40
- - 110s - loss: 0.2207 - acc: 0.9057
-Epoch 30/40
- - 110s - loss: 0.2196 - acc: 0.9072
-Epoch 31/40
- - 110s - loss: 0.2211 - acc: 0.9066
-Epoch 32/40
- - 110s - loss: 0.2188 - acc: 0.9088
-Epoch 33/40
- - 110s - loss: 0.2232 - acc: 0.9057
-Epoch 34/40
- - 110s - loss: 0.2185 - acc: 0.9085
-Epoch 35/40
- - 110s - loss: 0.2207 - acc: 0.9053
-Epoch 36/40
- - 110s - loss: 0.2188 - acc: 0.9065
-Epoch 37/40
- - 110s - loss: 0.2195 - acc: 0.9069
-Epoch 38/40
- - 110s - loss: 0.2185 - acc: 0.9108
-Epoch 39/40
- - 110s - loss: 0.2175 - acc: 0.9089
-Epoch 40/40
- - 110s - loss: 0.2186 - acc: 0.9096
-Accuracy:  0.907737014166364
-ROC/AUC Score:  0.9605223216622181
-Precision:  0.7865853658536586
-Recall:  0.819047619047619
-F1 Score:  0.8024883359253498
+Acc:  0.9658925979680697
+ROC/AUC Score:  0.9943234642065366
+Precision:  0.9039039039039038
+Recall:  0.9525316455696202
 
 
-Epoch 1/40
- - 110s - loss: 0.2170 - acc: 0.9117
-Epoch 2/40
- - 110s - loss: 0.2172 - acc: 0.9098
-Epoch 3/40
- - 110s - loss: 0.2163 - acc: 0.9092
-Epoch 4/40
- - 110s - loss: 0.2182 - acc: 0.9102
-Epoch 5/40
- - 110s - loss: 0.2159 - acc: 0.9099
-Epoch 6/40
- - 110s - loss: 0.2159 - acc: 0.9107
-Epoch 7/40
- - 110s - loss: 0.2160 - acc: 0.9088
-Epoch 8/40
- - 110s - loss: 0.2173 - acc: 0.9080
-Epoch 9/40
- - 110s - loss: 0.2143 - acc: 0.9092
-Epoch 10/40
- - 110s - loss: 0.2142 - acc: 0.9107
-Epoch 11/40
- - 110s - loss: 0.2142 - acc: 0.9094
-Epoch 12/40
- - 110s - loss: 0.2140 - acc: 0.9094
-Epoch 13/40
- - 110s - loss: 0.2171 - acc: 0.9077
-Epoch 14/40
- - 110s - loss: 0.2151 - acc: 0.9089
-Epoch 15/40
- - 110s - loss: 0.2163 - acc: 0.9106
-Epoch 16/40
- - 110s - loss: 0.2140 - acc: 0.9109
-Epoch 17/40
- - 110s - loss: 0.2165 - acc: 0.9098
-Epoch 18/40
- - 110s - loss: 0.2149 - acc: 0.9104
-Epoch 19/40
- - 110s - loss: 0.2138 - acc: 0.9098
-Epoch 20/40
- - 110s - loss: 0.2155 - acc: 0.9109
-Epoch 21/40
- - 111s - loss: 0.2159 - acc: 0.9098
-Epoch 22/40
- - 111s - loss: 0.2160 - acc: 0.9092
-Epoch 23/40
- - 111s - loss: 0.2152 - acc: 0.9082
-Epoch 24/40
- - 110s - loss: 0.2132 - acc: 0.9107
-Epoch 25/40
- - 110s - loss: 0.2127 - acc: 0.9106
-Epoch 26/40
- - 110s - loss: 0.2134 - acc: 0.9099
-Epoch 27/40
- - 110s - loss: 0.2143 - acc: 0.9100
-Epoch 28/40
- - 110s - loss: 0.2157 - acc: 0.9098
-Epoch 29/40
- - 110s - loss: 0.2133 - acc: 0.9111
-Epoch 30/40
- - 110s - loss: 0.2138 - acc: 0.9087
-Epoch 31/40
- - 110s - loss: 0.2133 - acc: 0.9086
-Epoch 32/40
- - 110s - loss: 0.2130 - acc: 0.9116
-Epoch 33/40
- - 110s - loss: 0.2128 - acc: 0.9109
-Epoch 34/40
- - 110s - loss: 0.2093 - acc: 0.9108
-Epoch 35/40
- - 110s - loss: 0.2131 - acc: 0.9088
-Epoch 36/40
- - 110s - loss: 0.2119 - acc: 0.9107
-Epoch 37/40
- - 110s - loss: 0.2127 - acc: 0.9088
-Epoch 38/40
- - 110s - loss: 0.2152 - acc: 0.9094
-Epoch 39/40
- - 110s - loss: 0.2134 - acc: 0.9084
-Epoch 40/40
- - 110s - loss: 0.2135 - acc: 0.9104
-Accuracy:  0.9102796948783146
-ROC/AUC Score:  0.9599585791295636
-Precision:  0.7812041116005873
-Recall:  0.8444444444444444
-F1 Score:  0.8115942028985507
+Epoch 1/36
+ - 18s - loss: 0.0768 - acc: 0.9722
+Epoch 2/36
+ - 18s - loss: 0.0772 - acc: 0.9710
+Epoch 3/36
+ - 18s - loss: 0.0775 - acc: 0.9686
+Epoch 4/36
+ - 18s - loss: 0.0767 - acc: 0.9718
+Epoch 5/36
+ - 18s - loss: 0.0749 - acc: 0.9713
+Epoch 6/36
+ - 18s - loss: 0.0761 - acc: 0.9709
+Epoch 7/36
+ - 18s - loss: 0.0727 - acc: 0.9722
+Epoch 8/36
+ - 18s - loss: 0.0757 - acc: 0.9726
+Epoch 9/36
+ - 18s - loss: 0.0723 - acc: 0.9725
+Epoch 10/36
+ - 18s - loss: 0.0689 - acc: 0.9747
+Epoch 11/36
+ - 19s - loss: 0.0739 - acc: 0.9722
+Epoch 12/36
+ - 19s - loss: 0.0703 - acc: 0.9733
+Epoch 13/36
+ - 19s - loss: 0.0714 - acc: 0.9712
+Epoch 14/36
+ - 19s - loss: 0.0674 - acc: 0.9754
+Epoch 15/36
+ - 19s - loss: 0.0672 - acc: 0.9744
+Epoch 16/36
+ - 19s - loss: 0.0718 - acc: 0.9713
+Epoch 17/36
+ - 19s - loss: 0.0687 - acc: 0.9736
+Epoch 18/36
+ - 19s - loss: 0.0633 - acc: 0.9764
+Epoch 19/36
+ - 19s - loss: 0.0688 - acc: 0.9738
+Epoch 20/36
+ - 19s - loss: 0.0681 - acc: 0.9751
+Epoch 21/36
+ - 19s - loss: 0.0641 - acc: 0.9746
+Epoch 22/36
+ - 19s - loss: 0.0684 - acc: 0.9747
+Epoch 23/36
+ - 19s - loss: 0.0650 - acc: 0.9760
+Epoch 24/36
+ - 19s - loss: 0.0629 - acc: 0.9766
+Epoch 25/36
+ - 19s - loss: 0.0657 - acc: 0.9752
+Epoch 26/36
+ - 19s - loss: 0.0635 - acc: 0.9772
+Epoch 27/36
+ - 19s - loss: 0.0627 - acc: 0.9775
+Epoch 28/36
+ - 19s - loss: 0.0609 - acc: 0.9766
+Epoch 29/36
+ - 19s - loss: 0.0606 - acc: 0.9770
+Epoch 30/36
+ - 19s - loss: 0.0618 - acc: 0.9775
+Epoch 31/36
+ - 19s - loss: 0.0605 - acc: 0.9778
+Epoch 32/36
+ - 19s - loss: 0.0609 - acc: 0.9774
+Epoch 33/36
+ - 19s - loss: 0.0602 - acc: 0.9761
+Epoch 34/36
+ - 19s - loss: 0.0584 - acc: 0.9781
+Epoch 35/36
+ - 19s - loss: 0.0606 - acc: 0.9767
+Epoch 36/36
+ - 19s - loss: 0.0602 - acc: 0.9785
 
 
-CV AUC Score: 0.96% (+/- 0.01%)
-CV Precision Score: 0.79% (+/- 0.01%)
-CV Recall Score: 0.81% (+/- 0.04%)
-CV F1 Score: 0.80% (+/- 0.02%)
-CV Time:  6:05:44.290274
-Initialising LSTM Model...
-
-Building CNN...
-
-Number of LSTM layers:  1
-Number of LSTM units:  5
-Number of FC layers:  0
-Number of FC units:  64
-Dropout:  0.2726161875859378
-Activation: prelu
-Batch Normalisation: False
+Acc:  0.9862018881626725
+ROC/AUC Score:  0.9989597345529548
+Precision:  0.9743589743589743
+Recall:  0.9650793650793651
 
 
-LR Multiplier:  1.4562580203404663
-Momentum:  0.4
-Compilation Time:  0.014002323150634766
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #
-=================================================================
-cu_dnnlstm_5 (CuDNNLSTM)     (None, 2001, 5)           160
-_________________________________________________________________
-batch_normalization_4 (Batch (None, 2001, 5)           20
-_________________________________________________________________
-dropout_9 (Dropout)          (None, 2001, 5)           0
-_________________________________________________________________
-p_re_lu_7 (PReLU)            (None, 2001, 5)           10005
-_________________________________________________________________
-cu_dnnlstm_6 (CuDNNLSTM)     (None, 2001, 5)           240
-_________________________________________________________________
-dropout_10 (Dropout)         (None, 2001, 5)           0
-_________________________________________________________________
-p_re_lu_8 (PReLU)            (None, 2001, 5)           10005
-_________________________________________________________________
-flatten_4 (Flatten)          (None, 10005)             0
-_________________________________________________________________
-dense_8 (Dense)              (None, 1)                 10006
-_________________________________________________________________
-activation_6 (Activation)    (None, 1)                 0
-=================================================================
-Total params: 30,436
-Trainable params: 30,426
-Non-trainable params: 10
-_________________________________________________________________
-None
-Number of Epochs:  31
-Batch Size:  32
-Epoch 1/31
- - 57s - loss: 0.4381 - acc: 0.7831
-Epoch 2/31
- - 57s - loss: 0.3647 - acc: 0.8302
-Epoch 3/31
- - 57s - loss: 0.3389 - acc: 0.8416
-Epoch 4/31
- - 57s - loss: 0.3272 - acc: 0.8502
-Epoch 5/31
- - 57s - loss: 0.3196 - acc: 0.8530
-Epoch 6/31
- - 57s - loss: 0.3150 - acc: 0.8545
-Epoch 7/31
- - 57s - loss: 0.3084 - acc: 0.8595
-Epoch 8/31
- - 57s - loss: 0.3014 - acc: 0.8650
-Epoch 9/31
- - 57s - loss: 0.2974 - acc: 0.8646
-Epoch 10/31
- - 57s - loss: 0.2952 - acc: 0.8670
-Epoch 11/31
- - 57s - loss: 0.2891 - acc: 0.8698
-Epoch 12/31
- - 57s - loss: 0.2865 - acc: 0.8702
-Epoch 13/31
- - 57s - loss: 0.2827 - acc: 0.8741
-Epoch 14/31
- - 57s - loss: 0.2804 - acc: 0.8751
-Epoch 15/31
- - 57s - loss: 0.2768 - acc: 0.8783
-Epoch 16/31
- - 57s - loss: 0.2754 - acc: 0.8754
-Epoch 17/31
- - 57s - loss: 0.2712 - acc: 0.8813
-Epoch 18/31
- - 57s - loss: 0.2697 - acc: 0.8800
-Epoch 19/31
- - 57s - loss: 0.2695 - acc: 0.8816
-Epoch 20/31
- - 57s - loss: 0.2651 - acc: 0.8841
-Epoch 21/31
- - 57s - loss: 0.2649 - acc: 0.8830
-Epoch 22/31
- - 57s - loss: 0.2625 - acc: 0.8864
-Epoch 23/31
- - 57s - loss: 0.2598 - acc: 0.8884
-Epoch 24/31
- - 57s - loss: 0.2579 - acc: 0.8875
-Epoch 25/31
- - 57s - loss: 0.2576 - acc: 0.8881
-Epoch 26/31
- - 57s - loss: 0.2566 - acc: 0.8880
-Epoch 27/31
- - 57s - loss: 0.2530 - acc: 0.8899
-Epoch 28/31
- - 57s - loss: 0.2535 - acc: 0.8888
-Epoch 29/31
- - 57s - loss: 0.2506 - acc: 0.8919
-Epoch 30/31
- - 57s - loss: 0.2499 - acc: 0.8924
-Epoch 31/31
- - 57s - loss: 0.2479 - acc: 0.8956
-Accuracy:  0.8954248366013072
-ROC/AUC Score:  0.9533089033922483
-Precision:  0.825426944971537
-Recall:  0.6893819334389857
-F1 Score:  0.7512953367875647
+Epoch 1/36
+ - 19s - loss: 0.0627 - acc: 0.9765
+Epoch 2/36
+ - 19s - loss: 0.0564 - acc: 0.9783
+Epoch 3/36
+ - 19s - loss: 0.0614 - acc: 0.9766
+Epoch 4/36
+ - 19s - loss: 0.0601 - acc: 0.9781
+Epoch 5/36
+ - 19s - loss: 0.0544 - acc: 0.9797
+Epoch 6/36
+ - 19s - loss: 0.0562 - acc: 0.9796
+Epoch 7/36
+ - 19s - loss: 0.0562 - acc: 0.9797
+Epoch 8/36
+ - 19s - loss: 0.0576 - acc: 0.9795
+Epoch 9/36
+ - 19s - loss: 0.0576 - acc: 0.9776
+Epoch 10/36
+ - 19s - loss: 0.0549 - acc: 0.9800
+Epoch 11/36
+ - 19s - loss: 0.0557 - acc: 0.9788
+Epoch 12/36
+ - 19s - loss: 0.0554 - acc: 0.9806
+Epoch 13/36
+ - 19s - loss: 0.0528 - acc: 0.9810
+Epoch 14/36
+ - 19s - loss: 0.0560 - acc: 0.9790
+Epoch 15/36
+ - 19s - loss: 0.0534 - acc: 0.9798
+Epoch 16/36
+ - 19s - loss: 0.0563 - acc: 0.9792
+Epoch 17/36
+ - 19s - loss: 0.0549 - acc: 0.9793
+Epoch 18/36
+ - 19s - loss: 0.0496 - acc: 0.9809
+Epoch 19/36
+ - 19s - loss: 0.0537 - acc: 0.9809
+Epoch 20/36
+ - 19s - loss: 0.0529 - acc: 0.9806
+Epoch 21/36
+ - 19s - loss: 0.0536 - acc: 0.9806
+Epoch 22/36
+ - 19s - loss: 0.0533 - acc: 0.9799
+Epoch 23/36
+ - 19s - loss: 0.0527 - acc: 0.9807
+Epoch 24/36
+ - 19s - loss: 0.0511 - acc: 0.9818
+Epoch 25/36
+ - 19s - loss: 0.0494 - acc: 0.9822
+Epoch 26/36
+ - 19s - loss: 0.0544 - acc: 0.9808
+Epoch 27/36
+ - 19s - loss: 0.0503 - acc: 0.9818
+Epoch 28/36
+ - 19s - loss: 0.0482 - acc: 0.9831
+Epoch 29/36
+ - 19s - loss: 0.0520 - acc: 0.9816
+Epoch 30/36
+ - 19s - loss: 0.0523 - acc: 0.9822
+Epoch 31/36
+ - 19s - loss: 0.0508 - acc: 0.9802
+Epoch 32/36
+ - 19s - loss: 0.0525 - acc: 0.9807
+Epoch 33/36
+ - 19s - loss: 0.0510 - acc: 0.9815
+Epoch 34/36
+ - 19s - loss: 0.0512 - acc: 0.9814
+Epoch 35/36
+ - 19s - loss: 0.0516 - acc: 0.9820
+Epoch 36/36
+ - 19s - loss: 0.0507 - acc: 0.9813
 
 
-Epoch 1/31
- - 57s - loss: 0.2502 - acc: 0.8914
-Epoch 2/31
- - 57s - loss: 0.2481 - acc: 0.8908
-Epoch 3/31
- - 57s - loss: 0.2482 - acc: 0.8916
-Epoch 4/31
- - 57s - loss: 0.2466 - acc: 0.8928
-Epoch 5/31
- - 57s - loss: 0.2445 - acc: 0.8942
-Epoch 6/31
- - 57s - loss: 0.2453 - acc: 0.8920
-Epoch 7/31
- - 57s - loss: 0.2442 - acc: 0.8914
-Epoch 8/31
- - 57s - loss: 0.2428 - acc: 0.8922
-Epoch 9/31
- - 57s - loss: 0.2450 - acc: 0.8924
-Epoch 10/31
- - 57s - loss: 0.2412 - acc: 0.8945
-Epoch 11/31
- - 57s - loss: 0.2394 - acc: 0.8954
-Epoch 12/31
- - 57s - loss: 0.2389 - acc: 0.8968
-Epoch 13/31
- - 57s - loss: 0.2362 - acc: 0.8939
-Epoch 14/31
- - 57s - loss: 0.2336 - acc: 0.8986
-Epoch 15/31
- - 57s - loss: 0.2320 - acc: 0.9004
-Epoch 16/31
- - 57s - loss: 0.2335 - acc: 0.8976
-Epoch 17/31
- - 57s - loss: 0.2337 - acc: 0.8968
-Epoch 18/31
- - 57s - loss: 0.2331 - acc: 0.8987
-Epoch 19/31
- - 57s - loss: 0.2315 - acc: 0.9000
-Epoch 20/31
- - 57s - loss: 0.2293 - acc: 0.8994
-Epoch 21/31
- - 57s - loss: 0.2285 - acc: 0.9004
-Epoch 22/31
- - 57s - loss: 0.2297 - acc: 0.8999
-Epoch 23/31
- - 57s - loss: 0.2278 - acc: 0.9017
-Epoch 24/31
- - 57s - loss: 0.2269 - acc: 0.9018
-Epoch 25/31
- - 57s - loss: 0.2267 - acc: 0.9007
-Epoch 26/31
- - 57s - loss: 0.2260 - acc: 0.9029
-Epoch 27/31
- - 57s - loss: 0.2281 - acc: 0.9002
-Epoch 28/31
- - 57s - loss: 0.2248 - acc: 0.9033
-Epoch 29/31
- - 57s - loss: 0.2254 - acc: 0.9047
-Epoch 30/31
- - 57s - loss: 0.2234 - acc: 0.9028
-Epoch 31/31
- - 57s - loss: 0.2257 - acc: 0.9012
-Accuracy:  0.911038489469862
-ROC/AUC Score:  0.9640814175437235
-Precision:  0.8374125874125874
-Recall:  0.7591125198098256
-F1 Score:  0.7963424771404821
+Acc:  0.9854756717501816
+ROC/AUC Score:  0.9990643589513646
+Precision:  0.9712460063897763
+Recall:  0.9650793650793651
 
 
-Epoch 1/31
- - 57s - loss: 0.2215 - acc: 0.9079
-Epoch 2/31
- - 57s - loss: 0.2199 - acc: 0.9065
-Epoch 3/31
- - 57s - loss: 0.2211 - acc: 0.9041
-Epoch 4/31
- - 57s - loss: 0.2201 - acc: 0.9080
-Epoch 5/31
- - 57s - loss: 0.2197 - acc: 0.9064
-Epoch 6/31
- - 57s - loss: 0.2205 - acc: 0.9080
-Epoch 7/31
- - 57s - loss: 0.2190 - acc: 0.9080
-Epoch 8/31
- - 57s - loss: 0.2188 - acc: 0.9077
-Epoch 9/31
- - 57s - loss: 0.2181 - acc: 0.9078
-Epoch 10/31
- - 57s - loss: 0.2167 - acc: 0.9077
-Epoch 11/31
- - 57s - loss: 0.2187 - acc: 0.9071
-Epoch 12/31
- - 57s - loss: 0.2167 - acc: 0.9098
-Epoch 13/31
- - 57s - loss: 0.2181 - acc: 0.9066
-Epoch 14/31
- - 57s - loss: 0.2176 - acc: 0.9091
-Epoch 15/31
- - 57s - loss: 0.2166 - acc: 0.9101
-Epoch 16/31
- - 57s - loss: 0.2158 - acc: 0.9081
-Epoch 17/31
- - 57s - loss: 0.2156 - acc: 0.9082
-Epoch 18/31
- - 57s - loss: 0.2172 - acc: 0.9096
-Epoch 19/31
- - 57s - loss: 0.2162 - acc: 0.9084
-Epoch 20/31
- - 57s - loss: 0.2159 - acc: 0.9111
-Epoch 21/31
- - 57s - loss: 0.2156 - acc: 0.9101
-Epoch 22/31
- - 57s - loss: 0.2164 - acc: 0.9079
-Epoch 23/31
- - 57s - loss: 0.2145 - acc: 0.9092
-Epoch 24/31
- - 57s - loss: 0.2174 - acc: 0.9078
-Epoch 25/31
- - 55s - loss: 0.2151 - acc: 0.9096
-Epoch 26/31
- - 54s - loss: 0.2133 - acc: 0.9086
-Epoch 27/31
- - 54s - loss: 0.2142 - acc: 0.9104
-Epoch 28/31
- - 54s - loss: 0.2138 - acc: 0.9098
-Epoch 29/31
- - 54s - loss: 0.2134 - acc: 0.9116
-Epoch 30/31
- - 54s - loss: 0.2143 - acc: 0.9087
-Epoch 31/31
- - 55s - loss: 0.2136 - acc: 0.9107
-Accuracy:  0.906284053759535
-ROC/AUC Score:  0.9615884978579279
-Precision:  0.805921052631579
-Recall:  0.7777777777777778
-F1 Score:  0.7915993537964459
+Epoch 1/36
+ - 19s - loss: 0.0512 - acc: 0.9805
+Epoch 2/36
+ - 19s - loss: 0.0478 - acc: 0.9824
+Epoch 3/36
+ - 19s - loss: 0.0483 - acc: 0.9812
+Epoch 4/36
+ - 19s - loss: 0.0493 - acc: 0.9830
+Epoch 5/36
+ - 19s - loss: 0.0496 - acc: 0.9822
+Epoch 6/36
+ - 18s - loss: 0.0487 - acc: 0.9824
+Epoch 7/36
+ - 18s - loss: 0.0474 - acc: 0.9840
+Epoch 8/36
+ - 18s - loss: 0.0465 - acc: 0.9823
+Epoch 9/36
+ - 18s - loss: 0.0476 - acc: 0.9818
+Epoch 10/36
+ - 18s - loss: 0.0475 - acc: 0.9828
+Epoch 11/36
+ - 18s - loss: 0.0483 - acc: 0.9818
+Epoch 12/36
+ - 18s - loss: 0.0481 - acc: 0.9831
+Epoch 13/36
+ - 18s - loss: 0.0468 - acc: 0.9831
+Epoch 14/36
+ - 18s - loss: 0.0497 - acc: 0.9811
+Epoch 15/36
+ - 18s - loss: 0.0481 - acc: 0.9822
+Epoch 16/36
+ - 18s - loss: 0.0472 - acc: 0.9827
+Epoch 17/36
+ - 18s - loss: 0.0456 - acc: 0.9822
+Epoch 18/36
+ - 18s - loss: 0.0480 - acc: 0.9832
+Epoch 19/36
+ - 18s - loss: 0.0489 - acc: 0.9820
+Epoch 20/36
+ - 18s - loss: 0.0439 - acc: 0.9850
+Epoch 21/36
+ - 18s - loss: 0.0471 - acc: 0.9825
+Epoch 22/36
+ - 18s - loss: 0.0490 - acc: 0.9815
+Epoch 23/36
+ - 18s - loss: 0.0472 - acc: 0.9820
+Epoch 24/36
+ - 19s - loss: 0.0437 - acc: 0.9836
+Epoch 25/36
+ - 19s - loss: 0.0439 - acc: 0.9847
+Epoch 26/36
+ - 19s - loss: 0.0476 - acc: 0.9827
+Epoch 27/36
+ - 19s - loss: 0.0455 - acc: 0.9828
+Epoch 28/36
+ - 19s - loss: 0.0469 - acc: 0.9820
+Epoch 29/36
+ - 19s - loss: 0.0450 - acc: 0.9831
+Epoch 30/36
+ - 19s - loss: 0.0453 - acc: 0.9839
+Epoch 31/36
+ - 19s - loss: 0.0453 - acc: 0.9838
+Epoch 32/36
+ - 19s - loss: 0.0447 - acc: 0.9847
+Epoch 33/36
+ - 19s - loss: 0.0438 - acc: 0.9839
+Epoch 34/36
+ - 19s - loss: 0.0453 - acc: 0.9833
+Epoch 35/36
+ - 19s - loss: 0.0454 - acc: 0.9839
+Epoch 36/36
+ - 19s - loss: 0.0447 - acc: 0.9842
 
 
-Epoch 1/31
- - 54s - loss: 0.2141 - acc: 0.9089
-Epoch 2/31
- - 54s - loss: 0.2155 - acc: 0.9094
-Epoch 3/31
- - 54s - loss: 0.2170 - acc: 0.9063
-Epoch 4/31
- - 54s - loss: 0.2152 - acc: 0.9082
-Epoch 5/31
- - 54s - loss: 0.2179 - acc: 0.9088
-Epoch 6/31
- - 54s - loss: 0.2149 - acc: 0.9086
-Epoch 7/31
- - 54s - loss: 0.2153 - acc: 0.9082
-Epoch 8/31
- - 54s - loss: 0.2120 - acc: 0.9090
-Epoch 9/31
- - 57s - loss: 0.2140 - acc: 0.9094
-Epoch 10/31
- - 57s - loss: 0.2122 - acc: 0.9109
-Epoch 11/31
- - 57s - loss: 0.2140 - acc: 0.9096
-Epoch 12/31
- - 57s - loss: 0.2128 - acc: 0.9102
-Epoch 13/31
- - 57s - loss: 0.2131 - acc: 0.9097
-Epoch 14/31
- - 57s - loss: 0.2130 - acc: 0.9116
-Epoch 15/31
- - 57s - loss: 0.2127 - acc: 0.9090
-Epoch 16/31
- - 57s - loss: 0.2132 - acc: 0.9129
-Epoch 17/31
- - 58s - loss: 0.2122 - acc: 0.9100
-Epoch 18/31
- - 58s - loss: 0.2124 - acc: 0.9111
-Epoch 19/31
- - 58s - loss: 0.2104 - acc: 0.9101
-Epoch 20/31
- - 58s - loss: 0.2104 - acc: 0.9113
-Epoch 21/31
- - 57s - loss: 0.2101 - acc: 0.9107
-Epoch 22/31
- - 57s - loss: 0.2129 - acc: 0.9098
-Epoch 23/31
- - 57s - loss: 0.2111 - acc: 0.9107
-Epoch 24/31
- - 57s - loss: 0.2111 - acc: 0.9102
-Epoch 25/31
- - 57s - loss: 0.2105 - acc: 0.9098
-Epoch 26/31
- - 57s - loss: 0.2123 - acc: 0.9107
-Epoch 27/31
- - 57s - loss: 0.2121 - acc: 0.9109
-Epoch 28/31
- - 57s - loss: 0.2113 - acc: 0.9108
-Epoch 29/31
- - 57s - loss: 0.2117 - acc: 0.9107
-Epoch 30/31
- - 57s - loss: 0.2099 - acc: 0.9125
-Epoch 31/31
- - 57s - loss: 0.2099 - acc: 0.9120
-Accuracy:  0.9044678532509989
-ROC/AUC Score:  0.96500459816522
-Precision:  0.8522072936660269
-Recall:  0.7047619047619048
-F1 Score:  0.7715030408340574
+Acc:  0.990559186637618
+ROC/AUC Score:  0.9992437150629241
+Precision:  0.9902597402597403
+Recall:  0.9682539682539683
 
 
-Epoch 1/31
- - 57s - loss: 0.2080 - acc: 0.9136
-Epoch 2/31
- - 57s - loss: 0.2071 - acc: 0.9122
-Epoch 3/31
- - 56s - loss: 0.2077 - acc: 0.9119
-Epoch 4/31
- - 55s - loss: 0.2051 - acc: 0.9132
-Epoch 5/31
+Epoch 1/36
+ - 19s - loss: 0.0461 - acc: 0.9837
+Epoch 2/36
+ - 19s - loss: 0.0449 - acc: 0.9841
+Epoch 3/36
+ - 19s - loss: 0.0427 - acc: 0.9843
+Epoch 4/36
+ - 19s - loss: 0.0460 - acc: 0.9831
+Epoch 5/36
+ - 19s - loss: 0.0462 - acc: 0.9843
+Epoch 6/36
+ - 19s - loss: 0.0453 - acc: 0.9842
+Epoch 7/36
+ - 19s - loss: 0.0436 - acc: 0.9839
+Epoch 8/36
+ - 19s - loss: 0.0423 - acc: 0.9843
+Epoch 9/36
+ - 19s - loss: 0.0419 - acc: 0.9850
+Epoch 10/36
+ - 19s - loss: 0.0440 - acc: 0.9835
+Epoch 11/36
+ - 19s - loss: 0.0461 - acc: 0.9830
+Epoch 12/36
+ - 19s - loss: 0.0425 - acc: 0.9843
+Epoch 13/36
+ - 19s - loss: 0.0434 - acc: 0.9839
+Epoch 14/36
+ - 19s - loss: 0.0425 - acc: 0.9849
+Epoch 15/36
+ - 19s - loss: 0.0416 - acc: 0.9856
+Epoch 16/36
+ - 19s - loss: 0.0440 - acc: 0.9838
+Epoch 17/36
+ - 19s - loss: 0.0427 - acc: 0.9846
+Epoch 18/36
+ - 19s - loss: 0.0430 - acc: 0.9835
+Epoch 19/36
+ - 19s - loss: 0.0419 - acc: 0.9848
+Epoch 20/36
+ - 19s - loss: 0.0398 - acc: 0.9852
+Epoch 21/36
+ - 19s - loss: 0.0449 - acc: 0.9831
+Epoch 22/36
+ - 19s - loss: 0.0418 - acc: 0.9844
+Epoch 23/36
+ - 19s - loss: 0.0429 - acc: 0.9843
+Epoch 24/36
+ - 19s - loss: 0.0412 - acc: 0.9848
+Epoch 25/36
+ - 19s - loss: 0.0425 - acc: 0.9842
+Epoch 26/36
+ - 19s - loss: 0.0400 - acc: 0.9856
+Epoch 27/36
+ - 19s - loss: 0.0413 - acc: 0.9852
+Epoch 28/36
+ - 19s - loss: 0.0413 - acc: 0.9847
+Epoch 29/36
+ - 19s - loss: 0.0402 - acc: 0.9854
+Epoch 30/36
+ - 19s - loss: 0.0401 - acc: 0.9855
+Epoch 31/36
+ - 19s - loss: 0.0400 - acc: 0.9856
+Epoch 32/36
+ - 19s - loss: 0.0409 - acc: 0.9853
+Epoch 33/36
+ - 19s - loss: 0.0419 - acc: 0.9840
+Epoch 34/36
+ - 19s - loss: 0.0379 - acc: 0.9865
+Epoch 35/36
+ - 19s - loss: 0.0412 - acc: 0.9850
+Epoch 36/36
+ - 19s - loss: 0.0394 - acc: 0.9852
+
+
+Acc:  0.9890988372093024
+ROC/AUC Score:  0.9995242583366994
+Precision:  0.993421052631579
+Recall:  0.9587301587301588
+
+
+Epoch 1/36
+ - 19s - loss: 0.0373 - acc: 0.9860
+Epoch 2/36
+ - 19s - loss: 0.0415 - acc: 0.9843
+Epoch 3/36
+ - 19s - loss: 0.0410 - acc: 0.9845
+Epoch 4/36
+ - 19s - loss: 0.0407 - acc: 0.9845
+Epoch 5/36
+ - 18s - loss: 0.0379 - acc: 0.9856
+Epoch 6/36
+ - 18s - loss: 0.0381 - acc: 0.9860
+Epoch 7/36
+ - 18s - loss: 0.0403 - acc: 0.9849
+Epoch 8/36
+ - 18s - loss: 0.0385 - acc: 0.9861
+Epoch 9/36
+ - 18s - loss: 0.0398 - acc: 0.9857
+Epoch 10/36
+ - 18s - loss: 0.0400 - acc: 0.9852
+Epoch 11/36
+ - 18s - loss: 0.0405 - acc: 0.9843
+Epoch 12/36
+ - 18s - loss: 0.0383 - acc: 0.9860
+Epoch 13/36
+ - 18s - loss: 0.0394 - acc: 0.9847
+Epoch 14/36
+ - 18s - loss: 0.0369 - acc: 0.9868
+Epoch 15/36
+ - 18s - loss: 0.0413 - acc: 0.9850
+Epoch 16/36
+ - 18s - loss: 0.0393 - acc: 0.9855
+Epoch 17/36
+ - 18s - loss: 0.0394 - acc: 0.9857
+Epoch 18/36
+ - 18s - loss: 0.0373 - acc: 0.9863
+Epoch 19/36
+ - 18s - loss: 0.0396 - acc: 0.9851
+Epoch 20/36
+ - 18s - loss: 0.0387 - acc: 0.9851
+Epoch 21/36
+ - 18s - loss: 0.0394 - acc: 0.9849
+Epoch 22/36
+ - 18s - loss: 0.0388 - acc: 0.9852
+Epoch 23/36
+ - 18s - loss: 0.0422 - acc: 0.9845
+Epoch 24/36
+ - 18s - loss: 0.0387 - acc: 0.9849
+Epoch 25/36
+ - 18s - loss: 0.0378 - acc: 0.9872
+Epoch 26/36
+ - 18s - loss: 0.0391 - acc: 0.9851
+Epoch 27/36
+ - 19s - loss: 0.0367 - acc: 0.9864
+Epoch 28/36
+ - 18s - loss: 0.0386 - acc: 0.9859
+Epoch 29/36
+ - 18s - loss: 0.0395 - acc: 0.9854
+Epoch 30/36
+ - 18s - loss: 0.0368 - acc: 0.9862
+Epoch 31/36
+ - 18s - loss: 0.0384 - acc: 0.9856
+Epoch 32/36
+ - 18s - loss: 0.0364 - acc: 0.9865
+Epoch 33/36
+ - 18s - loss: 0.0365 - acc: 0.9864
+Epoch 34/36
+ - 18s - loss: 0.0357 - acc: 0.9865
+Epoch 35/36
+ - 18s - loss: 0.0378 - acc: 0.9850
+Epoch 36/36
+ - 18s - loss: 0.0369 - acc: 0.9867
+
+
+Acc:  0.9934593023255814
+ROC/AUC Score:  0.9970288586688211
+Precision:  0.9872611464968153
+Recall:  0.9841269841269841
+
+
+Epoch 1/36
+ - 18s - loss: 0.0396 - acc: 0.9852
+Epoch 2/36
+ - 18s - loss: 0.0351 - acc: 0.9881
+Epoch 3/36
+ - 18s - loss: 0.0362 - acc: 0.9877
+Epoch 4/36
+ - 18s - loss: 0.0383 - acc: 0.9857
+Epoch 5/36
+ - 18s - loss: 0.0368 - acc: 0.9877
+Epoch 6/36
+ - 18s - loss: 0.0398 - acc: 0.9855
+Epoch 7/36
+ - 18s - loss: 0.0378 - acc: 0.9862
+Epoch 8/36
+ - 18s - loss: 0.0374 - acc: 0.9868
+Epoch 9/36
+ - 18s - loss: 0.0380 - acc: 0.9865
+Epoch 10/36
+ - 18s - loss: 0.0372 - acc: 0.9872
+Epoch 11/36
+ - 18s - loss: 0.0370 - acc: 0.9866
+Epoch 12/36
+ - 18s - loss: 0.0379 - acc: 0.9864
+Epoch 13/36
+ - 18s - loss: 0.0371 - acc: 0.9856
+Epoch 14/36
+ - 18s - loss: 0.0371 - acc: 0.9877
+Epoch 15/36
+ - 18s - loss: 0.0388 - acc: 0.9866
+Epoch 16/36
+ - 18s - loss: 0.0387 - acc: 0.9866
+Epoch 17/36
+ - 18s - loss: 0.0343 - acc: 0.9872
+Epoch 18/36
+ - 18s - loss: 0.0365 - acc: 0.9860
+Epoch 19/36
+ - 18s - loss: 0.0353 - acc: 0.9878
+Epoch 20/36
+ - 18s - loss: 0.0374 - acc: 0.9854
+Epoch 21/36
+ - 18s - loss: 0.0361 - acc: 0.9872
+Epoch 22/36
+ - 18s - loss: 0.0356 - acc: 0.9885
+Epoch 23/36
+ - 18s - loss: 0.0359 - acc: 0.9876
+Epoch 24/36
+ - 18s - loss: 0.0352 - acc: 0.9878
+Epoch 25/36
+ - 18s - loss: 0.0364 - acc: 0.9871
+Epoch 26/36
+ - 18s - loss: 0.0344 - acc: 0.9889
+Epoch 27/36
+ - 18s - loss: 0.0357 - acc: 0.9871
+Epoch 28/36
+ - 18s - loss: 0.0365 - acc: 0.9870
+Epoch 29/36
+ - 18s - loss: 0.0338 - acc: 0.9878
+Epoch 30/36
+ - 18s - loss: 0.0354 - acc: 0.9868
+Epoch 31/36
+ - 18s - loss: 0.0352 - acc: 0.9870
+Epoch 32/36
+ - 18s - loss: 0.0361 - acc: 0.9870
+Epoch 33/36
+ - 18s - loss: 0.0368 - acc: 0.9870
+Epoch 34/36
+ - 18s - loss: 0.0348 - acc: 0.9881
+Epoch 35/36
+ - 18s - loss: 0.0374 - acc: 0.9870
+Epoch 36/36
+ - 18s - loss: 0.0362 - acc: 0.9868
+
+
+Acc:  0.9883720930232558
+ROC/AUC Score:  0.9994973295633052
+Precision:  0.9869706840390879
+Recall:  0.9619047619047619
+
+
+Epoch 1/36
+ - 18s - loss: 0.0375 - acc: 0.9864
+Epoch 2/36
+ - 18s - loss: 0.0347 - acc: 0.9871
+Epoch 3/36
+ - 18s - loss: 0.0354 - acc: 0.9866
+Epoch 4/36
+ - 18s - loss: 0.0349 - acc: 0.9873
+Epoch 5/36
+ - 18s - loss: 0.0342 - acc: 0.9870
+Epoch 6/36
+ - 18s - loss: 0.0357 - acc: 0.9871
+Epoch 7/36
+ - 18s - loss: 0.0348 - acc: 0.9880
+Epoch 8/36
+ - 18s - loss: 0.0353 - acc: 0.9868
+Epoch 9/36
+ - 18s - loss: 0.0364 - acc: 0.9877
+Epoch 10/36
+ - 18s - loss: 0.0348 - acc: 0.9871
+Epoch 11/36
+ - 18s - loss: 0.0342 - acc: 0.9879
+Epoch 12/36
+ - 18s - loss: 0.0372 - acc: 0.9857
+Epoch 13/36
+ - 18s - loss: 0.0330 - acc: 0.9891
+Epoch 14/36
+ - 18s - loss: 0.0344 - acc: 0.9868
+Epoch 15/36
+ - 18s - loss: 0.0334 - acc: 0.9885
+Epoch 16/36
+ - 18s - loss: 0.0322 - acc: 0.9893
+Epoch 17/36
+ - 18s - loss: 0.0357 - acc: 0.9872
+Epoch 18/36
+ - 18s - loss: 0.0329 - acc: 0.9889
+Epoch 19/36
+ - 18s - loss: 0.0345 - acc: 0.9887
+Epoch 20/36
+ - 18s - loss: 0.0331 - acc: 0.9886
+Epoch 21/36
+ - 18s - loss: 0.0353 - acc: 0.9876
+Epoch 22/36
+ - 18s - loss: 0.0342 - acc: 0.9881
+Epoch 23/36
+ - 18s - loss: 0.0356 - acc: 0.9881
+Epoch 24/36
+ - 18s - loss: 0.0327 - acc: 0.9881
+Epoch 25/36
+ - 18s - loss: 0.0328 - acc: 0.9885
+Epoch 26/36
+ - 18s - loss: 0.0342 - acc: 0.9869
+Epoch 27/36
+ - 18s - loss: 0.0342 - acc: 0.9884
+Epoch 28/36
+ - 18s - loss: 0.0355 - acc: 0.9876
+Epoch 29/36
+ - 18s - loss: 0.0355 - acc: 0.9868
+Epoch 30/36
+ - 18s - loss: 0.0345 - acc: 0.9876
+Epoch 31/36
+ - 18s - loss: 0.0354 - acc: 0.9868
+Epoch 32/36
+ - 18s - loss: 0.0352 - acc: 0.9876
+Epoch 33/36
+ - 18s - loss: 0.0372 - acc: 0.9866
+Epoch 34/36
+ - 18s - loss: 0.0365 - acc: 0.9864
+Epoch 35/36
+ - 18s - loss: 0.0345 - acc: 0.9876
+Epoch 36/36
+ - 18s - loss: 0.0341 - acc: 0.9879
+
+
+Acc:  0.9912790697674418
+ROC/AUC Score:  0.9995272504226321
+Precision:  0.9902912621359223
+Recall:  0.9714285714285714
+
+
+Epoch 1/36
+ - 18s - loss: 0.0367 - acc: 0.9873
+Epoch 2/36
+ - 18s - loss: 0.0338 - acc: 0.9874
+Epoch 3/36
+ - 18s - loss: 0.0361 - acc: 0.9863
+Epoch 4/36
+ - 18s - loss: 0.0361 - acc: 0.9877
+Epoch 5/36
+ - 18s - loss: 0.0334 - acc: 0.9881
+Epoch 6/36
+ - 18s - loss: 0.0357 - acc: 0.9867
+Epoch 7/36
+ - 18s - loss: 0.0337 - acc: 0.9885
+Epoch 8/36
+ - 18s - loss: 0.0350 - acc: 0.9878
+Epoch 9/36
+ - 18s - loss: 0.0355 - acc: 0.9879
+Epoch 10/36
+ - 18s - loss: 0.0373 - acc: 0.9855
+Epoch 11/36
+ - 18s - loss: 0.0337 - acc: 0.9889
+Epoch 12/36
+ - 18s - loss: 0.0328 - acc: 0.9881
+Epoch 13/36
+ - 18s - loss: 0.0354 - acc: 0.9869
+Epoch 14/36
+ - 18s - loss: 0.0348 - acc: 0.9876
+Epoch 15/36
+ - 18s - loss: 0.0353 - acc: 0.9876
+Epoch 16/36
+ - 18s - loss: 0.0344 - acc: 0.9870
+Epoch 17/36
+ - 18s - loss: 0.0331 - acc: 0.9882
+Epoch 18/36
+ - 18s - loss: 0.0336 - acc: 0.9875
+Epoch 19/36
+ - 18s - loss: 0.0347 - acc: 0.9858
+Epoch 20/36
+ - 18s - loss: 0.0357 - acc: 0.9861
+Epoch 21/36
+ - 18s - loss: 0.0370 - acc: 0.9866
+Epoch 22/36
+ - 18s - loss: 0.0349 - acc: 0.9881
+Epoch 23/36
+ - 18s - loss: 0.0337 - acc: 0.9877
+Epoch 24/36
+ - 18s - loss: 0.0341 - acc: 0.9882
+Epoch 25/36
+ - 18s - loss: 0.0329 - acc: 0.9872
+Epoch 26/36
+ - 18s - loss: 0.0349 - acc: 0.9871
+Epoch 27/36
+ - 18s - loss: 0.0332 - acc: 0.9885
+Epoch 28/36
+ - 18s - loss: 0.0345 - acc: 0.9872
+Epoch 29/36
+ - 18s - loss: 0.0354 - acc: 0.9874
+Epoch 30/36
+ - 18s - loss: 0.0347 - acc: 0.9874
+Epoch 31/36
+ - 18s - loss: 0.0348 - acc: 0.9879
+Epoch 32/36
+ - 18s - loss: 0.0344 - acc: 0.9872
+Epoch 33/36
+ - 18s - loss: 0.0330 - acc: 0.9881
+Epoch 34/36
+ - 18s - loss: 0.0336 - acc: 0.9868
+Epoch 35/36
+ - 18s - loss: 0.0334 - acc: 0.9875
+Epoch 36/36
+ - 18s - loss: 0.0326 - acc: 0.9888
+
+
+Acc:  0.9941860465116279
+ROC/AUC Score:  0.9999102374220189
+Precision:  0.9781931464174455
+Recall:  0.9968253968253968
+
+
+CV Score: 1.00% (+/- 0.01%)
+CV Time:  1:50:26.265678
+Saved model to disk.
+--- Performance Summary ---
+Classification Report:
+
+             precision    recall  f1-score   support
+
+          0    0.97123   0.94407   0.95746      1180
+          1    0.82768   0.90571   0.86494       350
+
+avg / total    0.93839   0.93529   0.93629      1530
+
+R2:  0.6332445520581114
+ROC/AUC Score:  0.9645278450363196
