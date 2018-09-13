@@ -144,10 +144,8 @@ def process_tce(tce):
 
   # Generate the local and global views.
   global_view = preprocess.global_view(time, folded_flux, tce.tce_period, num_bins=2001, bin_width_factor=1 / 2001)
-  local_view = preprocess.local_view(time, folded_flux, tce.tce_period,
-                                     tce.tce_duration, num_bins=201, bin_width_factor=0.16, num_durations=4)
 
-  return flattened_flux, folded_flux, global_view, local_view
+  return flattened_flux, folded_flux, global_view
 
 
 
