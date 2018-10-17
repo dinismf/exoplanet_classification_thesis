@@ -1,15 +1,12 @@
-import configparser
-import time
-import json
-import os
 import tensorflow as tf
 from keras import backend as K
 #from optimize import run_trials
 
-from data import *
-from model import *
-from evaluate import ModelEvaluator
-from train import train_lstm, train_cnn, train_cnn_cv, train_lstm_cv
+from src.data.data import *
+from src.models.model import *
+from src.visualization.evaluate import ModelEvaluator
+from src.models.train import train_cnn_cv
+
 
 def load_model(name, weights=True):
     root = 'models/final/'
