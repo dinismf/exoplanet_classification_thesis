@@ -12,11 +12,11 @@ def main():
 
     tce_table["tce_duration"] /= 24  # Convert hours to days.
 
-    # Name and values of the target column in the input TCE table to use as training labels.
+    # Name of the target column and labels to use as training labels.
     _LABEL_COLUMN = "av_training_set"
     _ALLOWED_LABELS = {"PC", "AFP", "NTP"}
 
-    # Filter TCE table to allowed labels.
+    # Discard other labels from TCE table other than the allowed labels.
     allowed_tces = tce_table[_LABEL_COLUMN].apply(lambda l: l in _ALLOWED_LABELS)
     tce_table = tce_table[allowed_tces]
     num_tces = len(tce_table)
@@ -26,7 +26,8 @@ def main():
     tce_table = tce_table.iloc[np.random.permutation(num_tces)]
 
     neg = ['AFP', 'NTP']
-    tce_table = tce_table.loc[tce_table['av_training_set'].isin(neg)]
+    negative_tce_table = tce_table.loc[tce_table['av_training_set'].isin(neg)]
+    negative_tce_table = tce_table.loc[tce_table['av_training_set'].isin(neg)]
 
 
     # positive_flattened_df, positive_folded_df, positive_globalbinned_df, positive_localbinned_df = generate_tce_data(tce_table, positive_class=True, plot_show=False)
