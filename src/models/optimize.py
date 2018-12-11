@@ -1,51 +1,22 @@
 import datetime
-from src.data.data import *
+from src.old.data import *
 from src.models.model import *
 from hyperopt import Trials, STATUS_OK, tpe, fmin, hp
 from hyperas.utils import eval_hyperopt_space
 from keras.optimizers import SGD
 from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import roc_auc_score, recall_score, precision_score, f1_score
+import pickle
 
-# def data():
-#
-#     #X, y = LoadOriginalData()
-#     X, y = LoadDataset('lc_std_nanimputed.csv')
-#     #X, y = LoadDataset('lc_std_nanmasked_SMOTE.csv')
-#     #X, y = LoadDataset('lc_std.csv')
-#
-#     # Split data
-#     #X_train, y_train, X_test, y_test = SplitData(X,y, test_size=0.2)
-#     X_train, y_train, X_val, y_val, X_test, y_test = SplitData(X, y, test_size=0.2, val_set=True)
-#
-#     # Reshape data to 3D input
-#     X_train = X_train.reshape(X_train.shape[0], X_train.shape[1], 1)
-#     X_val = X_val.reshape(X_val.shape[0], X_val.shape[1], 1)
-#     X_test = X_test.reshape(X_test.shape[0], X_test.shape[1], 1)
-#
-#     # y_train = y_train.reshape(y_train.shape[0], 1)
-#     # y_test = y_test.reshape(y_test.shape[0], 1)
-#
-#     #return X_train, y_train, X_test, y_test
-#     return X_train, y_train, X_val, y_val, X_test, y_test
 
-X, y = LoadDataset('final_binned_global.csv', directory='kepler//csv_data//')
-# X, y = LoadDataset('lc_std_nanmasked_SMOTE.csv')
-# X, y = LoadDataset('lc_std.csv')
+X, y = LoadDataset('final_binned_global.csv', directory='data//processed//')
 
 # Split data
 X_train, y_train, X_test, y_test = SplitData(X,y, test_size=0.1)
-#X_train, y_train, X_val, y_val, X_test, y_test = SplitData(X, y, test_size=0.2, val_set=True)
-
-
-# #Remove any NaNs
-# X_train = MissingValuesHandler(X_train).imputeNaN()
-# X_test = MissingValuesHandler(X_test).imputeNaN()
 
 # Standardize training data
 X_train = Standardizer().standardize(X_train, na_values=False)
 X_test = Standardizer().standardize(X_test, na_values=False)
-
 
 # Save the split train and test dataset before optimization for future reference
 y_train_save = pd.DataFrame(y_train, columns=['LABEL'])
@@ -53,41 +24,13 @@ X_train_save = pd.DataFrame(X_train.astype(np.float))
 y_test_save = pd.DataFrame(y_test, columns=['LABEL'])
 X_test_save = pd.DataFrame(X_test.astype(np.float))
 
-X_train_save.to_pickle('kepler//testing_data//lstm_binneddata_XTRAIN.pkl')
-y_train_save.to_pickle('kepler//testing_data//lstm_binneddata_YTRAIN.pkl')
-X_test_save.to_pickle('kepler//testing_data//lstm_binneddata_XTEST.pkl')
-y_test_save.to_pickle('kepler//testing_data//lstm_binneddata_YTEST.pkl')
+X_train_save.to_pickle('data//split//globalbinneddata_XTRAIN.pkl')
+y_train_save.to_pickle('data//split//globalbinneddata_YTRAIN.pkl')
+X_test_save.to_pickle('data//split//globalbinneddata_XTEST.pkl')
+y_test_save.to_pickle('data//split//globalbinneddata_YTEST.pkl')
 
 
-
-#print('Reshaping the input data to 3D')
-
-# Reshape data to 3D input
-#X_train = X_train.reshape(X_train.shape[0], X_train.shape[1], 1)
-#X_test = X_test.reshape(X_test.shape[0], X_test.shape[1], 1)
-
-# space = {
-#
-#         'nb_blocks': hp.choice('nb_blocks', [0,1,2,3]),
-#         'filters': hp.choice('filters', [8,16,32,64]),
-#         'kernel_size':  hp.choice('kernel_size', [3, 5, 7, 9]),
-#         'pooling': hp.choice('pooling', ['max','average']),
-#         'pooling_size': hp.choice('pooling_size', [2,3,4]),
-#         'pooling_strides': hp.choice('pooling_strides', [2,3,4]),
-#         'conv_dropout': hp.uniform('conv_dropout', 0.0, 0.35),
-#         'fc_dropout': hp.uniform('fc_dropout', 0.0,0.6),
-#         'fc_units': hp.choice('fc_units', [32,64,128]),
-#         'batch_size' : hp.choice('batch_size', [16,32]),
-#         'lr_rate_mult': hp.loguniform('lr_rate_mult', -0.5, 0.5),
-#         'momentum': hp.choice('momentum', [0, 0.25, 0.4]),
-#         'batch_norm': hp.choice('batch_norm', [True, False]),
-#
-#         #'nb_epochs' :  35,
-#         'nb_epochs' :  hp.uniform('nb_epochs', 5.0, 40.0),
-#         'activation': 'prelu'
-#         }
-
-space = {
+cnn_space = {
 
         'nb_blocks': hp.choice('nb_blocks', [0,1,2,3]),
         'filters': hp.choice('filters', [8,16,32,64,128,254]),
@@ -283,28 +226,48 @@ def create_lstm(params):
 
 def run_trials(model_type, evals=5):
 
+
+    trials_step = 1
+    max_trials = evals
+
+    trials_filename = model_type + "_trials" + ".hyperopt"
+
+    # Try loading existing trials object for model type
+    try:
+        trials = pickle.load(open("models//trials//" + trials_filename, "rb"))
+        print("Found saved Trials! Loading...")
+        max_trials = len(trials.trials) + trials_step
+        print("Rerunning from {} trials to {} (+{}) trials.".format(len(trials.trials), max_trials, trials_step))
+
+    except:
+        trials = Trials()
+
+
     start_time = time.time()
 
-    trials = Trials()
 
     if model_type == 'cnn':
-        best_model = fmin(create_cnn_model, space, algo=tpe.suggest, max_evals=evals, trials=trials)
-    elif model_type == 'lstm':
-        best_model = fmin(create_lstm, lstm_space, algo=tpe.suggest, max_evals=evals, trials=trials)
+        best_model = fmin(create_cnn_model, cnn_space, algo=tpe.suggest, max_evals=max_trials, trials=trials)
+        print("Best CNN:", best_model)
+        best_model_config = eval_hyperopt_space(lstm_space, best_model)
 
+    elif model_type == 'lstm':
+        best_model = fmin(create_lstm, lstm_space, algo=tpe.suggest, max_evals=max_trials, trials=trials)
+        print("Best LSTM:", best_model)
+        best_model_config = eval_hyperopt_space(lstm_space, best_model)
+
+    elif model_type == 'mlp':
+        # TODO - Optimize MLP
+        print('N/A')
 
 
     total_seconds = time.time() - start_time
     print('Hyperparameter Optimization Time: ', str(datetime.timedelta(seconds=total_seconds)) )
     print('')
 
-    # print("Best performing model chosen hyper-parameters:")
-    # print(best_run)
 
     # json.dump(best_run, open("models/best_run.txt", 'w'))
 
-
-    best_model_config = eval_hyperopt_space(space, best_model)
 
     print ('Best Configuration: ', best_model_config)
 

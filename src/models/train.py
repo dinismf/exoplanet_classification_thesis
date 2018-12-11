@@ -1,4 +1,4 @@
-from src.data.data import *
+from old.data import *
 from src.visualization.evaluate import ModelEvaluator
 from keras.callbacks import ReduceLROnPlateau, EarlyStopping
 from sklearn.model_selection import StratifiedKFold
@@ -117,7 +117,6 @@ def train_lstm_cv(model, X_train, y_train, X_test, y_test, nb_cv = 5, batch_size
 
         # Reshape data to 3D input
         X_train_fold = X_train_fold.reshape(X_train_fold.shape[0], X_train_fold.shape[1], 1)
-        # X_val = X_val.reshape(X_val.shape[0], X_val.shape[1], 1)
         X_valid_fold = X_valid_fold.reshape(X_valid_fold.shape[0], X_valid_fold.shape[1], 1)
 
         # reduceLR = ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=5, min_lr=0.0001, verbose=1)
@@ -154,9 +153,9 @@ def train_lstm_cv(model, X_train, y_train, X_test, y_test, nb_cv = 5, batch_size
         model.SaveLSTMModel(save_name, config=True, weights=True)
 
 
-    evaluator = ModelEvaluator(model, X_test=X_test, y_test=y_test, batch_size=batch_size, generate_plots=True)
+    #evaluator = ModelEvaluator(model, X_test=X_test, y_test=y_test, batch_size=batch_size, generate_plots=True)
 
-    evaluator.PlotTrainingPerformance(history)
+    #evaluator.PlotTrainingPerformance(history)
 
 
 # if __name__ == "__main__":
