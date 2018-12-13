@@ -1,87 +1,34 @@
-# Project Title
+# Exoplanet Transit Detection using Deep Neural Networks
 
-One Paragraph of project description goes here
+My master's dissertation project that focuses on the use deep neural networks for the detection of exoplanets in orbit of stars in the Milky Way. MLP, CNN and LSTM networks are optimized to recognise light curve patterns in the photometric time-series data to determine whether a transit signal is indeed caused by a real transiting planet, or a false positive such as an eclipsing binary star.
+The data used for this project originated from NASA's Kepler telescope survey, and was retrieved from from the NASA Exoplanet Archive 
 
-## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
 
-What things you need to install the software and how to install them
 
-```
-Give examples
-```
 
-### Installing
+Dependencies: 
+  * [Python3](https://www.continuum.io/downloads)
+  * [Numpy](http://www.numpy.org/)
+  * [Keras](https://keras.io/)
+  * [TensorFlow](https://www.tensorflow.org/)
+  * [Matplotlib](https://matplotlib.org/)
+  * [Scikit-learn](http://scikit-learn.org/stable/)
+  * [Hyperopt](https://github.com/hyperopt/hyperopt/)
 
-A step by step series of examples that tell you have to get a development env running
+  
 
-Say what the step will be
+## Getting started
 
-```
-Give the example
-```
 
-And repeat
 
-```
-until finished
-```
+## Comprehensive File Guide 
+`make_dataset.py` - 
 
-End with an example of getting some data out of the system or using it for a little demo
+## Ways to improve the research 
 
-## Running the tests
 
-Explain how to run the automated tests for this system
 
-### Break down into end to end tests
+## Credits
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
