@@ -1,18 +1,16 @@
 # -*- coding: utf-8 -*-
 import click
 import logging
+import os
 from pathlib import Path
 from dotenv import find_dotenv, load_dotenv
+import multiprocessing
+import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import src.third_party.preprocess as preprocess
+import src.helpers.third_party.preprocess as preprocess
+from definitions import OUTPUT_DIR, TCE_TABLE_DIR, KEPLER_DATA_DIR
 
-# Path to raw data and TCE table
-KEPLER_DATA_DIR = 'E:\\new_fits'
-TCE_TABLE_DIR = 'E:\\new_fits\\q1_q17_dr24_tce.csv'
-
-
-def generate_tce_data(tce_table, plot_show=False):
+def generate_tce_data(tce_table):
 
 
     # Initialise dataframes to populate with processed data
@@ -31,19 +29,8 @@ def generate_tce_data(tce_table, plot_show=False):
     for _, tce in tce_table.iterrows():
 
         try:
-
             # Process the TCE and retrieve the processed data.
             flattened_flux, folded_flux, global_view, local_view = process_tce(tce)
-
-            if plot_show:
-                plt.plot(range(len(flattened_flux)), flattened_flux, 'o', markersize=1, label='FLUX')
-                plt.show()
-                plt.plot(range(len(folded_flux)), folded_flux, 'o', markersize=1, label='FLUX')
-                plt.show()
-                plt.plot(range(len(global_view)), global_view, 'o', markersize=1, label='FLUX')
-                plt.show()
-                plt.plot(range(len(local_view)), local_view, 'o', markersize=1, label='FLUX')
-                plt.show()
 
             # Append processed flux light curves for each TCE to output dataframes.
             flattened_fluxes_df = flattened_fluxes_df.append(pd.Series(flattened_flux), ignore_index=True)
@@ -53,14 +40,13 @@ def generate_tce_data(tce_table, plot_show=False):
 
             print('Kepler ID: {} processed'.format(tce.kepid))
             print("Processed Percentage: ", ((processed_count + failed_count) / num_tces) * 100, "%")
-
             processed_count += 1
+
         except:
             print('Kepler ID: {} failed'.format(tce.kepid))
             failed_count += 1
 
     return flattened_fluxes_df, folded_fluxes_df, globalbinned_fluxes_df, localbinned_fluxes_df
-
 
 
 def process_tce(tce):
@@ -81,16 +67,13 @@ def process_tce(tce):
   time, folded_flux = preprocess.phase_fold_and_sort_light_curve(time, flattened_flux, tce.tce_period, tce.tce_time0bk)
 
   # Generate the local and global views.
+  local_view = preprocess.local_view(time, folded_flux, tce.tce_period, tce.tce_duration, num_bins=201, bin_width_factor=0.16, num_durations=4)
   global_view = preprocess.global_view(time, folded_flux, tce.tce_period, num_bins=2001, bin_width_factor=1 / 2001)
 
-  return flattened_flux, folded_flux, global_view
+  return flattened_flux, folded_flux, local_view, global_view
 
 
-
-@click.command()
-@click.argument('input_filepath', type=click.Path(exists=True))
-@click.argument('output_filepath', type=click.Path())
-def main(input_filepath, output_filepath):
+def main():
     """ Runs data processing scripts to turn raw data from (../raw) into
         cleaned data ready to be analyzed (saved in ../processed).
     """
@@ -121,52 +104,63 @@ def main(input_filepath, output_filepath):
     negative_tce_table = tce_table.loc[tce_table['av_training_set'].isin(neg)]
 
     # Process the TCE tables
-    positive_flattened_df, positive_folded_df, positive_globalbinned_df, positive_localbinned_df = generate_tce_data(positive_tce_table)
-    logger.info('Succesfully processed positive TCE samples.')
+    # positive_flattened_df, positive_folded_df, positive_globalbinned_df, positive_localbinned_df = generate_tce_data(positive_tce_table)
+    # logger.info('Succesfully processed positive TCE samples.')
 
     negative_flattened_df, negative_folded_df, negative_globalbinned_df, negative_localbinned_df = generate_tce_data(negative_tce_table)
     logger.info('Succesfully processed negative TCE samples.')
+    #
+    # # Store processed data
+    # positive_flattened_df.to_csv(OUTPUT_DIR + 'positives_flattened.csv', na_rep='nan', index=False)
+    # positive_folded_df.to_csv(OUTPUT_DIR + 'positives_folded.csv', na_rep='nan', index=False)
+    # positive_globalbinned_df.to_csv(OUTPUT_DIR + 'positives_globalbinned.csv', na_rep='nan', index=False)
+    # positive_localbinned_df.to_csv(OUTPUT_DIR + 'positives_localbinned.csv', na_rep='nan', index=False)
+    # positive_flattened_df.to_pickle(OUTPUT_DIR + 'positives_flattened.pkl')
+    # positive_folded_df.to_pickle(OUTPUT_DIR + 'positives_folded.pkl')
+    # positive_globalbinned_df.to_pickle(OUTPUT_DIR + 'positives_globalbinned.pkl')
+    # positive_localbinned_df.to_pickle(OUTPUT_DIR + 'positives_localbinned.pkl')
+    #
+    # logger.info('Succesfully saved positive TCE samples.')
 
-
-
-    # Store processed data
-    positive_flattened_df.to_csv(output_filepath + 'positives_flattened.csv', na_rep='nan', index=False)
-    positive_folded_df.to_csv(output_filepath + 'positives_folded.csv', na_rep='nan', index=False)
-    positive_globalbinned_df.to_csv(output_filepath + 'positives_globalbinned.csv', na_rep='nan', index=False)
-    positive_localbinned_df.to_csv(output_filepath + 'positives_localbinned.csv', na_rep='nan', index=False)
-
-    positive_flattened_df.to_pickle(output_filepath + 'positives_flattened.pkl')
-    positive_folded_df.to_pickle(output_filepath + 'positives_folded.pkl')
-    positive_globalbinned_df.to_pickle(output_filepath + 'positives_globalbinned.pkl')
-    positive_localbinned_df.to_pickle(output_filepath + 'positives_localbinned.pkl')
-
-    logger.info('Succesfully saved positive TCE samples.')
-
-
-    negative_flattened_df.to_csv(output_filepath + 'negatives_flattened.csv', na_rep='nan', index=False)
-    negative_folded_df.to_csv(output_filepath + 'negatives_folded.csv', na_rep='nan', index=False)
-    negative_globalbinned_df.to_csv(output_filepath + 'negatives_globalbinned.csv', na_rep='nan', index=False)
-    negative_localbinned_df.to_csv(output_filepath + 'negatives_localbinned.csv', na_rep='nan', index=False)
-
-    negative_flattened_df.to_pickle(output_filepath + 'negatives_flattened.pkl')
-    negative_folded_df.to_pickle(output_filepath + 'negatives_folded.pkl')
-    negative_globalbinned_df.to_pickle(output_filepath + 'negatives_globalbinned.pkl')
-    negative_localbinned_df.to_pickle(output_filepath + 'negatives_localbinned.pkl')
+    negative_flattened_df.to_csv(OUTPUT_DIR + 'negatives_flattened.csv', na_rep='nan', index=False)
+    negative_folded_df.to_csv(OUTPUT_DIR + 'negatives_folded.csv', na_rep='nan', index=False)
+    negative_globalbinned_df.to_csv(OUTPUT_DIR + 'negatives_globalbinned.csv', na_rep='nan', index=False)
+    negative_localbinned_df.to_csv(OUTPUT_DIR + 'negatives_localbinned.csv', na_rep='nan', index=False)
+    negative_flattened_df.to_pickle(OUTPUT_DIR + 'negatives_flattened.pkl')
+    negative_folded_df.to_pickle(OUTPUT_DIR + 'negatives_folded.pkl')
+    negative_globalbinned_df.to_pickle(OUTPUT_DIR + 'negatives_globalbinned.pkl')
+    negative_localbinned_df.to_pickle(OUTPUT_DIR + 'negatives_localbinned.pkl')
 
     logger.info('Succesfully saved negative TCE samples.')
 
     # Label dataframes
-    positive_flattened_df['LABEL'] = 1
-    positive_folded_df['LABEL'] = 1
-    positive_globalbinned_df['LABEL'] = 1
-    positive_localbinned_df['LABEL'] = 1
+    # positive_flattened_df['LABEL'] = 1
+    # positive_folded_df['LABEL'] = 1
+    # positive_globalbinned_df['LABEL'] = 1
+    # positive_localbinned_df['LABEL'] = 1
     negative_flattened_df['LABEL'] = 0
     negative_folded_df['LABEL'] = 0
     negative_globalbinned_df['LABEL'] = 0
     negative_localbinned_df['LABEL'] = 0
 
-    # TODO Merge dataframes into final and TEST
-    final_globalbinned_df = negative_globalbinned_df.append(positive_globalbinned_df)
+    # Merge positive and negative TCE samples in a final dataframe
+    # final_globalbinned_df = positive_globalbinned_df.append(negative_globalbinned_df)
+    # final_localbinned_df = positive_localbinned_df.append(negative_localbinned_df)
+    # final_folded_df = positive_folded_df.append(negative_folded_df)
+    # final_flattened_df = positive_flattened_df.append(negative_flattened_df)
+
+    # Store as .csv and serialized
+    # final_globalbinned_df.to_csv(OUTPUT_DIR + 'final_globalbinned.csv', na_rep='nan', index=False)
+    # final_localbinned_df.to_csv(OUTPUT_DIR + 'final_localbinned.csv', na_rep='nan', index=False)
+    # final_folded_df.to_csv(OUTPUT_DIR + 'final_folded.csv', na_rep='nan', index=False)
+    # final_flattened_df.to_csv(OUTPUT_DIR + 'final_flattened.csv', na_rep='nan', index=False)
+    #
+    # final_globalbinned_df.to_pickle(OUTPUT_DIR + 'final_globalbinned.pkl')
+    # final_localbinned_df.to_pickle(OUTPUT_DIR + 'final_localbinned.pkl')
+    # final_folded_df.to_pickle(OUTPUT_DIR + 'final_folded.pkl')
+    # final_flattened_df.to_pickle(OUTPUT_DIR + 'final_flattened.pkl')
+
+
 
 
 

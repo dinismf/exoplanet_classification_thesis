@@ -1,6 +1,5 @@
-from src.models.model import *
 from src.models.optimize import *
-from src.models.train import train_cnn_cv, train_lstm_cv
+from src.helpers.train_helpers import train_cnn_cv, train_lstm_cv
 
 
 def optimize_models(config):
@@ -24,14 +23,16 @@ def optimize_models(config):
 
         if model == "LSTM":
 
-            best_model_config = run_trials('lstm', evals=10)
+            best_model_config = run_trials('lstm', evals=5)
 
 
-            print('Final Evaluation of Best Model Configuration')
+            print('Final Evaluation of Best LSTM Model Configuration')
             print('\n')
 
             best_lstm = LSTM_Model(output_dim=1, sequence_length=X_train_loaded.shape[1])
             best_lstm.LoadLSTMConfiguration(best_model_config)
+
+
 
             #best_lstm = LSTM_Model(output_dim=1, sequence_length=X_train_loaded.shape[1], nb_lstm_layers=0, nb_lstm_units=10, nb_fc_layers=2, nb_fc_units=64, dropout=0.29796647089233186,
             #                       activation='prelu', batch_normalisation=True)
@@ -47,7 +48,7 @@ def optimize_models(config):
 
             best_model_config = run_trials('cnn', evals=10)
 
-            print('Final Evaluation of Best Model Configuration')
+            print('Final Evaluation of Best CNN Model Configuration')
             print('\n')
 
             best_cnn = CNN_Model(output_dim=1, sequence_length=X_train_loaded.shape[1])
@@ -67,11 +68,17 @@ def optimize_models(config):
 
 
 def train_models(config):
-
+    print('')
 
 def main():
 
+    models_config = ["CNN"]
 
+    optimize_models(models_config)
+
+
+if __name__ == '__main__':
+    main()
 
 
 
