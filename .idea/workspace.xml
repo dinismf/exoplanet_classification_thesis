@@ -1,15 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/kepler/kepler_data_final.py" line="37" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="9b6e7bf2-6b59-4a47-9150-7240666c9632" name="Default" comment="Preprocessing Progress 2&#10;&#10;- Added ability to normalise and standardize data with missing values (NaN)&#10;- Minor progress on ability to train models using settings from a configuration file.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/exoplanet_classification_repo.iml" afterPath="$PROJECT_DIR$/.idea/exoplanet_classification_repo.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kepler/kepler_data_final.py" afterPath="$PROJECT_DIR$/kepler/kepler_data_final.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
+      <change afterPath="$PROJECT_DIR$/src/helpers/third_party/robust_mean/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/helpers/third_party/robust_mean/test_data/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/best_run.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/best_run_cnn_optim_65acc.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/best_run_lstm.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/cnn_50evals_dataset_conf_fps_new.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/cnn_50evals_dataset_conf_fps_new.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/cnn_50evals_df_conf_fps.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/cnn_50evals_df_conf_fps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/cnn_optim_65acc.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/cnn_optim_65acc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/concept_models/CNN.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/concept_models/CNN_LSTM.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/concept_models/DraftDeepLearning.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/concept_models/LSTM.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/configs/cnn_50evals_dataset_conf_fps_binned.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/configs/cnn_50evals_dataset_conf_fps_new.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/configs/cnn_50evals_df_conf_fps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/configs/cnn_finalversion_50evals_dataset_globalbinned.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/configs/lstm_finalversion_25evals_dataset_globalbinned.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/configs/new_cnn.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/final/best_cnn.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/final/best_cnn.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/final/cnn_100evals/best_cnn.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/final/cnn_100evals/best_cnn.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/final/cnn_100evals/logs.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/final/cnn_50eval_dataset_binned_conf_fps/cnn_50evals_dataset_conf_fps_binned.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/final/cnn_50eval_dataset_binned_conf_fps/cnn_50evals_dataset_conf_fps_binned.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/final/cnn_50eval_dataset_binned_conf_fps/config/cnn_50evals_dataset_conf_fps_binned.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/final/cnn_finalversion_50evals_dataset_globalbinned.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/final/cnn_finalversion_50evals_dataset_globalbinned.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/final/lstm_finalversion_25evals_dataset_globalbinned.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/final/lstm_finalversion_25evals_dataset_globalbinned.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/final/new_cnn.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/final/new_cnn.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/lstm_optim.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models/lstm_optim.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/data.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/make_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/make_dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/preprocessing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/optimize.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/optimize.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/train.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/train_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/train_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/kepler/KeplerData.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/kepler/KeplerDataNew.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/kepler/KeplerDataSingle.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/kepler/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/kepler/csv_data/OLD/OLD2/binned_confirmed_candidates.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/kepler/csv_data/OLD/OLD2/flattened_confirmed_candidates.pkl.REMOVED.git-id" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/kepler/csv_data/OLD/OLD2/folded_confirmed_candidates.pkl.REMOVED.git-id" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/kepler/csv_data/OLD/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/kepler/csv_data/OLD/datasets.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/kepler/csv_data/OLD/datasets_full.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/kepler/csv_data/OLD/datasets_partial.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/kepler/csv_data/OLD/fits/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/kepler/csv_data/OLD/fits/kplr012557548-2012179063303_llc.fits" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/kepler/csv_data/OLD/fits/pyketest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/kepler/csv_data/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/kepler/testing_data/cnn_binneddata_XTEST.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/kepler/testing_data/cnn_binneddata_XTRAIN.pkl.REMOVED.git-id" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/kepler/testing_data/cnn_binneddata_YTEST.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/kepler/testing_data/cnn_binneddata_YTRAIN.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/kepler/testing_data/lstm_binneddata_XTEST.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/kepler/testing_data/lstm_binneddata_XTRAIN.pkl.REMOVED.git-id" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/kepler/testing_data/lstm_binneddata_YTEST.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/kepler/testing_data/lstm_binneddata_YTRAIN.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/kepler_data_final.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/r/impute_ts.R" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/r/impute_ts_ma_interp.R" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/r/imputing_ts_2.R" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/r/imputing_ts_kalman.R" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/r/oversample.R" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/old/r/testoversample.R" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/BUILD" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/BUILD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/definitions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/generate_download_script.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/get_kepler.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/kepler_spline/BUILD" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/kepler_spline/BUILD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/kepler_spline/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/kepler_spline/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/kepler_spline/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/kepler_spline/kepler_spline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/kepler_spline/kepler_spline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/kepler_spline/kepler_spline_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/kepler_spline/kepler_spline_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/BUILD" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/BUILD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/BUILD" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/BUILD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/median.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/median.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/median_filter.cc" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/median_filter.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/median_filter.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/median_filter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/median_filter_test.cc" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/median_filter_test.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/median_test.cc" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/median_test.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/normalize.cc" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/normalize.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/normalize.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/normalize.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/normalize_test.cc" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/normalize_test.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/phase_fold.cc" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/phase_fold.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/phase_fold.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/phase_fold.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/phase_fold_test.cc" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/phase_fold_test.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/python/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/kepler_spline/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/python/median_filter.clif" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/python/median_filter.clif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/python/median_filter_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/python/median_filter_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/python/phase_fold.clif" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/python/phase_fold.clif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/python/phase_fold_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/python/phase_fold_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/python/postproc.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/python/postproc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/python/view_generator.clif" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/python/view_generator.clif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/python/view_generator_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/python/view_generator_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/test_util.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/test_util.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/view_generator.cc" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/view_generator.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/view_generator.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/view_generator.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/view_generator_test.cc" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/view_generator_test.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/kepler_io.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/kepler_io.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/kepler_io_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/kepler_io_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/median_filter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/median_filter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/median_filter_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/median_filter_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/periodic_event.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/periodic_event.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/periodic_event_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/periodic_event_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/test_data/0114/011442793/kplr011442793-2009350155506_llc.fits" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/test_data/0114/011442793/kplr011442793-2009350155506_llc.fits" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/test_data/0114/011442793/kplr011442793-2010009091648_llc.fits" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/test_data/0114/011442793/kplr011442793-2010009091648_llc.fits" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/test_data/0114/011442793/kplr011442793-2010174085026_llc.fits" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/test_data/0114/011442793/kplr011442793-2010174085026_llc.fits" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/util_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/util_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/preprocess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/preprocess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/robust_mean/BUILD" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/robust_mean/BUILD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/robust_mean/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/robust_mean/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/robust_mean/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/robust_mean/robust_mean.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/robust_mean/robust_mean.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/robust_mean/robust_mean_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/robust_mean/robust_mean_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/robust_mean/test_data/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/python/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/third_party/robust_mean/test_data/random_normal.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/robust_mean/test_data/random_normal.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,41 +140,62 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1407157260">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="py" value="2" />
+          <entry key="txt" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="Python" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="py" value="13" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Python" value="13" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="exoplanet_classification_repo" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main.py">
+      <file leaf-file-name="train_model.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/models/train_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1784">
-              <caret line="218" column="0" lean-forward="true" selection-start-line="218" selection-start-column="0" selection-end-line="218" selection-end-column="0" />
+            <state relative-caret-position="442">
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
               <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="evaluate.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/evaluate.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-                <marker date="1527861818814" expanded="true" signature="3582:4039" ph="..." />
+                <element signature="e#0#33#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="optimize.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/optimize.py">
+        <entry file="file://$PROJECT_DIR$/src/models/optimize.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+            <state relative-caret-position="51">
+              <caret line="12" column="39" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="39" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -60,62 +203,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="data.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data.py">
+      <file leaf-file-name="make_dataset.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/data/make_dataset.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3150">
-              <caret line="210" column="0" lean-forward="false" selection-start-line="210" selection-start-column="0" selection-end-line="210" selection-end-column="0" />
+            <state relative-caret-position="289">
+              <caret line="17" column="37" lean-forward="true" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
-                <marker date="1527861818814" expanded="true" signature="293:294" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="preprocessing.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/preprocessing.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="kepler_data_final.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kepler/kepler_data_final.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1641">
-              <caret line="149" column="0" lean-forward="true" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="preprocess.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kepler/third_party/preprocess.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2210">
-              <caret line="16" column="34" lean-forward="true" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
-              <folding>
-                <element signature="e#765#783#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="train.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/train.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#24#36#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -133,10 +227,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>CV Score: 0.60</find>
-      <find>Building CNN</find>
-      <find>CV Score: 0.6</find>
-      <find>PERIOD</find>
       <find>BJ</find>
       <find>B</find>
       <find>TSTART</find>
@@ -163,10 +253,15 @@
       <find>CV Score: 0.99% (+/- 0.01</find>
       <find>CV AUC Score: 0.99</find>
       <find>history</find>
+      <find>output_filepath</find>
+      <find>Loa</find>
+      <find>OUTPU</find>
+      <find>INFO</find>
     </findStrings>
     <replaceStrings>
       <replace>normed=False</replace>
       <replace>bins=1000</replace>
+      <replace>OUTPUT_DIR</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -175,17 +270,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/data/KeplerDataSingle.py" />
-        <option value="$PROJECT_DIR$/analysis/scatter/ExplorationPandas.py" />
-        <option value="$PROJECT_DIR$/models/concept_models/DraftDeepLearning.py" />
-        <option value="$PROJECT_DIR$/models/concept_models/CNN_LSTM.py" />
-        <option value="$PROJECT_DIR$/analysis/analysis.py" />
-        <option value="$PROJECT_DIR$/preprocessing/Missing_Values.py" />
-        <option value="$PROJECT_DIR$/preprocessing/Normalization.py" />
-        <option value="$PROJECT_DIR$/preprocessing/preprocessing.py" />
-        <option value="$PROJECT_DIR$/data/KeplerData.py" />
-        <option value="$PROJECT_DIR$/plotting.py" />
-        <option value="$PROJECT_DIR$/data/data.py" />
         <option value="$PROJECT_DIR$/models/concept_models/LSTM.py" />
         <option value="$PROJECT_DIR$/experiment.ini" />
         <option value="$PROJECT_DIR$/gpu.py" />
@@ -226,64 +310,65 @@
         <option value="$PROJECT_DIR$/model.py" />
         <option value="$PROJECT_DIR$/kepler/kepler_data_final.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/src/data/data.py" />
+        <option value="$PROJECT_DIR$/src/models/train.py" />
+        <option value="$PROJECT_DIR$/src/old/preprocessing.py" />
+        <option value="$PROJECT_DIR$/src/models/train_helpers.py" />
+        <option value="$PROJECT_DIR$/src/data/import_helpers.py" />
+        <option value="$PROJECT_DIR$/src/models/optimize.py" />
+        <option value="$PROJECT_DIR$/src/models/train_model.py" />
+        <option value="$PROJECT_DIR$/src/helpers/third_party/preprocess.py" />
+        <option value="$PROJECT_DIR$/src/helpers/third_party/kepler_spline/kepler_spline.py" />
+        <option value="$PROJECT_DIR$/definitions.py" />
+        <option value="$PROJECT_DIR$/src/data/make_dataset.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="y" value="23" />
-    <option name="width" value="1280" />
-    <option name="height" value="777" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-1928" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="exoplanet_classification_repo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="exoplanet_classification_repo" type="462c0819:PsiDirectoryNode" />
+              <item name="exoplanet_classification_thesis" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exoplanet_classification_thesis" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="exoplanet_classification_repo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="exoplanet_classification_repo" type="462c0819:PsiDirectoryNode" />
-              <item name="kepler" type="462c0819:PsiDirectoryNode" />
+              <item name="exoplanet_classification_thesis" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exoplanet_classification_thesis" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="exoplanet_classification_repo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="exoplanet_classification_repo" type="462c0819:PsiDirectoryNode" />
-              <item name="kepler" type="462c0819:PsiDirectoryNode" />
-              <item name="csv_data" type="462c0819:PsiDirectoryNode" />
+              <item name="exoplanet_classification_thesis" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exoplanet_classification_thesis" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="processed" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/DYN/Desktop/exoplanet_classification_repo/train.py" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../models-master/research/astronet" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="python.debugger.dataview.autoresize" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -294,19 +379,19 @@
     </option>
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\models\final" />
-      <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\kepler\csv_data" />
-      <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\kepler\third_party" />
-      <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\kepler\OLD\OLD2" />
-      <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\data\kepler" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\logs" />
       <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\kepler" />
       <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\data\kepler" />
       <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\models\final\cnn_50eval_dataset_binned_conf_fps\data" />
       <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\models\final\cnn_50eval_dataset_binned_conf_fps\config" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\DYN\Desktop\exoplanet_classification_thesis\src\helpers" />
+      <recent name="C:\Users\DYN\Desktop\exoplanet_classification_thesis\src\data" />
+      <recent name="C:\Users\DYN\Desktop\exoplanet_classification_thesis\src" />
+      <recent name="$PROJECT_DIR$/src/features" />
+      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -321,8 +406,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.make_dataset">
     <configuration name="KeplerData" type="PythonConfigurationType" factoryName="Python">
+      <module name="exoplanet_classification_repo" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -333,30 +419,14 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="exoplanet_classification_repo" />
       <option name="SCRIPT_NAME" value="C:\Users\DYN\Desktop\exoplanet_classification_repo\data\kepler\KeplerData.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
-    <configuration name="KeplerDataNew" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/kepler" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="exoplanet_classification_repo" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/kepler/KeplerDataNew.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
     </configuration>
     <configuration name="generate_download_script" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="exoplanet_classification_repo" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -367,13 +437,14 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="exoplanet_classification_repo" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data/kepler/generate_download_script.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
     </configuration>
     <configuration name="kepler_data_final" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="exoplanet_classification_repo" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -384,13 +455,14 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="exoplanet_classification_repo" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/kepler/kepler_data_final.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/data/kepler_data_final.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
     </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="exoplanet_classification_repo" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -401,13 +473,32 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="exoplanet_classification_repo" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="make_dataset" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="exoplanet_classification_repo" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/data" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/data/make_dataset.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
     </configuration>
     <configuration name="pyketest" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="exoplanet_classification_repo" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -418,32 +509,29 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="exoplanet_classification_repo" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data/fits/pyketest.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
     </configuration>
-    <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="Python.KeplerData" />
-      <item index="1" class="java.lang.String" itemvalue="Python.KeplerDataNew" />
-      <item index="2" class="java.lang.String" itemvalue="Python.kepler_data_final" />
-      <item index="3" class="java.lang.String" itemvalue="Python.pyketest" />
-      <item index="4" class="java.lang.String" itemvalue="Python.main" />
-      <item index="5" class="java.lang.String" itemvalue="Python.generate_download_script" />
+    <list>
+      <item itemvalue="Python.KeplerData" />
+      <item itemvalue="Python.kepler_data_final" />
+      <item itemvalue="Python.pyketest" />
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python.generate_download_script" />
+      <item itemvalue="Python.make_dataset" />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.generate_download_script" />
-        <item index="1" class="java.lang.String" itemvalue="Python.main" />
-        <item index="2" class="java.lang.String" itemvalue="Python.pyketest" />
-        <item index="3" class="java.lang.String" itemvalue="Python.kepler_data_final" />
-        <item index="4" class="java.lang.String" itemvalue="Python.KeplerDataNew" />
+      <list>
+        <item itemvalue="Python.make_dataset" />
+        <item itemvalue="Python.generate_download_script" />
+        <item itemvalue="Python.main" />
+        <item itemvalue="Python.pyketest" />
+        <item itemvalue="Python.kepler_data_final" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -483,28 +571,47 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
+    <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.178125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17755532" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32900432" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32897604" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32897604" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32897604" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39978212" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Data View" order="3" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32897604" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17755532" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Data View" order="3" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -540,260 +647,239 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="611" />
+      <option name="time" value="35" />
     </breakpoint-manager>
-    <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data.py">
+    <entry file="file://$PROJECT_DIR$/src/models/train_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3030">
-          <caret line="211" column="26" lean-forward="false" selection-start-line="211" selection-start-column="26" selection-end-line="211" selection-end-column="26" />
+        <state relative-caret-position="442">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <marker date="1527861818814" expanded="true" signature="293:294" ph="..." />
+            <element signature="e#0#33#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6165">
-          <caret line="417" column="0" lean-forward="true" selection-start-line="417" selection-start-column="0" selection-end-line="417" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#11#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/analysis/scatter/ExplorationScatter_Single.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="11" column="84" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python35/site-packages/pyke/kepfold.py" />
-    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python35/site-packages/pyke/lightcurve.py" />
-    <entry file="file://$PROJECT_DIR$/data/fits/pyketest.py" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/sklearn/model_selection/_split.py" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/pandas/core/frame.py" />
-    <entry file="file://$PROJECT_DIR$/data/logs.txt" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/keras/layers/pooling.py" />
-    <entry file="file://$PROJECT_DIR$/data/kepler/generate_download_script.py" />
-    <entry file="file://$PROJECT_DIR$/data/kepler/generate_input_records.py" />
-    <entry file="file://$PROJECT_DIR$/data/kepler/KeplerDataNew.py" />
-    <entry file="file://$PROJECT_DIR$/data/kepler/light_curve_util/util.py" />
-    <entry file="file://$PROJECT_DIR$/data/kepler/light_curve_util/periodic_event.py" />
-    <entry file="file://$PROJECT_DIR$/data/kepler/light_curve_util/kepler_io.py" />
-    <entry file="file://$PROJECT_DIR$/data/kepler/light_curve_util/median_filter.py" />
-    <entry file="file://$PROJECT_DIR$/data/kepler/third_party/kepler_spline/kepler_spline.py" />
-    <entry file="file://$PROJECT_DIR$/data/kepler/preprocess.py" />
-    <entry file="file://$PROJECT_DIR$/analysis/scatter/Exploration_Scatter_1Class_Multiple.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="36" column="22" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/multiprocessing/pool.py" />
-    <entry file="file://$PROJECT_DIR$/kepler/generate_input_records.py" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/numpy/core/fromnumeric.py" />
-    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python35/site-packages/h5py/__init__.py" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/sklearn/metrics/classification.py" />
-    <entry file="file://$PROJECT_DIR$/models/configs/cnn_50evals_df_conf_fps.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="89" lean-forward="true" selection-start-line="0" selection-start-column="89" selection-end-line="0" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/configs/cnn_50evals_dataset_conf_fps_new.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="307" lean-forward="false" selection-start-line="0" selection-start-column="291" selection-end-line="0" selection-end-column="307" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/final/cnn_50eval_dataset_binned_conf_fps/cnn_50evals_dataset_conf_fps_binned.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="2232" lean-forward="true" selection-start-line="0" selection-start-column="2232" selection-end-line="0" selection-end-column="2232" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/keras/models.py" />
-    <entry file="file://$PROJECT_DIR$/logs/logs.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30481">
-          <caret line="1793" column="10" lean-forward="false" selection-start-line="1793" selection-start-column="10" selection-end-line="1793" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logs/logs_cnnbest_eval.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="888" column="27" lean-forward="false" selection-start-line="888" selection-start-column="27" selection-end-line="888" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kepler/KeplerDataNew.py">
+    <entry file="file://$PROJECT_DIR$/src/models/optimize.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kepler/KeplerData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-691">
-          <caret line="26" column="42" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kepler/third_party/generate_download_script.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kepler/third_party/kepler_spline/kepler_spline.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="194" column="37" lean-forward="false" selection-start-line="194" selection-start-column="37" selection-end-line="194" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kepler/third_party/light_curve_util/kepler_io.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="75" column="4" lean-forward="false" selection-start-line="75" selection-start-column="4" selection-end-line="75" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kepler/csv_data/OLD/lc_std_nanimputed.csv" />
-    <entry file="file://$PROJECT_DIR$/kepler/csv_data/OLD/OLD2/final_new_fps.csv" />
-    <entry file="file://$PROJECT_DIR$/logs/logs_cnn_final.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212025">
-          <caret line="14135" column="24" lean-forward="false" selection-start-line="14135" selection-start-column="10" selection-end-line="14135" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10125">
-          <caret line="675" column="0" lean-forward="false" selection-start-line="675" selection-start-column="0" selection-end-line="675" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#11#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kepler/third_party/light_curve_util/util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="42" column="20" lean-forward="false" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kepler/third_party/light_curve_util/median_filter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1500">
-          <caret line="104" column="27" lean-forward="false" selection-start-line="104" selection-start-column="27" selection-end-line="104" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logs/logs_LSTM_BEST.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="647">
-          <caret line="967" column="0" lean-forward="false" selection-start-line="967" selection-start-column="0" selection-end-line="967" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/optimize.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <caret line="12" column="39" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="39" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/preprocessing.py">
+    <entry file="file://$PROJECT_DIR$/src/data/make_dataset.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="2516">
+          <caret line="157" column="74" lean-forward="true" selection-start-line="157" selection-start-column="74" selection-end-line="157" selection-end-column="74" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#24#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train.py">
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/numpy/core/fromnumeric.py" />
+    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python35/site-packages/h5py/__init__.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/sklearn/metrics/classification.py" />
+    <entry file="file://$PROJECT_DIR$/models/configs/cnn_50evals_df_conf_fps.json" />
+    <entry file="file://$PROJECT_DIR$/models/configs/cnn_50evals_dataset_conf_fps_new.json" />
+    <entry file="file://$PROJECT_DIR$/models/final/cnn_50eval_dataset_binned_conf_fps/cnn_50evals_dataset_conf_fps_binned.json" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/keras/models.py" />
+    <entry file="file://$PROJECT_DIR$/src/visualization/logs/logs.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state relative-caret-position="30481">
+          <caret line="1793" column="10" selection-start-line="1793" selection-start-column="10" selection-end-line="1793" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/visualization/logs/logs_cnnbest_eval.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="888" column="27" selection-start-line="888" selection-start-column="27" selection-end-line="888" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/kepler/KeplerDataNew.py" />
+    <entry file="file://$PROJECT_DIR$/data/kepler/KeplerData.py" />
+    <entry file="file://$PROJECT_DIR$/src/helpers/third_party/light_curve_util/kepler_io.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="986">
+          <caret line="75" column="4" selection-start-line="75" selection-start-column="4" selection-end-line="75" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kepler/csv_data/OLD/lc_std_nanimputed.csv" />
+    <entry file="file://$PROJECT_DIR$/kepler/csv_data/OLD/OLD2/final_new_fps.csv" />
+    <entry file="file://$PROJECT_DIR$/src/visualization/logs/logs_cnn_final.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212025">
+          <caret line="14135" column="24" selection-start-line="14135" selection-start-column="10" selection-end-line="14135" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helpers/third_party/light_curve_util/util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="42" column="20" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helpers/third_party/light_curve_util/median_filter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1500">
+          <caret line="104" column="27" selection-start-line="104" selection-start-column="27" selection-end-line="104" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/visualization/logs/logs_LSTM_BEST.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="647">
+          <caret line="967" selection-start-line="967" selection-end-line="967" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py" />
+    <entry file="file://$PROJECT_DIR$/src/features/preprocessing.py" />
+    <entry file="file://$PROJECT_DIR$/src/data/kepler_data_final.py" />
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/data.py" />
+    <entry file="file://$PROJECT_DIR$/src/third_party/generate_download_script.py" />
+    <entry file="file://$PROJECT_DIR$/src/old/kepler/KeplerData.py" />
+    <entry file="file://$PROJECT_DIR$/src/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-612" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/visualization/evaluate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/train.py" />
+    <entry file="file://$PROJECT_DIR$/src/data/preprocessing.py" />
+    <entry file="file://$PROJECT_DIR$/src/helpers/preprocess_helpers.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/data.py" />
+    <entry file="file://$PROJECT_DIR$/src/old/kepler_data_final.py" />
+    <entry file="file://$PROJECT_DIR$/src/helpers/import_helpers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_environment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" selection-start-line="23" selection-end-line="24" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="12" lean-forward="true" selection-start-column="12" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helpers/train_helpers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helpers/third_party/kepler_spline/kepler_spline.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="618" column="11" selection-start-line="618" selection-start-column="8" selection-end-line="618" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helpers/third_party/preprocess.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="143" column="32" selection-start-line="143" selection-start-column="32" selection-end-line="143" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/optimize.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="12" column="39" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="39" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/evaluate.py">
+    <entry file="file://$PROJECT_DIR$/src/models/train_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state relative-caret-position="442">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <marker date="1527861818814" expanded="true" signature="3582:4039" ph="..." />
+            <element signature="e#0#33#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kepler/kepler_data_final.py">
+    <entry file="file://$PROJECT_DIR$/src/visualization/analysis/scatter/ExplorationScatter_Single.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1641">
-          <caret line="149" column="0" lean-forward="true" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-255" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/visualization/analysis/scatter/ExplorationPandas.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-612" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/visualization/analysis/scatter/Exploration.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-177" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/visualization/analysis/scatter/Exploration_Scatter_1Class_Multiple.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data.py">
+    <entry file="file://$PROJECT_DIR$/definitions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3150">
-          <caret line="210" column="0" lean-forward="false" selection-start-line="210" selection-start-column="0" selection-end-line="210" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <marker date="1527861818814" expanded="true" signature="293:294" ph="..." />
-          </folding>
+        <state relative-caret-position="187">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kepler/third_party/preprocess.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2210">
-          <caret line="16" column="34" lean-forward="true" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
-          <folding>
-            <element signature="e#765#783#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/data/processed/negatives_folded.csv">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/src/data/make_dataset.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1784">
-          <caret line="218" column="0" lean-forward="true" selection-start-line="218" selection-start-column="0" selection-end-line="218" selection-end-column="0" />
+        <state relative-caret-position="289">
+          <caret line="17" column="37" lean-forward="true" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#24#36#0" expanded="true" />
           </folding>
         </state>
       </provider>

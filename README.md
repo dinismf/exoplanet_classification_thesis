@@ -21,8 +21,8 @@ For a shorter summary, a powerpoint presentation was also prepared ->
 
 
 ## Project Organization
-------------
 
+------------
     ├── LICENSE
     ├── Makefile           <- Makefile with commands like `make data` or `make train`
     ├── README.md          <- The top-level README for developers using this project.
@@ -65,16 +65,14 @@ For a shorter summary, a powerpoint presentation was also prepared ->
     │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
     │       └── visualize.py
 
-
+    <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
 --------
-
 
 ## Comprehensive File Guide 
 
 `make_dataset.py` - Reads Kepler light curves from .fits files
 
 ## Ways to improve the research 
-
 
 
 ## Credits
