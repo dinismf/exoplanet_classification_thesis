@@ -35,7 +35,7 @@ An illustration of an exoplanet transit is shown below.
 
 To get a more in depth understanding of the work behind this project, consult my MSc dissertation [here](reports/dissertation.pdf) and the papers in the credits section below. 
 
-For a shorter summary, a powerpoint presentation was also prepared -> [] 
+For a shorter summary, a powerpoint presentation was also prepared -> [link](reports/presentation.pdf) 
 
 # Projectpan
 
