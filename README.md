@@ -1,16 +1,20 @@
 # Exoplanet Transit Detection using Deep Neural Networks
 
-MSc dissertation project that focuses on the use of deep neural networks for the detection of exoplanets in orbit of stars in the Milky Way. MLP, CNN and LSTM networks were built and optimized to recognise light curve patterns in the photometric time-series data to determine whether a transit signal is indeed caused by a real transiting planet, or a false positive such as an eclipsing binary star.
-The data used for this project was produced by NASA's Kepler telescope survey, and was retrieved from the NASA Exoplanet Archive. 
+MSc dissertation project that focuses on the use of deep neural networks for the detection of exoplanets in solar systems other than our own in the Milky Way. Two deep learning architectures, convolutional (CNN) and long-short term memory (LSTM), are presented as automated vetting methods for the accurate detection of exoplanets in data produced by NASA's Kepler telescope survey. 
+The networks were optimized to recognise light curve patterns in the photometric time-series data to solve a binary classification task, i.e to determine whether a transit signal is indeed caused by a real transiting planet, or a false positive such as an eclipsing binary star, stellar variability or instrumental artefacts. 
+The final model configurations were able to correctly classify Kepler Threshold-Crossing Events (TCEs) with a recall score of ≈ 93.5%. 
+In the future, automated vetting procedures like the methods proposed in this research will be commonplace in the Astronomy domain due to the large influx of data from new telescope surveys with the goal of observing celestial objects including exoplanets and many other phenomena in the universe. 
 
-## Background
+## Kepler Data Overview 
 
+Labelled data from the Q1-Q17 Data Release 24 catalogue was obtained. The DR24 catalogue is composed of ≈ 15740 Threshold-Crossing Events (TCEs). TCEs can be defined as any detected transit-like event that cross a predefined threshold degree of certainty, and are then subjected to further analysis by the Kepler team to determine if the transit is caused by an exoplanet or other celestial objects/phenomena. 
+![An illustration of an exoplanet transit is shown below](TRANSIT.gif)
 
-![](TRANSIT.gif)
+To get a more in depth understanding of the work behind this project, consult my MSc dissertation [here](reports/dissertation.pdf) and the papers in the credits section below. 
 
-To get a more in depth understanding of the work behind this project, consult my MSc dissertation [here]() and the papers in the credits section below. 
+For a shorter summary, a powerpoint presentation was also prepared -> [] 
 
-For a shorter summary, a powerpoint presentation was also prepared -> 
+# Project
 
 ## Dependencies
 
@@ -21,8 +25,6 @@ For a shorter summary, a powerpoint presentation was also prepared ->
   * [Matplotlib](https://matplotlib.org/)
   * [Scikit-learn](http://scikit-learn.org/stable/)
   * [Hyperopt](https://github.com/hyperopt/hyperopt/)
-
-# Project
 
 ## Structure
 
@@ -57,7 +59,7 @@ For a shorter summary, a powerpoint presentation was also prepared ->
         |   ├── import_helpers.py
         |   └── train_helpers.py 
         |
-        ├── models         <- Scripts to train models and then use trained models to make
+        ├── models         <- Scripts to train models and predict new data.
         │   │
         |   ├── model.py
         |   ├── optimize.py
@@ -79,7 +81,6 @@ For a shorter summary, a powerpoint presentation was also prepared ->
 
 ## Setup 
 
-## Kepler Data Overview 
 
 ## Download Kepler Data 
 
