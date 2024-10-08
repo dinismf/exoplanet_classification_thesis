@@ -1,10 +1,8 @@
 import numpy as np
-from keras.models import Sequential
+from keras.api.models import Sequential
 from sklearn.metrics import roc_auc_score, precision_score, recall_score, classification_report, confusion_matrix, r2_score, auc, f1_score
 import scikitplot as skplt
 import matplotlib.pyplot as plt
-import seaborn as sns
-from matplotlib import style
 plt.style.use('fivethirtyeight')
 
 class ModelEvaluator():

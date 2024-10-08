@@ -26,7 +26,7 @@ from src.helpers.third_party.kepler_spline import kepler_spline
 
 
 def read_and_process_light_curve(kepid, kepler_data_dir, max_gap_width=0.75):
-  """Reads a light curve, fits a B-spline and divides the curve by the spline.
+    """Reads a light curve, fits a B-spline and divides the curve by the spline.
 
   Args:
     kepid: Kepler id of the target star.
@@ -43,52 +43,52 @@ def read_and_process_light_curve(kepid, kepler_data_dir, max_gap_width=0.75):
     IOError: If the light curve files for this Kepler ID cannot be found.
     ValueError: If the spline could not be fit.
   """
-  # Read the Kepler light curve.
-  file_names = kepler_io.kepler_filenames(kepler_data_dir, kepid)
-  if not file_names:
-    raise IOError("Failed to find .fits files in %s for Kepler ID %s" %
-                  (kepler_data_dir, kepid))
+    # Read the Kepler light curve.
+    file_names = kepler_io.kepler_filenames(kepler_data_dir, kepid)
+    if not file_names:
+        raise IOError("Failed to find .fits files in %s for Kepler ID %s" %
+                      (kepler_data_dir, kepid))
 
-  all_time, all_flux = kepler_io.read_kepler_light_curve(file_names)
+    all_time, all_flux = kepler_io.read_kepler_light_curve(file_names)
 
-  # Split on gaps.
-  all_time, all_flux = util.split(all_time, all_flux, gap_width=max_gap_width)
+    # Split on gaps.
+    all_time, all_flux = util.split(all_time, all_flux, gap_width=max_gap_width)
 
-  # Logarithmically sample candidate break point spacings between 0.5 and 20
-  # days.
-  bkspaces = np.logspace(np.log10(0.5), np.log10(20), num=20)
+    # Logarithmically sample candidate break point spacings between 0.5 and 20
+    # days.
+    bkspaces = np.logspace(np.log10(0.5), np.log10(20), num=20)
 
-  # Generate spline.
-  spline = kepler_spline.choose_kepler_spline(
-      all_time, all_flux, bkspaces, penalty_coeff=1.0, verbose=False)[0]
+    # Generate spline.
+    spline = kepler_spline.choose_kepler_spline(
+        all_time, all_flux, bkspaces, penalty_coeff=1.0, verbose=False)[0]
 
-  if spline is None:
-    raise ValueError("Failed to fit spline with Kepler ID %s", kepid)
+    if spline is None:
+        raise ValueError("Failed to fit spline with Kepler ID %s", kepid)
 
-  # Concatenate the piecewise light curve and spline.
-  time = np.concatenate(all_time)
-  flux = np.concatenate(all_flux)
-  spline = np.concatenate(spline)
+    # Concatenate the piecewise light curve and spline.
+    time = np.concatenate(all_time)
+    flux = np.concatenate(all_flux)
+    spline = np.concatenate(spline)
 
-  # In rare cases the piecewise spline contains NaNs in places the spline could
-  # not be fit. We can't normalize those points if the spline isn't defined
-  # there. Instead we just remove them.
-  finite_i = np.isfinite(spline)
-  if not np.all(finite_i):
-    tf.logging.warn("Incomplete spline with Kepler ID %s", kepid)
-    time = time[finite_i]
-    flux = flux[finite_i]
-    spline = spline[finite_i]
+    # In rare cases the piecewise spline contains NaNs in places the spline could
+    # not be fit. We can't normalize those points if the spline isn't defined
+    # there. Instead we just remove them.
+    finite_i = np.isfinite(spline)
+    if not np.all(finite_i):
+        tf.logging.warn("Incomplete spline with Kepler ID %s", kepid)
+        time = time[finite_i]
+        flux = flux[finite_i]
+        spline = spline[finite_i]
 
-  # "Flatten" the light curve (remove low-frequency variability) by dividing by
-  # the spline.
-  flux /= spline
+    # "Flatten" the light curve (remove low-frequency variability) by dividing by
+    # the spline.
+    flux /= spline
 
-  return time, flux
+    return time, flux
 
 
 def phase_fold_and_sort_light_curve(time, flux, period, t0):
-  """Phase folds a light curve and sorts by ascending time.
+    """Phase folds a light curve and sorts by ascending time.
 
   Args:
     time: 1D NumPy array of time values.
@@ -103,20 +103,20 @@ def phase_fold_and_sort_light_curve(time, flux, period, t0):
     folded_flux: 1D NumPy array. Values are the same as the original input
         array, but sorted by folded_time.
   """
-  # Phase fold time.
-  time = util.phase_fold_time(time, period, t0)
+    # Phase fold time.
+    time = util.phase_fold_time(time, period, t0)
 
-  # Sort by ascending time.
-  sorted_i = np.argsort(time)
-  time = time[sorted_i]
-  flux = flux[sorted_i]
+    # Sort by ascending time.
+    sorted_i = np.argsort(time)
+    time = time[sorted_i]
+    flux = flux[sorted_i]
 
-  return time, flux
+    return time, flux
 
 
 def generate_view(time, flux, num_bins, bin_width, t_min, t_max,
                   normalize=True):
-  """Generates a view of a phase-folded light curve using a median filter.
+    """Generates a view of a phase-folded light curve using a median filter.
 
   Args:
     time: 1D array of time values, sorted in ascending order.
@@ -131,18 +131,18 @@ def generate_view(time, flux, num_bins, bin_width, t_min, t_max,
     1D NumPy array of size num_bins containing the median flux values of
     uniformly spaced bins on the phase-folded time axis.
   """
-  view = median_filter.median_filter(time, flux, num_bins, bin_width, t_min,
-                                     t_max)
+    view = median_filter.median_filter(time, flux, num_bins, bin_width, t_min,
+                                       t_max)
 
-  if normalize:
-    view -= np.median(view)
-    view /= np.abs(np.min(view))
+    if normalize:
+        view -= np.median(view)
+        view /= np.abs(np.min(view))
 
-  return view
+    return view
 
 
 def global_view(time, flux, period, num_bins=2001, bin_width_factor=1 / 2001):
-  """Generates a 'global view' of a phase folded light curve.
+    """Generates a 'global view' of a phase folded light curve.
 
   See Section 3.3 of Shallue & Vanderburg, 2018, The Astronomical Journal.
   http://iopscience.iop.org/article/10.3847/1538-3881/aa9e09/meta
@@ -158,13 +158,13 @@ def global_view(time, flux, period, num_bins=2001, bin_width_factor=1 / 2001):
     1D NumPy array of size num_bins containing the median flux values of
     uniformly spaced bins on the phase-folded time axis.
   """
-  return generate_view(
-      time,
-      flux,
-      num_bins=num_bins,
-      bin_width=period * bin_width_factor,
-      t_min=-period / 2,
-      t_max=period / 2)
+    return generate_view(
+        time,
+        flux,
+        num_bins=num_bins,
+        bin_width=period * bin_width_factor,
+        t_min=-period / 2,
+        t_max=period / 2)
 
 
 def local_view(time,
@@ -174,7 +174,7 @@ def local_view(time,
                num_bins=201,
                bin_width_factor=0.16,
                num_durations=4):
-  """Generates a 'local view' of a phase folded light curve.
+    """Generates a 'local view' of a phase folded light curve.
 
   See Section 3.3 of Shallue & Vanderburg, 2018, The Astronomical Journal.
   http://iopscience.iop.org/article/10.3847/1538-3881/aa9e09/meta
@@ -193,10 +193,10 @@ def local_view(time,
     1D NumPy array of size num_bins containing the median flux values of
     uniformly spaced bins on the phase-folded time axis.
   """
-  return generate_view(
-      time,
-      flux,
-      num_bins=num_bins,
-      bin_width=duration * bin_width_factor,
-      t_min=max(-period / 2, -duration * num_durations),
-      t_max=min(period / 2, duration * num_durations))
+    return generate_view(
+        time,
+        flux,
+        num_bins=num_bins,
+        bin_width=duration * bin_width_factor,
+        t_min=max(-period / 2, -duration * num_durations),
+        t_max=min(period / 2, duration * num_durations))

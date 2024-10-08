@@ -1,1 +1,0 @@
-{"fc_units": 64, "conv_dropout": 0.20090552210103232, "pooling_size": 4, "lr_rate_mult": 1.196136091877294, "pooling_strides": 3, "activation": "prelu", "nb_epochs": 17.22578121283596, "nb_blocks": 0, "momentum": 0.25, "fc_dropout": 0.0019689793061075656, "batch_size": 16, "filters": 64, "kernel_size": 3, "pooling": "max", "batch_norm": true}

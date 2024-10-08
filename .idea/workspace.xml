@@ -1,181 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b6e7bf2-6b59-4a47-9150-7240666c9632" name="Default" comment="Preprocessing Progress 2&#10;&#10;- Added ability to normalise and standardize data with missing values (NaN)&#10;- Minor progress on ability to train models using settings from a configuration file.">
-      <change afterPath="$PROJECT_DIR$/src/helpers/third_party/robust_mean/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/helpers/third_party/robust_mean/test_data/__init__.py" afterDir="false" />
+    <list default="true" id="9b6e7bf2-6b59-4a47-9150-7240666c9632" name="Default" comment="Update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/best_run.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/best_run_cnn_optim_65acc.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/best_run_lstm.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/cnn_50evals_dataset_conf_fps_new.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/cnn_50evals_dataset_conf_fps_new.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/cnn_50evals_df_conf_fps.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/cnn_50evals_df_conf_fps.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/cnn_optim_65acc.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/cnn_optim_65acc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/concept_models/CNN.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/concept_models/CNN_LSTM.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/concept_models/DraftDeepLearning.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/concept_models/LSTM.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/configs/cnn_50evals_dataset_conf_fps_binned.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/configs/cnn_50evals_dataset_conf_fps_new.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/configs/cnn_50evals_df_conf_fps.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/configs/cnn_finalversion_50evals_dataset_globalbinned.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/configs/lstm_finalversion_25evals_dataset_globalbinned.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/configs/new_cnn.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/final/best_cnn.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/final/best_cnn.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/final/cnn_100evals/best_cnn.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/final/cnn_100evals/best_cnn.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/final/cnn_100evals/logs.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/final/cnn_50eval_dataset_binned_conf_fps/cnn_50evals_dataset_conf_fps_binned.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/final/cnn_50eval_dataset_binned_conf_fps/cnn_50evals_dataset_conf_fps_binned.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/final/cnn_50eval_dataset_binned_conf_fps/config/cnn_50evals_dataset_conf_fps_binned.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/final/cnn_finalversion_50evals_dataset_globalbinned.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/final/cnn_finalversion_50evals_dataset_globalbinned.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/final/lstm_finalversion_25evals_dataset_globalbinned.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/final/lstm_finalversion_25evals_dataset_globalbinned.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/final/new_cnn.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/final/new_cnn.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/lstm_optim.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/models/lstm_optim.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/data.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/make_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/make_dataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/preprocessing.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/optimize.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/optimize.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/train.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/train_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/train_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/kepler/KeplerData.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/kepler/KeplerDataNew.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/kepler/KeplerDataSingle.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/kepler/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/kepler/csv_data/OLD/OLD2/binned_confirmed_candidates.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/kepler/csv_data/OLD/OLD2/flattened_confirmed_candidates.pkl.REMOVED.git-id" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/kepler/csv_data/OLD/OLD2/folded_confirmed_candidates.pkl.REMOVED.git-id" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/kepler/csv_data/OLD/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/kepler/csv_data/OLD/datasets.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/kepler/csv_data/OLD/datasets_full.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/kepler/csv_data/OLD/datasets_partial.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/kepler/csv_data/OLD/fits/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/kepler/csv_data/OLD/fits/kplr012557548-2012179063303_llc.fits" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/kepler/csv_data/OLD/fits/pyketest.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/kepler/csv_data/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/kepler/testing_data/cnn_binneddata_XTEST.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/kepler/testing_data/cnn_binneddata_XTRAIN.pkl.REMOVED.git-id" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/kepler/testing_data/cnn_binneddata_YTEST.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/kepler/testing_data/cnn_binneddata_YTRAIN.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/kepler/testing_data/lstm_binneddata_XTEST.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/kepler/testing_data/lstm_binneddata_XTRAIN.pkl.REMOVED.git-id" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/kepler/testing_data/lstm_binneddata_YTEST.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/kepler/testing_data/lstm_binneddata_YTRAIN.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/kepler_data_final.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/r/impute_ts.R" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/r/impute_ts_ma_interp.R" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/r/imputing_ts_2.R" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/r/imputing_ts_kalman.R" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/r/oversample.R" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/old/r/testoversample.R" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/BUILD" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/BUILD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/definitions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/generate_download_script.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/get_kepler.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/kepler_spline/BUILD" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/kepler_spline/BUILD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/kepler_spline/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/kepler_spline/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/kepler_spline/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/kepler_spline/kepler_spline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/kepler_spline/kepler_spline.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/kepler_spline/kepler_spline_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/kepler_spline/kepler_spline_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/BUILD" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/BUILD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/BUILD" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/BUILD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/median.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/median.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/median_filter.cc" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/median_filter.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/median_filter.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/median_filter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/median_filter_test.cc" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/median_filter_test.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/median_test.cc" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/median_test.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/normalize.cc" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/normalize.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/normalize.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/normalize.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/normalize_test.cc" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/normalize_test.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/phase_fold.cc" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/phase_fold.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/phase_fold.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/phase_fold.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/phase_fold_test.cc" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/phase_fold_test.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/python/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/kepler_spline/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/python/median_filter.clif" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/python/median_filter.clif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/python/median_filter_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/python/median_filter_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/python/phase_fold.clif" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/python/phase_fold.clif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/python/phase_fold_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/python/phase_fold_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/python/postproc.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/python/postproc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/python/view_generator.clif" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/python/view_generator.clif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/python/view_generator_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/python/view_generator_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/test_util.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/test_util.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/view_generator.cc" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/view_generator.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/view_generator.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/view_generator.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/cc/view_generator_test.cc" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/view_generator_test.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/kepler_io.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/kepler_io.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/kepler_io_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/kepler_io_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/median_filter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/median_filter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/median_filter_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/median_filter_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/periodic_event.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/periodic_event.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/periodic_event_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/periodic_event_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/test_data/0114/011442793/kplr011442793-2009350155506_llc.fits" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/test_data/0114/011442793/kplr011442793-2009350155506_llc.fits" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/test_data/0114/011442793/kplr011442793-2010009091648_llc.fits" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/test_data/0114/011442793/kplr011442793-2010009091648_llc.fits" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/test_data/0114/011442793/kplr011442793-2010174085026_llc.fits" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/test_data/0114/011442793/kplr011442793-2010174085026_llc.fits" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/util.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/light_curve_util/util_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/util_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/preprocess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/preprocess.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/robust_mean/BUILD" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/robust_mean/BUILD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/robust_mean/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/robust_mean/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/robust_mean/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/robust_mean/robust_mean.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/robust_mean/robust_mean.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/robust_mean/robust_mean_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/robust_mean/robust_mean_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/robust_mean/test_data/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/light_curve_util/cc/python/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/third_party/robust_mean/test_data/random_normal.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/third_party/robust_mean/test_data/random_normal.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-1407157260">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="2" />
-          <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="py" value="2" />
-          <entry key="txt" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="py" value="13" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="Python" value="13" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="exoplanet_classification_repo" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -265,6 +102,11 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="5b054c5c16e55b7d93f1891a4e5978111c3d0842" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -324,12 +166,19 @@
       </list>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-1928" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
+  <component name="ProjectId" id="2lJD6z2kdKCUl84oD6Cu2utheWy" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -363,13 +212,35 @@
       </pane>
     </panes>
   </component>
-  <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/DYN/Desktop/exoplanet_classification_repo/train.py" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="python.debugger.dataview.autoresize" value="false" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.download_kepler.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.kepler_download.executor&quot;: &quot;Run&quot;,
+    &quot;Python.make_dataset.executor&quot;: &quot;Run&quot;,
+    &quot;Python.make_features.executor&quot;: &quot;Run&quot;,
+    &quot;Python.train_model.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;ShowUsagesActions.previewPropertyKey&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/dinis/Dev/github/exoplanet_classification_thesis/data/raw&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;Python&quot;
+    ]
+  }
+}</component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
       <console-settings module-name="exoplanet_classification_repo" is-module-sdk="true">
@@ -380,35 +251,24 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data/raw" />
       <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\logs" />
       <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\kepler" />
       <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\data\kepler" />
       <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\models\final\cnn_50eval_dataset_binned_conf_fps\data" />
-      <recent name="C:\Users\DYN\Desktop\exoplanet_classification_repo\models\final\cnn_50eval_dataset_binned_conf_fps\config" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\DYN\Desktop\exoplanet_classification_thesis\src\helpers" />
-      <recent name="C:\Users\DYN\Desktop\exoplanet_classification_thesis\src\data" />
-      <recent name="C:\Users\DYN\Desktop\exoplanet_classification_thesis\src" />
-      <recent name="$PROJECT_DIR$/src/features" />
-      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/models/configs" />
+      <recent name="$PROJECT_DIR$/models/trained_models/best" />
+      <recent name="$PROJECT_DIR$/models/trained_models/lstm" />
+      <recent name="$PROJECT_DIR$/models/trained_models/cnn" />
+      <recent name="$PROJECT_DIR$/src/data" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Python.make_dataset">
+  <component name="RunManager" selected="Python.train_model">
     <configuration name="KeplerData" type="PythonConfigurationType" factoryName="Python">
       <module name="exoplanet_classification_repo" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -419,14 +279,65 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="C:\Users\DYN\Desktop\exoplanet_classification_repo\data\kepler\KeplerData.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="download" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="exoplanet_classification_repo" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data/raw" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/data/download.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="download_kepler" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="exoplanet_classification_repo" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data/raw" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data/raw/download_kepler.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration name="generate_download_script" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="exoplanet_classification_repo" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -437,50 +348,19 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data/kepler/generate_download_script.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
-    <configuration name="kepler_data_final" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="make_features" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="exoplanet_classification_repo" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/kepler" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/data/kepler_data_final.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="exoplanet_classification_repo" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="make_dataset" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="exoplanet_classification_repo" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -491,48 +371,66 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/data/make_dataset.py" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/data/make_features.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
-    <configuration name="pyketest" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="train_model" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="exoplanet_classification_repo" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data/fits" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/models" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data/fits/pyketest.py" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/models/train_model.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Python.KeplerData" />
-      <item itemvalue="Python.kepler_data_final" />
-      <item itemvalue="Python.pyketest" />
-      <item itemvalue="Python.main" />
+      <item itemvalue="Python.download" />
+      <item itemvalue="Python.make_features" />
+      <item itemvalue="Python.train_model" />
+      <item itemvalue="Python.download_kepler" />
       <item itemvalue="Python.generate_download_script" />
-      <item itemvalue="Python.make_dataset" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.make_dataset" />
+        <item itemvalue="Python.train_model" />
+        <item itemvalue="Python.make_features" />
         <item itemvalue="Python.generate_download_script" />
-        <item itemvalue="Python.main" />
-        <item itemvalue="Python.pyketest" />
-        <item itemvalue="Python.kepler_data_final" />
+        <item itemvalue="Python.download" />
+        <item itemvalue="Python.download_kepler" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-PY-241.18034.82" />
+        <option value="bundled-python-sdk-975db3bf15a3-2767605e8bc2-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.18034.82" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -543,6 +441,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1517448949948</updated>
+      <workItem from="1724889116880" duration="1060000" />
+      <workItem from="1724890343314" duration="11448000" />
+      <workItem from="1726016207453" duration="28109000" />
+      <workItem from="1726188541878" duration="14020000" />
+      <workItem from="1726245008481" duration="45909000" />
+      <workItem from="1727010096645" duration="42976000" />
+      <workItem from="1728935913922" duration="16103000" />
     </task>
     <task id="LOCAL-00001" summary="Start of re-structure work on data pre-processing pipeline">
       <created>1522086307091</created>
@@ -558,7 +463,15 @@
       <option name="project" value="LOCAL" />
       <updated>1522377141151</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Update">
+      <option name="closed" value="true" />
+      <created>1728936529126</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1728936529126</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView">
@@ -613,31 +526,50 @@
       <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Start of re-structure work on data pre-processing pipeline" />
     <MESSAGE value="Preprocessing Progress 2&#10;&#10;- Added ability to normalise and standardize data with missing values (NaN)&#10;- Minor progress on ability to train models using settings from a configuration file." />
-    <option name="LAST_COMMIT_MESSAGE" value="Preprocessing Progress 2&#10;&#10;- Added ability to normalise and standardize data with missing values (NaN)&#10;- Minor progress on ability to train models using settings from a configuration file." />
+    <MESSAGE value="Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/models/concept_models/CNN.py</url>
-          <line>93</line>
-          <option name="timeStamp" value="168" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/models/concept_models/LSTM.py</url>
-          <line>87</line>
-          <option name="timeStamp" value="198" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/sklearn/model_selection/_validation.py</url>
           <line>336</line>
           <option name="timeStamp" value="349" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/helpers/import_helpers.py</url>
+          <line>33</line>
+          <option name="timeStamp" value="383" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -647,8 +579,14 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="35" />
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/exoplanet_classification_thesis$train_model.coverage" NAME="train_model Coverage Results" MODIFIED="1729091326251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/models" />
+    <SUITE FILE_PATH="coverage/exoplanet_classification_thesis$make_dataset.coverage" NAME="make_dataset Coverage Results" MODIFIED="1728430983409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/data" />
+    <SUITE FILE_PATH="coverage/exoplanet_classification_thesis$download_kepler.coverage" NAME="download_kepler Coverage Results" MODIFIED="1726134604384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data/raw" />
+    <SUITE FILE_PATH="coverage/exoplanet_classification_thesis$kepler_download.coverage" NAME="kepler_download Coverage Results" MODIFIED="1726271655824" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data/raw" />
+    <SUITE FILE_PATH="coverage/exoplanet_classification_thesis$make_features.coverage" NAME="make_features Coverage Results" MODIFIED="1728936547242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/data" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/models/train_model.py">

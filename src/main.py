@@ -5,7 +5,7 @@ from keras import backend as K
 from src.data.data import *
 from src.models.model import *
 from src.visualization.evaluate import ModelEvaluator
-from src.models.train import train_cnn_cv
+from src.models.train_model import train_cnn_cv
 
 
 def load_model(name, weights=True):

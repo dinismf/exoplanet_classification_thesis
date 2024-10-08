@@ -18,7 +18,7 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import collections
+from collections.abc import Iterable
 
 import numpy as np
 from six.moves import range  # pylint:disable=redefined-builtin
@@ -65,7 +65,7 @@ def split(all_time, all_flux, gap_width=0.75):
   # We must use an explicit length test on all_time because implicit conversion
   # to bool fails if all_time is a numpy array, and all_time.size is not defined
   # if all_time is a list of numpy arrays.
-  if len(all_time) > 0 and not isinstance(all_time[0], collections.Iterable):  # pylint:disable=g-explicit-length-test
+  if len(all_time) > 0 and not isinstance(all_time[0], Iterable):  # pylint:disable=g-explicit-length-test
     all_time = [all_time]
     all_flux = [all_flux]
 
@@ -107,7 +107,7 @@ def remove_events(all_time, all_flux, events, width_factor=1.0):
   # We must use an explicit length test on all_time because implicit conversion
   # to bool fails if all_time is a numpy array and all_time.size is not defined
   # if all_time is a list of numpy arrays.
-  if len(all_time) > 0 and not isinstance(all_time[0], collections.Iterable):  # pylint:disable=g-explicit-length-test
+  if len(all_time) > 0 and not isinstance(all_time[0], Iterable):  # pylint:disable=g-explicit-length-test
     all_time = [all_time]
     all_flux = [all_flux]
     single_segment = True
